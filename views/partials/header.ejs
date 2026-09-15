@@ -1,0 +1,73 @@
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap site-header__row">
+
+    <a href="/" class="brand" aria-label="Business ICT Australia — home">
+      <!-- Swap for the real logo file later: /images/logo.svg -->
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 3 L43 10 V22 C43 33 35.5 41 24 45 C12.5 41 5 33 5 22 V10 Z" fill="var(--ict-blue)"/>
+          <circle cx="24" cy="20" r="6" fill="#fff"/>
+          <rect x="21.4" y="24" width="5.2" height="9" rx="1.5" fill="#fff"/>
+        </svg>
+      </span>
+      <span class="brand__type">
+        <span class="brand__business">BUSINESS<span class="brand__ict">ICT</span></span>
+        <span class="brand__australia">AUSTRALIA</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li><a href="/" class="<%= currentPath === '/' ? 'is-active' : '' %>">Home</a></li>
+        <li><a href="/about" class="<%= currentPath === '/about' ? 'is-active' : '' %>">About</a></li>
+        <li class="has-dropdown">
+          <button type="button" class="dropdown-toggle" aria-expanded="false" aria-controls="services-menu">
+            Services
+            <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul id="services-menu" class="dropdown-menu">
+            <li><a href="/mobility">Mobility</a></li>
+            <li><a href="/unified-comms">Unified Comms</a></li>
+            <li><a href="/#services">Managed IT Services</a></li>
+            <li><a href="/#services">Managed Print</a></li>
+            <li><a href="/#services">Hardware Procurement</a></li>
+          </ul>
+        </li>
+        <li><a href="/contact" class="<%= currentPath === '/contact' ? 'is-active' : '' %>">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a href="/myaccount" class="btn btn--outline btn--sm">My Account</a>
+      <a href="/contact" class="btn btn--primary btn--sm">Request a Call</a>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav panel -->
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" hidden>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li class="mobile-has-dropdown">
+        <button type="button" class="mobile-dropdown-toggle" aria-expanded="false" aria-controls="mobile-services-menu">
+          Services
+          <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <ul id="mobile-services-menu" class="mobile-dropdown-menu" hidden>
+          <li><a href="/mobility">Mobility</a></li>
+          <li><a href="/unified-comms">Unified Comms</a></li>
+          <li><a href="/#services">Managed IT Services</a></li>
+          <li><a href="/#services">Managed Print</a></li>
+          <li><a href="/#services">Hardware Procurement</a></li>
+        </ul>
+      </li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/myaccount">My Account</a></li>
+      <li><a href="/contact" class="btn btn--primary btn--sm">Request a Call</a></li>
+    </ul>
+  </nav>
+</header>

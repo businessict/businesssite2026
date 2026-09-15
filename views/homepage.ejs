@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= pageTitle %></title>
+<meta name="description" content="<%= metaDescription %>">
+
+<!-- Fonts: preconnect first so the swap happens as fast as possible -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="/images/favicon.ico">
+</head>
+<body>
+
+<%- include('partials/header') %>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow">Enterprise Solutions</span>
+      <h1>We make ICT easy for growing enterprises</h1>
+      <h2>Mobility, unified comms, managed IT, print and hardware, all from one Australian partner.</h2>
+      <p>Business ICT Australia delivers enterprise-grade connectivity, security and support to small and medium business, so your team stays productive and your data stays protected.</p>
+      <div class="hero__ctas">
+        <a href="/contact" class="btn btn--primary">Book A Consultation</a>
+        <a href="/#services" class="btn btn--outline">Explore Our Services</a>
+      </div>
+    </div>
+    <div class="hero__art">
+      <img src="/images/hero.webp" alt="Business ICT Australia team at work" loading="eager" decoding="async">
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOGO MARQUEE ============ -->
+<div class="marquee">
+  <p class="marquee__label">Trusted networks &amp; technology partners</p>
+  <div class="marquee__track-wrap">
+    <div class="marquee__track">
+      <% var partners = ['Partner Logo 1','Partner Logo 2','Partner Logo 3','Partner Logo 4','Partner Logo 5','Partner Logo 6']; %>
+      <% [...partners, ...partners].forEach(function(p){ %>
+        <span style="font-family:var(--font-head); font-weight:700; color:var(--ict-silver); font-size:1.1rem; white-space:nowrap;"><%= p %></span>
+      <% }) %>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SERVICES: clickable tiles ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-head__copy">
+        <span class="eyebrow">Products &amp; Services</span>
+        <h1>Everything your business needs, in one place</h1>
+        <p>From day-to-day support to strategic guidance — tap into any service below for plans, pricing conversations and more detail.</p>
+      </div>
+    </div>
+
+    <div class="services-grid">
+
+      <a href="/#services-connectivity" class="service-tile">
+        <div class="service-tile__icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M2 8.5a15 15 0 0 1 20 0M5.5 12a10 10 0 0 1 13 0M9 15.5a5 5 0 0 1 6 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="19" r="1.3" fill="currentColor"/></svg>
+        </div>
+        <p class="service-tile__title">Connectivity &amp; Security
+          <svg width="14" height="14" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </p>
+        <p>Reliable connectivity and robust security are the backbone of every modern business. Fast, resilient networks backed by layered cybersecurity.</p>
+      </a>
+
+      <a href="/unified-comms" class="service-tile">
+        <div class="service-tile__icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="9" y="2" width="6" height="12" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-3 0h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <p class="service-tile__title">Voice &amp; Collaboration
+          <svg width="14" height="14" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </p>
+        <p>Seamless, flexible communication built for the way teams actually work — connected in the office, on the road, or remote.</p>
+      </a>
+
+      <a href="/mobility" class="service-tile">
+        <div class="service-tile__icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="18.3" r="0.9" fill="currentColor"/></svg>
+        </div>
+        <p class="service-tile__title">Mobile Fleet Management
+          <svg width="14" height="14" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </p>
+        <p>Complete visibility, cost optimisation, and hands-on local support so every device stays right-sized for your team.</p>
+      </a>
+
+      <a href="/#services-managed-it" class="service-tile">
+        <div class="service-tile__icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="4.5" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="9.75" width="18" height="4.5" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="16.5" width="18" height="4.5" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <p class="service-tile__title">Managed IT Services
+          <svg width="14" height="14" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </p>
+        <p>Your IT should just work. We proactively manage your entire environment, from day-to-day support to strategic guidance.</p>
+      </a>
+
+      <a href="/#services-managed-print" class="service-tile">
+        <div class="service-tile__icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M6 8V3h12v5M6 18h12v4H6zM3 8h18v8h-4v-3H7v3H3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="service-tile__title">Managed Print
+          <svg width="14" height="14" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </p>
+        <p>Full visibility and control over your print environment — reducing waste, improving efficiency and cutting hidden costs.</p>
+      </a>
+
+      <a href="/#services-hardware" class="service-tile">
+        <div class="service-tile__icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="7" y="7" width="10" height="10" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M9 3v3m6-3v3M9 18v3m6-3v3M3 9h3m-3 6h3m12-6h3m-3 6h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <p class="service-tile__title">Hardware Procurement
+          <svg width="14" height="14" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </p>
+        <p>We source and supply business-grade hardware from leading vendors, fit for purpose and aligned to your long-term IT strategy.</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ MY ACCOUNT ============ -->
+<section id="myaccount">
+  <div class="wrap myaccount">
+    <div class="myaccount__media">
+      <!-- Swap for the real MyAccount dashboard screenshot later:
+           <img src="/images/myaccount-dashboard.jpg" alt="MyAccount usage dashboard" loading="lazy" width="800" height="550"> -->
+      <div class="myaccount__media-placeholder">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" style="margin-inline:auto; margin-bottom:0.8rem;">
+          <rect x="3" y="4" width="18" height="12" rx="1.5" stroke="#fff" stroke-width="1.4" opacity="0.85"/>
+          <path d="M8 20h8M12 16v4" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/>
+          <path d="M6 13l2.5-3 2.5 2 3-4 3 3" stroke="#fff" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p style="color:#fff; max-width:22ch; margin-inline:auto;">Dashboard screenshot goes here</p>
+      </div>
+    </div>
+
+    <div class="myaccount__copy">
+      <span class="eyebrow">MyAccount</span>
+      <h1>Total visibility &amp; control with MyAccount</h1>
+      <p>See exactly what your business is using and spending, in real time — designed for IT and finance teams who need answers fast.</p>
+
+      <ul class="myaccount__checklist">
+        <li><svg width="22" height="22" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Designed for enterprise IT &amp; finance teams</li>
+        <li><svg width="22" height="22" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Daily feeds on data and voice usage</li>
+        <li><svg width="22" height="22" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited cost-centre capabilities</li>
+        <li><svg width="22" height="22" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Export usage data straight into your accounting platform</li>
+        <li><svg width="22" height="22" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Live accounting ledger</li>
+      </ul>
+
+      <a href="/contact" class="btn btn--primary">Book a demo now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: DID YOU KNOW ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-head__copy">
+        <span class="eyebrow">Did you know?</span>
+        <h1>The risk is real for Australian business</h1>
+        <p>Cyber threats and shifting work patterns are reshaping what "secure and connected" means for small and medium business. Here's what the latest data says.</p>
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <p class="stat-card__figure">$56,600</p>
+        <p>Average self-reported cost of a single cybercrime incident to an Australian small business — up 14% on the year before.</p>
+        <p class="stat-card__source">Source: Australian Signals Directorate, Annual Cyber Threat Report 2024–25</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-card__figure">Every 6 min</p>
+        <p>A cybercrime is reported in Australia, with small businesses increasingly in scope alongside larger enterprise targets.</p>
+        <p class="stat-card__source">Source: Australian Signals Directorate / National Cyber Security Centre</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-card__figure">36%</p>
+        <p>Of employed Australians usually work from home, making secure remote access and unified comms essential, not optional.</p>
+        <p class="stat-card__source">Source: Australian Bureau of Statistics, Working Arrangements, August 2025</p>
+      </div>
+    </div>
+
+    <!-- ---- Resources / articles ---- -->
+    <div class="subsection-head">
+      <div>
+        <span class="eyebrow">Resources</span>
+        <h3>Guides worth a read</h3>
+      </div>
+    </div>
+
+    <div class="resource-grid">
+      <article class="resource-card">
+        <div class="resource-card__media">
+          <!-- <img src="/images/resources/cybersecurity-checklist.jpg" alt="" loading="lazy" width="400" height="300"> -->
+        </div>
+        <div class="resource-card__body">
+          <h3>Cybersecurity checklist</h3>
+          <p>The winning combination of our full-service ICT solution backed by the power of business nbn&trade; Enterprise Ethernet.</p>
+          <a href="/resources/cybersecurity-checklist" class="resource-card__link">Read the checklist
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h11M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="resource-card">
+        <div class="resource-card__media"></div>
+        <div class="resource-card__body">
+          <h3>Faster internet, explained</h3>
+          <p>The winning combination of our full-service ICT solution backed by the power of business nbn&trade; Enterprise Ethernet.</p>
+          <a href="/resources/faster-internet-explained" class="resource-card__link">Read the guide
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h11M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="resource-card">
+        <div class="resource-card__media"></div>
+        <div class="resource-card__body">
+          <h3>The power of one</h3>
+          <p>How to map an accelerated path to future growth with a unified ICT strategy.</p>
+          <a href="/resources/the-power-of-one" class="resource-card__link">Read the article
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h11M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section>
+  <div class="wrap" style="text-align:center;">
+    <h1>Ready to simplify your ICT?</h1>
+    <p style="margin-inline:auto;">Talk to a local expert about mobility, unified comms, managed IT, print or hardware — no pressure, no obligation.</p>
+    <div class="hero__ctas" style="justify-content:center;">
+      <a href="/contact" class="btn btn--primary">Schedule an obligation-free chat</a>
+      <a href="/about" class="btn btn--ghost">Learn about us</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= pageTitle %></title>
+<meta name="description" content="<%= metaDescription %>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="/images/favicon.ico">
+</head>
+<body>
+
+<%- include('partials/header') %>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">About Business ICT Australia</span>
+    <h1>Strong &amp; secure. Quietly confident.</h1>
+    <p>We're a local team helping Australian small and medium businesses stay connected, protected, and productive — without the jargon.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-head__copy">
+        <h1>We make things easy</h1>
+        <p>We deliver enterprise-grade data, voice and cloud solutions to small and medium business, translated into plain language. From day-to-day support to strategic guidance, we handle the technology so you can focus on running your business.</p>
+      </div>
+    </div>
+
+    <div class="value-grid">
+      <div class="value-card">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3.5v5.6c0 5-3.4 8.6-8 9.9-4.6-1.3-8-4.9-8-9.9V5.5L12 2z" stroke="var(--ict-blue)" stroke-width="1.6"/></svg>
+        <h3>Strong &amp; secure</h3>
+        <p>Layered cybersecurity and resilient networks keep your data protected and your operations running without disruption.</p>
+      </div>
+      <div class="value-card">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="var(--ict-blue)" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="var(--ict-blue)" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <h3>Proactive support</h3>
+        <p>We resolve issues before they impact your business, and scale your technology alongside your growth.</p>
+      </div>
+      <div class="value-card">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M12 4v16" stroke="var(--ict-blue)" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <h3>One local partner</h3>
+        <p>Connectivity, voice, mobile, managed IT, print and hardware — one accountable partner instead of five vendors.</p>
+      </div>
+      <div class="value-card">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="var(--ict-blue)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Plain-language advice</h3>
+        <p>No jargon. We talk to small and medium business the way you'd want a trusted advisor to talk to you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tint">
+  <div class="wrap" style="text-align:center;">
+    <h1>Let's talk about your business</h1>
+    <p style="margin-inline:auto;">Book a short, obligation-free chat with our team to see where we can help.</p>
+    <a href="/contact" class="btn btn--primary">Schedule an obligation-free chat</a>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>

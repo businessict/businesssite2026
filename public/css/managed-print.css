@@ -1,0 +1,140 @@
+/* =========================================================
+   MANAGED PRINT — page-specific styles
+   Loaded in addition to /css/style.css.
+   ========================================================= */
+
+/* ---- Highlight panel (e.g. "up to 30%" TCO reduction) ---- */
+.highlight-panel {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  background: var(--ict-blue-tint);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.6rem, 3vw, 2.2rem) clamp(1.8rem, 4vw, 2.6rem);
+  margin-block: 2rem 2.5rem;
+}
+.highlight-panel__figure {
+  font-family: var(--font-head); font-weight: 700; color: var(--ict-blue);
+  font-size: clamp(2.4rem, 4vw, 3rem); line-height: 1; flex: none;
+}
+.highlight-panel p { margin-bottom: 0; }
+
+@media (max-width: 560px) {
+  .highlight-panel { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+}
+
+/* ---- Hero reveal (matches the homepage hero animation) ---- */
+.page-hero .eyebrow,
+.page-hero h1,
+.page-hero p,
+.page-hero .btn {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 1.1s ease, transform 1.7s ease;
+}
+.page-hero .eyebrow { transition-delay: 0s; }
+.page-hero h1      { transition-delay: 0.08s; }
+.page-hero p        { transition-delay: 0.16s; }
+.page-hero .btn     { transition-delay: 0.24s; }
+
+.page-hero.is-visible .eyebrow,
+.page-hero.is-visible h1,
+.page-hero.is-visible p,
+.page-hero.is-visible .btn {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---- Split row (image one side, copy the other) ---- */
+.split-row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--gap, 2.5rem);
+  align-items: center;
+}
+.split-row__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 1.1s ease, transform 1.7s ease;
+}
+.split-row__media.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.split-row__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 860px) {
+  .split-row { grid-template-columns: 1fr; }
+  .split-row__media { order: -1; }
+}
+
+/* ---- Tiered colour visual ---- */
+.tier-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-block: 1.6rem;
+  max-width: 480px;
+}
+.tier-bars li {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-head);
+  font-size: 0.88rem;
+  color: var(--ict-grey);
+}
+.tier-bars span.bar {
+  display: block;
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--ict-blue-tint);
+}
+.tier-bars span.bar > span {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--ict-blue);
+}
+.tier-bars li:nth-child(1) .bar > span { width: 25%; }
+.tier-bars li:nth-child(2) .bar > span { width: 60%; }
+.tier-bars li:nth-child(3) .bar > span { width: 100%; }
+
+/* ---- Capability tag row ("Kyocera") ---- */
+.capability-block {
+  border-top: 1px solid var(--ict-blue-tint);
+  padding-top: 2rem;
+  margin-top: 2.5rem;
+}
+.capability-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+.capability-tags li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: var(--ict-grey);
+  background: var(--white);
+  border: 1px solid var(--ict-blue-tint);
+  box-shadow: var(--shadow-soft);
+  padding: 0.6em 1.1em;
+  border-radius: var(--radius-pill);
+}
+.capability-tags svg {
+  flex: none; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--ict-blue); color: #fff; padding: 4px;
+}

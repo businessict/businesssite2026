@@ -17,13 +17,27 @@
     });
   }
 
-  /* ---------- Dropdown toggle (touch/keyboard support) ---------- */
+    /* ---------- Dropdown toggle (desktop) ---------- */
   var dropdownToggle = document.querySelector('.dropdown-toggle');
   if (dropdownToggle) {
     dropdownToggle.addEventListener('click', function () {
       var expanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
       dropdownToggle.setAttribute('aria-expanded', String(!expanded));
       dropdownToggle.parentElement.classList.toggle('is-open', !expanded);
+    });
+  }
+
+  /* ---------- Dropdown toggle (mobile) ---------- */
+  var mobileDropdownToggle = document.querySelector('.mobile-dropdown-toggle');
+  var mobileDropdownMenu = document.getElementById('mobile-services-menu');
+  if (mobileDropdownToggle && mobileDropdownMenu) {
+    mobileDropdownMenu.hidden = true;
+    mobileDropdownToggle.setAttribute('aria-expanded', 'false');
+
+    mobileDropdownToggle.addEventListener('click', function () {
+      var expanded = mobileDropdownToggle.getAttribute('aria-expanded') === 'true';
+      mobileDropdownToggle.setAttribute('aria-expanded', String(!expanded));
+      mobileDropdownMenu.hidden = expanded;
     });
   }
 
@@ -123,4 +137,31 @@
   if (hero) {
     requestAnimationFrame(function () { hero.classList.add('is-visible'); });
   }
+
+  /* ---------- Same reveal-on-load treatment for simple inner-page heroes ---------- */
+  var pageHero = document.querySelector('.page-hero');
+  if (pageHero) {
+    requestAnimationFrame(function () { pageHero.classList.add('is-visible'); });
+  }
+
+  /* ---------- Reveal-on-scroll for any element marked data-reveal ----------
+     Used for content below the fold (e.g. an image next to a section) that
+     should animate in the same way as the hero, but only once it's in view. */
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if (revealEls.length) {
+    if ('IntersectionObserver' in window) {
+      var revealObserver = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+      revealEls.forEach(function (el) { revealObserver.observe(el); });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+  }
 })();
+

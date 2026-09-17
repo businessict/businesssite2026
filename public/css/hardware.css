@@ -1,0 +1,88 @@
+/* =========================================================
+   HARDWARE — page-specific styles
+   Loaded in addition to /css/style.css.
+   ========================================================= */
+
+/* ---- "What's Included" checklist grid ---- */
+.checklist-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem 2rem;
+}
+.checklist-grid li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7em;
+  font-size: 0.98rem;
+  color: var(--ict-grey);
+}
+.checklist-grid svg {
+  flex: none; margin-top: 0.2em;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--ict-blue-tint); color: var(--ict-blue); padding: 4px;
+}
+
+@media (max-width: 700px) {
+  .checklist-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- HaaS lifecycle steps ---- */
+.lifecycle-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  margin-block: 1.6rem;
+  counter-reset: step;
+}
+.lifecycle-steps li {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--ict-blue-tint);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: 1.6rem 1.4rem 1.4rem;
+}
+.lifecycle-steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--ict-blue);
+  color: #fff;
+  font-family: var(--font-head); font-weight: 700; font-size: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+.lifecycle-steps h4 { margin-bottom: 0.35em; color: var(--dark-grey); }
+.lifecycle-steps p { font-size: 0.88rem; margin-bottom: 0; }
+
+@media (max-width: 900px) {
+  .lifecycle-steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .lifecycle-steps { grid-template-columns: 1fr; }
+}
+
+/* ---- "Why Businesses Choose HaaS" benefits panel ---- */
+.benefits-panel {
+  background: var(--ict-blue-tint);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.8rem, 4vw, 3rem);
+}
+.benefits-list {
+  display: grid;
+  gap: 0.8rem;
+  margin-block: 1.2em 1.4em;
+}
+.benefits-list li {
+  display: flex; align-items: flex-start; gap: 0.7em;
+  font-family: var(--font-head); font-weight: 500;
+  color: var(--dark-grey); font-size: 1rem;
+}
+.benefits-list svg {
+  flex: none; margin-top: 0.15em;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--ict-blue); color: #fff; padding: 4px;
+}
+.benefits-panel p:last-child { margin-bottom: 0; }

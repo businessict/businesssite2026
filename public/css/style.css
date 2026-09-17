@@ -238,6 +238,34 @@ section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
   .mobile-nav a.btn { color: var(--white); text-align: center; justify-content: center; }
 }
 
+  .mobile-has-dropdown { display: flex; flex-direction: column; gap: 0.7rem; }
+
+  .mobile-dropdown-toggle {
+    display: flex; align-items: center; justify-content: flex-end; gap: 0.5em;
+    width: 100%;
+    background: none; border: none; padding: 0;
+    font-family: var(--font-head); font-weight: 500; font-size: 1.05rem;
+    color: var(--ict-grey);
+  }
+  .mobile-dropdown-toggle svg { transition: transform 0.2s ease; }
+  .mobile-dropdown-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+  .mobile-dropdown-toggle[aria-expanded="true"] { color: var(--ict-blue); }
+
+
+  .mobile-dropdown-menu {
+    display: flex; flex-direction: column; gap: 0.7rem;
+    padding-right: 1rem;
+    border-right: 2px solid var(--ict-blue-tint);
+  }
+
+  .mobile-dropdown-menu[hidden] { display: none !important; }
+  .mobile-dropdown-menu a {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--light-grey);
+  }
+  .mobile-dropdown-menu a:hover { color: var(--ict-blue); }
+
 /* =========================================================
    HERO
    ========================================================= */

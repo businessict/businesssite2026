@@ -1,0 +1,230 @@
+/* =========================================================
+   BUSINESS ICT AUSTRALIA — About page timeline
+   Extends style.css. Load AFTER style.css:
+   <link rel="stylesheet" href="/css/style.css">
+   <link rel="stylesheet" href="/css/about.css">
+   Uses the existing brand tokens (--ict-blue, --dark-grey, etc.)
+   defined in :root in style.css — no new colours introduced.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   Legend / track key (sits above the timeline)
+   --------------------------------------------------------- */
+.timeline-key {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  flex-wrap: wrap;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+.timeline-key__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ict-grey);
+}
+.timeline-key__swatch {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  flex: none;
+}
+.timeline-key__swatch--industry { background: var(--dark-grey); }
+.timeline-key__swatch--business { background: var(--ict-blue); }
+
+/* ---------------------------------------------------------
+   Timeline shell
+   --------------------------------------------------------- */
+.timeline {
+  position: relative;
+}
+
+/* Centre spine */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 50%;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--ict-blue-tint) 4%,
+    var(--ict-blue-tint) 96%,
+    transparent 100%
+  );
+  transform: translateX(-1px);
+}
+
+.timeline__row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 72px 1fr;
+  align-items: start;
+  gap: 0;
+}
+
+/* ---------------------------------------------------------
+   Node — the year + dot sitting on the spine
+   --------------------------------------------------------- */
+.timeline__node {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.3rem;
+}
+.timeline__dot {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--dark-grey);
+  box-shadow: 0 0 0 6px var(--white);
+  z-index: 1;
+}
+.timeline__row--business .timeline__dot { border-color: var(--ict-blue); }
+.timeline__row--dual .timeline__dot { border-color: var(--dark-grey); }
+
+.timeline__year {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--dark-grey);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   Sides
+   --------------------------------------------------------- */
+.timeline__side {
+  padding-block: 0.2rem 2.6rem;
+}
+.timeline__side--left {
+  grid-column: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: clamp(1.5rem, 4vw, 3rem);
+}
+.timeline__side--right {
+  grid-column: 3;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: clamp(1.5rem, 4vw, 3rem);
+}
+/* keep an empty side from collapsing the grid oddly */
+.timeline__side:empty { visibility: hidden; }
+
+/* ---------------------------------------------------------
+   Event cards
+   --------------------------------------------------------- */
+.timeline-card {
+  max-width: 380px;
+  width: 100%;
+  background: var(--white);
+  border: 1px solid var(--ict-blue-tint);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: 1.3rem 1.5rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.timeline-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+}
+
+.timeline-card--industry {
+  border-left: 4px solid var(--dark-grey);
+}
+.timeline-card--business {
+  border-left: 4px solid var(--ict-blue);
+}
+
+.timeline-card__eyebrow {
+  display: block;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4em;
+}
+.timeline-card--industry .timeline-card__eyebrow { color: var(--dark-grey); }
+.timeline-card--business .timeline-card__eyebrow { color: var(--ict-blue); }
+
+.timeline-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.35em;
+}
+.timeline-card p {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+  max-width: none;
+}
+
+/* Placeholder cards — clearly marked as "to be filled in", not styled as fact */
+.timeline-card--placeholder {
+  border-left-style: dashed;
+  background: var(--ict-blue-tint);
+  opacity: 0.85;
+}
+.timeline-card--placeholder p {
+  font-style: italic;
+  color: var(--grey);
+}
+
+/* ---------------------------------------------------------
+   "Today" end cap
+   --------------------------------------------------------- */
+.timeline__end {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+.timeline__end-badge {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--white);
+  background: var(--ict-blue);
+  padding: 0.6em 1.6em;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lift);
+}
+
+/* ---------------------------------------------------------
+   Mobile — single column, spine moves to the left
+   --------------------------------------------------------- */
+@media (max-width: 760px) {
+  .timeline::before {
+    left: 20px;
+    transform: none;
+  }
+  .timeline__row {
+    grid-template-columns: 40px 1fr;
+  }
+  .timeline__node {
+    grid-column: 1;
+    padding-top: 0.3rem;
+  }
+  .timeline__year {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+  .timeline__side--left,
+  .timeline__side--right {
+    grid-column: 2;
+    justify-content: flex-start;
+    padding-left: 1.25rem;
+    padding-right: 0;
+  }
+  .timeline-card { max-width: none; }
+  /* On mobile every row needs its own left/right pair stacked,
+     so business + industry cards in the same row stack vertically */
+  .timeline__row--dual .timeline__side--right {
+    margin-top: 1rem;
+  }
+}

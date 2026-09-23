@@ -8,6 +8,16 @@
    ========================================================= */
 
 /* ---------------------------------------------------------
+   Journey intro — full width (this page only)
+   --------------------------------------------------------- */
+.section-head__copy {
+  max-width: none;
+}
+.section-head__copy p {
+  max-width: none;
+}
+
+/* ---------------------------------------------------------
    Legend / track key (sits above the timeline)
    --------------------------------------------------------- */
 .timeline-key {
@@ -121,7 +131,6 @@
    Event cards
    --------------------------------------------------------- */
 .timeline-card {
-  max-width: 380px;
   width: 100%;
   background: var(--white);
   border: 1px solid var(--ict-blue-tint);
@@ -137,9 +146,11 @@
 
 .timeline-card--industry {
   border-left: 4px solid var(--dark-grey);
+  background: var(--ict-blue-tint);
 }
 .timeline-card--business {
   border-left: 4px solid var(--ict-blue);
+  background: var(--white);
 }
 
 .timeline-card__eyebrow {
@@ -150,6 +161,7 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 0.4em;
+  color: var(--ict-blue);
 }
 .timeline-card--industry .timeline-card__eyebrow { color: var(--dark-grey); }
 .timeline-card--business .timeline-card__eyebrow { color: var(--ict-blue); }

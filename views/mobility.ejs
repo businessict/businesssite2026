@@ -7,7 +7,8 @@
 <meta name="description" content="<%= metaDescription %>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/mobility.css">
 <link rel="icon" href="/images/favicon.ico">
 </head>
 <body>
@@ -26,12 +27,16 @@
 <section>
   <div class="wrap">
 
-    <div class="section-head">
-      <div class="section-head__copy">
-        <h1>Plans built for how your team works</h1>
-        <p>Every plan includes fleet visibility and local support as standard — pick the data allowance that suits each role.</p>
-      </div>
-    </div>
+   <div class="split-row">
+  <div class="split-row__copy">
+    <h1>Plans built for how your team works</h1>
+    <p>Every plan includes fleet visibility and local support as standard — pick the data allowance that suits each role.</p>
+  </div>
+  <div class="mobility-devices" data-reveal>
+    <img src="/images/iphone.webp" alt="iPhone 16" class="mobility-devices__img mobility-devices__img--iphone" loading="lazy">
+    <img src="/images/samsung.webp" alt="Samsung Galaxy S25" class="mobility-devices__img mobility-devices__img--samsung" loading="lazy">
+  </div>
+</div>
 
     <div class="carousel" data-carousel>
       <div class="carousel__viewport">

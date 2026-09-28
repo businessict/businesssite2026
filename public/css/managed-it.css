@@ -79,3 +79,22 @@
   flex: none; width: 20px; height: 20px; border-radius: 50%;
   background: var(--ict-blue); color: #fff; padding: 4px;
 }
+
+/* ---- Section head with image alongside ---- */
+.section-head--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+.section-head__img {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  justify-self: end;
+}
+
+@media (max-width: 860px) {
+  .section-head--split { grid-template-columns: 1fr; }
+  .section-head__img { order: -1; justify-self: center; max-width: 340px; }
+}

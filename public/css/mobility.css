@@ -77,7 +77,7 @@
 .mobility-devices__img--iphone {
   width: 56.7%;
   left: 1%;
-  bottom: 0;
+  bottom: 15px;
   z-index: 1;
   transform: translateX(50px);
   transition-delay: 0.1s;
@@ -87,7 +87,7 @@
 .mobility-devices__img--samsung {
   width: 58%;
   right: 1%;
-  bottom: 0;
+  bottom: -10px;
   z-index: 2;
   transform: translateX(50px);
   transition-delay: 0.35s;
@@ -105,6 +105,8 @@
     justify-self: center;
     margin-inline: auto;
     max-width: 340px;
+    margin-top: 25px;
+    margin-bottom: 30px;
   }
 }
 

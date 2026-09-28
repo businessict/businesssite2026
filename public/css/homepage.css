@@ -49,14 +49,19 @@
 }
 
 /* ---- Logo marquee ---- */
-.marquee { padding-block: clamp(2rem, 4vw, 3rem); border-block: 1px solid var(--ict-blue-tint); }
-.marquee__label { text-align: center; font-family: var(--font-head); color: var(--ict-grey); font-size: 0.95rem; margin-bottom: 1.4rem; }
+.marquee { padding-block: clamp(2rem, 4vw, 3rem); }
+.marquee .eyebrow { margin-bottom: 2.5rem; }
 .marquee__track-wrap { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.marquee__track { display: flex; align-items: center; gap: clamp(2.5rem, 6vw, 4.5rem); width: max-content; animation: marquee-scroll 28s linear infinite; }
+.marquee__track { display: flex; align-items: center; gap: clamp(2.5rem, 6vw, 4.5rem); width: max-content; animation: marquee-scroll 130s linear infinite; }
 .marquee:hover .marquee__track { animation-play-state: paused; }
-.marquee__track img { height: 34px; width: auto; filter: grayscale(1); opacity: 0.65; }
+.marquee__track img { height: 34px; width: auto; }
+.marquee + .marquee { padding-top: 0; }
 @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; overflow-x: auto; } }
+
+/* ---- Network partners marquee ---- */
+.marquee--reverse .marquee__track { animation-direction: reverse; animation-duration: 145s; }
+.marquee--grey .marquee__track img { filter: grayscale(1); opacity: 0.5; }
 
 /* ---- Service tiles ---- */
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }

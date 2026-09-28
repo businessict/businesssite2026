@@ -39,16 +39,62 @@
 
 <!-- ============ LOGO MARQUEE ============ -->
 <div class="marquee">
-  <p class="marquee__label">Trusted networks &amp; technology partners</p>
+  <div class="wrap">
+    <span class="eyebrow">Our Long Term partners</span>
+  </div>
   <div class="marquee__track-wrap">
     <div class="marquee__track">
-      <% var partners = ['Partner Logo 1','Partner Logo 2','Partner Logo 3','Partner Logo 4','Partner Logo 5','Partner Logo 6']; %>
-      <% [...partners, ...partners].forEach(function(p){ %>
-        <span style="font-family:var(--font-head); font-weight:700; color:var(--ict-silver); font-size:1.1rem; white-space:nowrap;"><%= p %></span>
+      <% var logos = [
+        'Aim','Bata','bing','BlacknDecker','Blundstone','Bosistos','bowens','bowls',
+        'Braun','britex','Chemist','cool','de','EUKY','Exxim','GJK',
+        'Greenbynature','Jellis','Livelife','McColls','oapl','Oped','Paragon','RainHorne',
+        'ray','seaworld','SecureCorp','Smaart','vicks','Woodards','Yellow','professionals'
+      ]; %>
+      <% [0, 1].forEach(function(copy){ %>
+        <% logos.forEach(function(name){ %>
+          <img src="/images/<%= name %>.webp"
+               alt="<%= copy === 0 ? name : '' %>"
+               <%- copy === 1 ? 'aria-hidden="true"' : '' %>
+               height="34" loading="lazy" decoding="async">
+        <% }) %>
       <% }) %>
     </div>
   </div>
 </div>
+
+
+<!-- ============ NETWORK PARTNERS MARQUEE ============ -->
+<div class="marquee marquee--reverse marquee--grey">
+  <div class="wrap">
+    <span class="eyebrow">Our trusted network</span>
+  </div>
+  <div class="marquee__track-wrap">
+    <div class="marquee__track">
+      <% var network = [
+        { file: '3cx', name: '3CX' },
+        { file: 'cisco', name: 'Cisco' },
+        { file: 'crowd', name: 'CrowdStrike' },
+        { file: 'kyo', name: 'Kyocera' },
+        { file: 'Microsoft', name: 'Microsoft' },
+        { file: 'Lenovo', name: 'Lenovo' },
+        { file: 'nbnlogo', name: 'nbn' },
+        { file: 'samsung', name: 'Samsung' },
+        { file: 'telstra', name: 'Telstra' },
+        { file: 'yealink', name: 'Yealink' },
+        { file: 'apple', name: 'Apple' }
+      ]; %>
+      <% [0, 1, 2, 3].forEach(function(copy){ %>
+        <% network.forEach(function(p){ %>
+          <img src="/images/<%= p.file %>.webp"
+               alt="<%= copy === 0 ? p.name : '' %>"
+               <%- copy > 0 ? 'aria-hidden="true"' : '' %>
+               height="34" loading="lazy" decoding="async">
+        <% }) %>
+      <% }) %>
+    </div>
+  </div>
+</div>
+
 
 <!-- ============ SERVICES: clickable tiles ============ -->
 <section id="services">

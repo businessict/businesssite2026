@@ -134,3 +134,24 @@
 }
 .benefits-panel p:last-child { margin-bottom: 0; }
 
+/* ---- Hero reveal ---- */
+.page-hero .eyebrow,
+.page-hero h1,
+.page-hero p,
+.page-hero .btn {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 1.1s ease, transform 1.7s ease;
+}
+.page-hero .eyebrow { transition-delay: 0s; }
+.page-hero h1       { transition-delay: 0.08s; }
+.page-hero p        { transition-delay: 0.16s; }
+.page-hero .btn     { transition-delay: 0.24s; }
+
+.page-hero.is-visible .eyebrow,
+.page-hero.is-visible h1,
+.page-hero.is-visible p,
+.page-hero.is-visible .btn {
+  opacity: 1;
+  transform: translateX(0);
+}

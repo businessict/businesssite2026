@@ -72,7 +72,7 @@ p { margin: 0 0 1em; color: var(--light-grey); max-width: 62ch; }
   padding-inline: clamp(1.25rem, 4vw, 2.5rem);
 }
 
-section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+section { padding-block: clamp(2.5rem, 5vw, 4rem); }
 .section--tint { background: var(--ict-blue-tint); }
 
 .visually-hidden {
@@ -321,7 +321,7 @@ section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
 /* =========================================================
    FOOTER
    ========================================================= */
-.site-footer { background: var(--ict-blue-tint); padding-top: clamp(3rem, 6vw, 4.5rem); }
+.site-footer { background: var(--ict-blue); padding-top: clamp(3rem, 6vw, 4.5rem); }
 .footer-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
@@ -329,16 +329,19 @@ section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
   padding-bottom: 2.5rem;
 }
 .footer-col h3 {
-  font-family: var(--font-head); font-size: 0.95rem; color: var(--ict-blue);
+  font-family: var(--font-head); font-size: 0.95rem; color: var(--white);
   margin-bottom: 0.9em;
 }
 .footer-col ul { display: flex; flex-direction: column; gap: 0.6em; }
-.footer-col a { font-size: 0.92rem; color: var(--ict-grey); }
-.footer-col a:hover { color: var(--ict-blue); }
+.footer-col a { font-size: 0.92rem; color: var(--white); }
+.footer-col a:hover { color: var(--ict-blue-tint); }
 
 .footer-col--brand .brand { margin-bottom: 1rem; }
-.footer-email { color: var(--ict-blue); font-size: 0.92rem; display: inline-block; margin-bottom: 0.8em; }
-.footer-tagline { font-size: 0.88rem; max-width: 30ch; }
+.footer-col--brand .brand__business,
+.footer-col--brand .brand__ict,
+.footer-col--brand .brand__australia { color: var(--white); }
+.footer-email { color: var(--white); font-size: 0.92rem; display: inline-block; margin-bottom: 0.8em; }
+.footer-tagline { font-size: 0.88rem; max-width: 30ch; color: var(--white); }
 .footer-social { display: flex; gap: 0.7rem; }
 .footer-social a {
   width: 38px; height: 38px; border-radius: 50%;
@@ -347,13 +350,13 @@ section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
   box-shadow: var(--shadow-soft);
   transition: transform .15s ease, background-color .15s ease, color .15s ease;
 }
-.footer-social a:hover { background: var(--ict-blue); color: var(--white); transform: translateY(-2px); }
+.footer-social a:hover { background: var(--ict-blue-tint); color: var(--ict-blue); transform: translateY(-2px); }
 
 .footer-bottom {
-  border-top: 1px solid rgba(29,153,213,0.18);
+  border-top: 1px solid rgba(255,255,255,0.25);
   padding-block: 1.2rem;
 }
-.footer-bottom p { margin: 0; font-size: 0.8rem; color: var(--grey); }
+.footer-bottom p { margin: 0; font-size: 0.8rem; color: var(--white); }
 
 @media (max-width: 900px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -367,10 +370,11 @@ section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
    inner page — About / Contact / Mobility / Hardware / etc.)
    ========================================================= */
 .page-hero {
-  padding-block: clamp(2.5rem, 6vw, 4rem);
+  padding-block: clamp(2.5rem, 6vw, 4rem) clamp(1rem, 3vw, 2rem);
   background: var(--ict-blue-tint);
   text-align: center;
 }
+
 .page-hero p { margin-inline: auto; }
 
 /* ---- Contact & About page pieces — TODO: move to their

@@ -15,23 +15,17 @@
 
 <%- include('partials/header') %>
 
-<section class="page-hero">
-  <div class="wrap page-hero__row">
-    <div class="page-hero__copy">
-      <span class="eyebrow">Products &amp; Services</span>
-      <h1>Unified Comms</h1>
-      <p>Modern businesses need communication that's seamless, flexible, and built for the way teams actually work. We deliver integrated voice and collaboration solutions that keep your people connected in the office, on the road, or working remotely.</p>
-      <a href="/contact" class="btn btn--primary">Schedule an obligation-free chat</a>
-    </div>
-  </div>
-</section>
 
 <section>
   <div class="wrap">
     <div class="comms-plans-row">
       <div class="comms-plans-row__copy">
+        <span class="eyebrow">UNIFIED COMS</span>
         <h1>Plans that scale with your team</h1>
-        <p>Start with cloud calling and add video, analytics or a full contact centre as you grow — no re-platforming required.</p>
+        <p>Modern businesses need communication that's seamless, flexible, and built for the way teams actually work.</p>
+<p>We deliver integrated voice and collaboration solutions that keep your people connected in the office, on the road, or working remotely.</p>
+<p>Start with cloud calling and add video, analytics or a full contact centre as you grow — no re-platforming required.</p>
+      <a href="/contact" class="btn btn--primary">Schedule an obligation-free chat</a>
       </div>
       <div class="comms-plans-row__media" data-reveal>
         <img src="/images/3cx-phone.webp" alt="3CX softphone app" class="comms-plans-row__img comms-plans-row__img--front" loading="lazy">
@@ -40,6 +34,135 @@
     </div>
   </div>
 </section>
+
+<!-- ===== CRM integration ===== -->
+<section>
+  <div class="wrap comms-integration">
+    <div class="comms-integration__copy">
+      <span class="eyebrow">Integrates with your CRM</span>
+      <h1>Connect Your Collaboration Tools</h1>
+      <p>Connect your voice and collaboration tools directly into your CRM to streamline workflows, improve customer experience, and give your team instant access to the information they need, right when they need it.</p>
+      <p class="comms-integration__subhead">Native, maintained integration for the following platforms</p>
+    </div>
+
+    <ul class="comms-integration__list">
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Fully Managed UCaaS (Unified Communications)</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> AI Agent</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> SIP</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> CRM Integration – Salesforce, HubSpot, Pipedrive, Zoho, Zendesk</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Professional messages on hold</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Live Answer — a human answers your calls out of hours and passes through your message, for a professional and personal touch with your clients, every time.</li>
+    </ul>
+  </div>
+
+  <div class="marquee__track-wrap">
+    <div class="marquee__track">
+      <% var crms = [
+        { file: 'bit', name: 'Bitrix24' },
+        { file: 'fresh', name: 'Freshsales' },
+        { file: 'hub', name: 'HubSpot' },
+        { file: 'micro', name: 'Microsoft Dynamics' },
+        { file: 'sales', name: 'Salesforce' },
+        { file: 'zen', name: 'Zendesk' },
+        { file: 'zoho', name: 'Zoho' }
+      ]; %>
+      <% [0, 1, 2].forEach(function(copy){ %>
+        <% crms.forEach(function(c){ %>
+          <img src="/images/<%= c.file %>.webp"
+               alt="<%= copy === 0 ? c.name : '' %>"
+               <%- copy > 0 ? 'aria-hidden="true"' : '' %>
+               height="34" loading="lazy" decoding="async">
+        <% }) %>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-head__copy">
+        <span class="eyebrow">Proud 3CX Partner</span>
+        <h1>3CX plans built around your business</h1>
+        <p>All plans are hosted and fully managed, with unlimited local, national and mobile calling included — never metered per call.</p>
+      </div>
+    </div>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel__viewport">
+
+        <article class="plan-card">
+          <p class="plan-card__name">SMB 10 Users</p>
+          <p class="plan-card__data">10<span>users</span></p>
+          <p class="plan-card__sub">Cloud-based phone system for a single site — core features at a cost-effective price</p>
+          <ul class="plan-card__list">
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Licensing &amp; hosting included</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> 4 simultaneous internal &amp; external calls</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Phone, mobile, computer &amp; web apps</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited calls to fixed, mobile &amp; 13/1300</li>
+          </ul>
+          <a href="/contact" class="btn btn--primary btn--sm">Schedule a chat</a>
+        </article>
+
+        <article class="plan-card">
+          <p class="plan-card__name">4 Lines</p>
+          <p class="plan-card__data">4<span>lines</span></p>
+          <p class="plan-card__sub">A seamless, unified communications experience — recommended for up to 15 users</p>
+          <ul class="plan-card__list">
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Licensing &amp; hosting included</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> 4 external and 8 internal simultaneous calls</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Phone, mobile, computer &amp; web apps</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited calls to fixed, mobile &amp; 13/1300</li>
+          </ul>
+          <a href="/contact" class="btn btn--primary btn--sm">Schedule a chat</a>
+        </article>
+
+        <article class="plan-card">
+          <p class="plan-card__name">8 Lines</p>
+          <p class="plan-card__data">8<span>lines</span></p>
+          <p class="plan-card__sub">A seamless, unified communications experience — recommended for up to 30 users</p>
+          <ul class="plan-card__list">
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Licensing &amp; hosting included</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> 8 simultaneous internal &amp; external calls</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Phone, mobile, computer &amp; web apps</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited calls to fixed, mobile &amp; 13/1300</li>
+          </ul>
+          <a href="/contact" class="btn btn--primary btn--sm">Schedule a chat</a>
+        </article>
+
+        <article class="plan-card">
+          <p class="plan-card__name">Enterprise Configuration &amp; Deployment</p>
+          <p class="plan-card__data">Custom<span>build</span></p>
+          <p class="plan-card__sub">Full deployment and configuration for multi-site, high-complexity environments</p>
+          <ul class="plan-card__list">
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Deployed to AWS with firewall &amp; FQDN setup</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> SIP registration and trunk configuration</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Users, extensions, call handling &amp; office hours</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Single sign-on &amp; multi-site number porting</li>
+          </ul>
+          <a href="/contact" class="btn btn--primary btn--sm">Schedule a chat</a>
+        </article>
+
+      </div>
+
+      <div class="carousel__controls">
+        <button type="button" class="round-btn" data-carousel-prev aria-label="Previous unified comms plans">
+          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 2L4 8l6 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="carousel__progress"><div class="carousel__progress-bar"></div></div>
+        <button type="button" class="round-btn" data-carousel-next aria-label="Next unified comms plans">
+          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 2l6 6-6 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="carousel__dots"></div>
+      <p class="scroll-hint">
+        Swipe or drag to compare plans
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h11M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </p>
+    </div>
+  </div>
+</section>
+
 
 <!-- ===== Greater Flexibility ===== -->
 <section>
@@ -143,111 +266,7 @@
   </div>
 </section>
 
-<!-- ===== CRM integration ===== -->
-<section>
-  <div class="wrap comms-integration">
-    <div class="comms-integration__copy">
-      <span class="eyebrow">Hosted Voice, Unified Communications (UC), and SIP</span>
-      <h1>Integrate Your CRM</h1>
-      <p>Connect your voice and collaboration tools directly into your CRM to streamline workflows, improve customer experience, and give your team instant access to the information they need, right when they need it.</p>
-      <p class="comms-integration__subhead">Native, maintained integration for the following platforms</p>
-    </div>
 
-    <ul class="comms-integration__list">
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Fully Managed UCaaS (Unified Communications)</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> AI Agent</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> SIP</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> CRM Integration – Salesforce, HubSpot, Pipedrive, Zoho, Zendesk</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Professional messages on hold</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Live Answer — a human answers your calls out of hours and passes through your message, for a professional and personal touch with your clients, every time.</li>
-    </ul>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__copy">
-        <span class="eyebrow">Proud 3CX Partner</span>
-        <h1>3CX plans built around your business</h1>
-        <p>All plans are hosted and fully managed, with unlimited local, national and mobile calling included — never metered per call.</p>
-      </div>
-    </div>
-
-    <div class="carousel" data-carousel>
-      <div class="carousel__viewport">
-
-        <article class="plan-card">
-          <p class="plan-card__name">SMB 10 Users</p>
-          <p class="plan-card__data">10<span>users</span></p>
-          <p class="plan-card__sub">Cloud-based phone system for a single site — core features at a cost-effective price</p>
-          <ul class="plan-card__list">
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Licensing &amp; hosting included</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> 4 simultaneous internal &amp; external calls</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Phone, mobile, computer &amp; web apps</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited calls to fixed, mobile &amp; 13/1300</li>
-          </ul>
-          <a href="/contact" class="btn btn--primary btn--sm">Schedule a chat</a>
-        </article>
-
-        <article class="plan-card">
-          <p class="plan-card__name">4 Lines</p>
-          <p class="plan-card__data">4<span>lines</span></p>
-          <p class="plan-card__sub">A seamless, unified communications experience — recommended for up to 15 users</p>
-          <ul class="plan-card__list">
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Licensing &amp; hosting included</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> 4 external and 8 internal simultaneous calls</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Phone, mobile, computer &amp; web apps</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited calls to fixed, mobile &amp; 13/1300</li>
-          </ul>
-          <a href="/contact" class="btn btn--primary btn--sm">Schedule a chat</a>
-        </article>
-
-        <article class="plan-card">
-          <p class="plan-card__name">8 Lines</p>
-          <p class="plan-card__data">8<span>lines</span></p>
-          <p class="plan-card__sub">A seamless, unified communications experience — recommended for up to 30 users</p>
-          <ul class="plan-card__list">
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Licensing &amp; hosting included</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> 8 simultaneous internal &amp; external calls</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Phone, mobile, computer &amp; web apps</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited calls to fixed, mobile &amp; 13/1300</li>
-          </ul>
-          <a href="/contact" class="btn btn--primary btn--sm">Schedule a chat</a>
-        </article>
-
-        <article class="plan-card">
-          <p class="plan-card__name">Enterprise Configuration &amp; Deployment</p>
-          <p class="plan-card__data">Custom<span>build</span></p>
-          <p class="plan-card__sub">Full deployment and configuration for multi-site, high-complexity environments</p>
-          <ul class="plan-card__list">
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Deployed to AWS with firewall &amp; FQDN setup</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> SIP registration and trunk configuration</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Users, extensions, call handling &amp; office hours</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Single sign-on &amp; multi-site number porting</li>
-          </ul>
-          <a href="/contact" class="btn btn--primary btn--sm">Schedule a chat</a>
-        </article>
-
-      </div>
-
-      <div class="carousel__controls">
-        <button type="button" class="round-btn" data-carousel-prev aria-label="Previous unified comms plans">
-          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 2L4 8l6 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="carousel__progress"><div class="carousel__progress-bar"></div></div>
-        <button type="button" class="round-btn" data-carousel-next aria-label="Next unified comms plans">
-          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 2l6 6-6 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-      <div class="carousel__dots"></div>
-      <p class="scroll-hint">
-        Swipe or drag to compare plans
-        <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h11M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </p>
-    </div>
-  </div>
-</section>
 
 <!-- ===== Microsoft 365 with Teams ===== -->
 <section>

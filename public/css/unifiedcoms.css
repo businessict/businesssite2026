@@ -25,6 +25,8 @@
   transform: translateX(0);
 }
 
+.comms-plans-row__copy .btn { margin-top: 1.5rem; }
+
 /* ---- Plans row: heading/copy left, phone images right ---- */
 .comms-plans-row {
   display: grid !important;
@@ -33,7 +35,10 @@
   align-items: center;
 }
 
-.comms-plans-row__copy p { margin-bottom: 0; }
+.comms-plans-row__copy p { margin-bottom: 0.9em; }
+.comms-plans-row__copy p:last-of-type { margin-bottom: 0; }
+
+.comms-integration ~ .marquee__track-wrap { margin-top: clamp(2rem, 4vw, 3rem); }
 
 .comms-plans-row__media {
   position: relative;
@@ -147,6 +152,9 @@
   gap: 2.5rem;
   align-items: start;
 }
+
+.comms-integration__list { align-self: end; }
+
 .comms-integration__copy .eyebrow {
   display: block;
   margin-bottom: 0.6rem;
@@ -155,6 +163,7 @@
   font-weight: 600;
   color: var(--ict-grey, #445);
   margin-top: 1.4rem;
+  margin-bottom: 0;
 }
 .comms-integration__list {
   list-style: none;
@@ -240,3 +249,13 @@
 .plan-card__list li { display: flex; align-items: flex-start; gap: 0.55em; font-size: 0.92rem; color: var(--ict-grey); list-style: none; }
 .plan-card__list svg { flex: none; margin-top: 0.2em; color: var(--ict-blue); }
 .plan-card .btn { margin-top: auto; justify-content: center; }
+
+/* ---- CRM integrations marquee ---- */
+.marquee { padding-block: clamp(1rem, 2vw, 1.5rem) clamp(2rem, 4vw, 3rem); }
+.marquee .eyebrow { margin-bottom: 2rem; }
+.marquee__track-wrap { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee__track { display: flex; align-items: center; gap: clamp(2.5rem, 6vw, 4.5rem); width: max-content; animation: marquee-scroll 60s linear infinite; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee__track img { height: 34px; width: auto; }
+@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; overflow-x: auto; } }

@@ -1,3 +1,12 @@
+/* =========================================================
+   BUSINESS ICT AUSTRALIA — base stylesheet
+   Universal styles only: reset, typography, buttons, header,
+   footer, and shared structural patterns (split-row, carousel,
+   page-hero). Homepage-specific sections (hero, marquee,
+   service tiles, myaccount, stat/resource cards) live in
+   homepage.css instead.
+   ========================================================= */
+
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&family=Ubuntu:wght@300;400;500;700&display=swap');
 
 :root {
@@ -319,6 +328,66 @@ section { padding-block: clamp(2.5rem, 5vw, 4rem); }
 }
 
 /* =========================================================
+   CAROUSEL (used for plans, hardware, comms)
+   NOTE: mobility.css and unifiedcoms.css currently define
+   their own complete copies of .carousel / .plan-card /
+   .device-card too. This base.css copy is kept as a fallback
+   for any other page (hardware, managed-print, etc.) that may
+   rely on it without its own copy — not yet confirmed either
+   way. Don't remove until those files are checked.
+   ========================================================= */
+.carousel { position: relative; }
+.carousel__viewport {
+  display: flex; gap: 1.4rem; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding-block: 0.5rem 1.5rem; padding-inline: 0.25rem; scrollbar-width: none;
+}
+.carousel__viewport::-webkit-scrollbar { display: none; }
+.carousel__viewport > * { scroll-snap-align: start; flex: 0 0 auto; }
+.carousel__controls { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 0.5rem; }
+.carousel__progress { flex: 1; height: 5px; background: var(--ict-blue-tint); border-radius: var(--radius-pill); overflow: hidden; }
+.carousel__progress-bar { height: 100%; width: 30%; background: var(--ict-blue); border-radius: var(--radius-pill); transition: width 0.15s ease, transform 0.15s ease; transform-origin: left; }
+.carousel__dots { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem; }
+.carousel__dots button { width: 9px; height: 9px; border-radius: 50%; background: var(--ict-blue-tint); border: none; padding: 0; transition: background-color .15s ease, transform .15s ease; }
+.carousel__dots button.is-active { background: var(--ict-blue); transform: scale(1.25); }
+.carousel__arrows { display: flex; gap: 0.6rem; }
+
+.scroll-hint { display: flex; align-items: center; gap: 0.5em; font-family: var(--font-head); font-size: 0.85rem; color: var(--grey); justify-content: center; margin-top: 0.6rem; }
+.scroll-hint svg { animation: nudge-right 1.6s ease-in-out infinite; }
+@keyframes nudge-right { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+
+.plan-card {
+  width: 270px; background: var(--white); border: 1px solid var(--ict-blue-tint);
+  border-radius: var(--radius-md); padding: 1.6rem 1.5rem; box-shadow: var(--shadow-soft);
+  display: flex; flex-direction: column; transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.plan-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+.plan-card__name { font-family: var(--font-head); font-weight: 700; color: var(--ict-grey); font-size: 1rem; margin-bottom: 0.3em; }
+.plan-card__data { font-family: var(--font-head); font-weight: 700; color: var(--ict-blue); font-size: 2.4rem; line-height: 1; margin-bottom: 0.1em; }
+.plan-card__data span { font-size: 1rem; color: var(--ict-grey); font-weight: 500; margin-left: 0.15em; }
+.plan-card__sub { font-size: 0.85rem; color: var(--light-grey); margin-bottom: 1.1em; }
+.plan-card__list { display: flex; flex-direction: column; gap: 0.55em; margin-bottom: 1.4em; }
+.plan-card__list li { display: flex; align-items: flex-start; gap: 0.55em; font-size: 0.92rem; color: var(--ict-grey); list-style: none; }
+.plan-card__list svg { flex: none; margin-top: 0.2em; color: var(--ict-blue); }
+.plan-card .btn { margin-top: auto; justify-content: center; }
+
+.device-card {
+  width: 210px; background: var(--white); border-radius: var(--radius-md);
+  border: 1px solid var(--ict-blue-tint); overflow: hidden; box-shadow: var(--shadow-soft);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.device-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+.device-card__media { aspect-ratio: 1 / 1; background: var(--ict-blue-tint); display: grid; place-items: center; overflow: hidden; }
+.device-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.device-card__body { padding: 1.1rem 1.1rem 1.3rem; }
+.device-card__name { font-family: var(--font-head); font-weight: 700; color: var(--ict-grey); font-size: 0.98rem; margin-bottom: 0.2em; }
+.device-card__note { font-size: 0.82rem; color: var(--light-grey); margin-bottom: 0; }
+.device-card__tag {
+  display: inline-block; font-family: var(--font-head); font-size: 0.72rem; font-weight: 700;
+  color: var(--ict-blue); background: var(--ict-blue-tint); padding: 0.3em 0.7em; border-radius: var(--radius-pill);
+  margin-bottom: 0.5em;
+}
+
+/* =========================================================
    FOOTER
    ========================================================= */
 .site-footer { background: var(--ict-blue); padding-top: clamp(3rem, 6vw, 4.5rem); }
@@ -374,7 +443,6 @@ section { padding-block: clamp(2.5rem, 5vw, 4rem); }
   background: var(--ict-blue-tint);
   text-align: center;
 }
-
 .page-hero p { margin-inline: auto; }
 
 /* ---- Contact & About page pieces — TODO: move to their

@@ -15,22 +15,15 @@
 
 <%- include('partials/header') %>
 
-<section class="page-hero">
-  <div class="wrap">
-    <span class="eyebrow">Products &amp; Services</span>
-    <h1>Mobility</h1>
-    <p>Managing business mobiles shouldn't be complex. We take control of your mobile fleet with complete visibility, cost optimisation, and hands-on local support — right-sized plans for the way your team actually works.</p>
-    <a href="/contact" class="btn btn--primary">Schedule an obligation-free chat</a>
-  </div>
-</section>
-
 <section>
   <div class="wrap">
 
    <div class="split-row">
-  <div class="split-row__copy">
+  <div class="split-row__copy" data-reveal>
+    <span class="eyebrow">MOBILITY</span>
     <h1>Plans built for how your team works</h1>
-    <p>Every plan includes fleet visibility and local support as standard — pick the data allowance that suits each role.</p>
+    <p>Managing business mobiles shouldn't be complex. We take control of your mobile fleet with complete visibility, cost optimisation, and hands-on local support — right-sized plans for the way your team actually works. Every plan includes fleet visibility and local support as standard — pick the data allowance that suits each role.</p>
+  <a href="/contact" class="btn btn--primary">Schedule an obligation-free chat</a>
   </div>
   <div class="mobility-devices" data-reveal>
     <img src="/images/iphone.webp" alt="iPhone 16" class="mobility-devices__img mobility-devices__img--iphone" loading="lazy">
@@ -38,77 +31,49 @@
   </div>
 </div>
 
-    <div class="carousel" data-carousel>
-      <div class="carousel__viewport">
+    <div class="service-cards-grid">
 
-        <article class="plan-card">
-          <p class="plan-card__name">Lite Business Plan</p>
-          <p class="plan-card__data">20<span>GB data</span></p>
-          <p class="plan-card__sub">Ideal for light users and single-device staff</p>
-          <ul class="plan-card__list">
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited standard talk &amp; text</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> 5G ready, national coverage</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Fleet visibility dashboard</li>
-          </ul>
-          <a href="/contact" class="btn btn--primary btn--sm">Schedule a chat</a>
-        </article>
+  <article class="service-card">
+    <p class="service-card__title">4G / 5G</p>
+    <ul class="service-card__list">
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> National 4G &amp; 5G coverage</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> High-speed data for busy teams</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Built on the Telstra Wholesale network</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Flexible plans for every role</li>
+    </ul>
+  </article>
 
-        <article class="plan-card">
-          <p class="plan-card__name">Everyday Business Plan</p>
-          <p class="plan-card__data">60<span>GB data</span></p>
-          <p class="plan-card__sub">Our most popular plan for day-to-day teams</p>
-          <ul class="plan-card__list">
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited standard talk &amp; text</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> International calls to 15 countries</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Fleet visibility dashboard</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Local hands-on support</li>
-          </ul>
-          <a href="/contact" class="btn btn--primary btn--sm">Schedule a chat</a>
-        </article>
+  <article class="service-card">
+    <p class="service-card__title">IoT</p>
+    <ul class="service-card__list">
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> SIMs for connected devices &amp; sensors</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Centralised fleet management</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Scales from 10 to 10,000 devices</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Usage alerts &amp; cost control</li>
+    </ul>
+  </article>
 
-        <article class="plan-card">
-          <p class="plan-card__name">Power Business Plan</p>
-          <p class="plan-card__data">100<span>GB data</span></p>
-          <p class="plan-card__sub">For teams that work hard on the road</p>
-          <ul class="plan-card__list">
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited standard talk &amp; text</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> International calls to 30 countries</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Priority fleet support</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Device insurance available</li>
-          </ul>
-          <a href="/contact" class="btn btn--primary btn--sm">Schedule a chat</a>
-        </article>
+  <article class="service-card">
+    <p class="service-card__title">Voice and MBB</p>
+    <ul class="service-card__list">
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Mobile broadband for remote teams</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Voice plans with national coverage</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Pooled data across the business</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Backup connectivity for sites</li>
+    </ul>
+  </article>
 
-        <article class="plan-card">
-          <p class="plan-card__name">Unlimited Business Plan</p>
-          <p class="plan-card__data">&infin;<span>data</span></p>
-          <p class="plan-card__sub">Unlimited data for your heaviest users</p>
-          <ul class="plan-card__list">
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited standard talk &amp; text</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> International calls to 40+ countries</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Dedicated account manager</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Device insurance available</li>
-          </ul>
-          <a href="/contact" class="btn btn--primary btn--sm">Schedule a chat</a>
-        </article>
+  <article class="service-card">
+    <p class="service-card__title">MDM</p>
+    <ul class="service-card__list">
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Remote device enrolment &amp; setup</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Security policy enforcement</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Remote lock &amp; wipe for lost devices</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> App &amp; update management</li>
+    </ul>
+  </article>
 
-      </div>
-
-      <div class="carousel__controls">
-        <button type="button" class="round-btn" data-carousel-prev aria-label="Previous plans">
-          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 2L4 8l6 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="carousel__progress"><div class="carousel__progress-bar"></div></div>
-        <button type="button" class="round-btn" data-carousel-next aria-label="Next plans">
-          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 2l6 6-6 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-      <div class="carousel__dots"></div>
-      <p class="scroll-hint">
-        Swipe or drag to see more plans
-        <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h11M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </p>
-    </div>
+</div>
 
     <!-- ---- Available now: hardware ---- -->
     <div id="hardware" class="subsection-head">

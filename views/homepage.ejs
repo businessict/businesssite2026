@@ -14,25 +14,43 @@
 <link rel="stylesheet" href="/css/homepage.css">
 <link rel="icon" href="/images/favicon.ico">
 </head>
+
 <body>
 
 <%- include('partials/header') %>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="wrap hero__grid">
-    <div class="hero__copy">
-      <span class="eyebrow">Enterprise Solutions</span>
-      <h1>We make ICT easy for growing enterprises</h1>
-      <h2>Mobility, unified comms, managed IT, print and hardware, all from one Australian partner.</h2>
-      <p>Business ICT Australia delivers enterprise-grade connectivity, security and support to small and medium business, so your team stays productive and your data stays protected.</p>
-      <div class="hero__ctas">
-        <a href="/contact" class="btn btn--primary">Book A Consultation</a>
-        <a href="/#services" class="btn btn--outline">Explore Our Services</a>
+  <div class="wrap">
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow">Enterprise Solutions</span>
+        <h1>We make ICT easy for growing enterprises</h1>
+        <h2>Mobility, unified comms, managed IT, print and hardware, all from one Australian partner.</h2>
+        <p>Business ICT Australia delivers enterprise-grade connectivity, security and support to small and medium business, so your team stays productive and your data stays protected.</p>
+        <div class="hero__ctas">
+          <a href="/contact" class="btn btn--primary">Book A Consultation</a>
+          <a href="/#services" class="btn btn--outline">Explore Our Services</a>
+        </div>
+      </div>
+      <div class="hero__art">
+        <img src="/images/hero.webp" alt="Business ICT Australia team at work" loading="eager" decoding="async">
       </div>
     </div>
-    <div class="hero__art">
-      <img src="/images/hero.webp" alt="Business ICT Australia team at work" loading="eager" decoding="async">
+
+    <div class="hero__stats" data-stats>
+      <div class="hero__stat">
+        <p class="hero__stat-figure"><span data-count-to="50000">0</span>+</p>
+        <p class="hero__stat-label">End users supported</p>
+      </div>
+      <div class="hero__stat">
+        <p class="hero__stat-figure"><span data-count-to="10000">0</span>+</p>
+        <p class="hero__stat-label">Businesses served</p>
+      </div>
+      <div class="hero__stat">
+        <p class="hero__stat-figure"><span data-count-to="22">0</span></p>
+        <p class="hero__stat-label">Years in business</p>
+      </div>
     </div>
   </div>
 </section>
@@ -284,5 +302,46 @@ Importantly, we build and deliver solutions that help businesses to control cost
 <%- include('partials/footer') %>
 
 <script src="/js/main.js" defer></script>
+<script>
+(function () {
+  var counters = document.querySelectorAll('[data-count-to]');
+  if (!counters.length) return;
+
+  function animateCounter(el) {
+    var target = parseInt(el.getAttribute('data-count-to'), 10);
+    var duration = 1200;
+    var start = null;
+
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      var progress = Math.min((timestamp - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target).toLocaleString();
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target.toLocaleString();
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  var statsBlock = document.querySelector('[data-stats]');
+  if (!statsBlock) return;
+
+  var hasAnimated = false;
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting && !hasAnimated) {
+        hasAnimated = true;
+        counters.forEach(animateCounter);
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(statsBlock);
+})();
+</script>
 </body>
 </html>

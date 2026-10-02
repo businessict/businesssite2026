@@ -397,18 +397,22 @@ section { padding-block: clamp(2.5rem, 5vw, 4rem); }
   gap: 2rem;
   padding-bottom: 2.5rem;
 }
+
 .footer-col h3 {
   font-family: var(--font-head); font-size: 0.95rem; color: var(--white);
+  text-transform: uppercase; letter-spacing: 0.04em;
   margin-bottom: 0.9em;
 }
+
 .footer-col ul { display: flex; flex-direction: column; gap: 0.6em; }
-.footer-col a { font-size: 0.92rem; color: var(--white); }
-.footer-col a:hover { color: var(--ict-blue-tint); }
+.footer-col a { font-size: 0.92rem; color: rgba(255,255,255,0.75); }
+.footer-col a:hover { color: var(--white); }
 
 .footer-col--brand .brand { margin-bottom: 1rem; }
 .footer-col--brand .brand__business,
 .footer-col--brand .brand__ict,
 .footer-col--brand .brand__australia { color: var(--white); }
+.footer-logo { height: 32px; width: auto; }
 .footer-email { color: var(--white); font-size: 0.92rem; display: inline-block; margin-bottom: 0.8em; }
 .footer-tagline { font-size: 0.88rem; max-width: 30ch; color: var(--white); }
 .footer-social { display: flex; gap: 0.7rem; }

@@ -38,20 +38,27 @@
       </div>
     </div>
 
-    <div class="hero__stats" data-stats>
-      <div class="hero__stat">
-        <p class="hero__stat-figure"><span data-count-to="50000">0</span>+</p>
-        <p class="hero__stat-label">End users supported</p>
-      </div>
-      <div class="hero__stat">
-        <p class="hero__stat-figure"><span data-count-to="10000">0</span>+</p>
-        <p class="hero__stat-label">Businesses served</p>
-      </div>
-      <div class="hero__stat">
-        <p class="hero__stat-figure"><span data-count-to="22">0</span></p>
-        <p class="hero__stat-label">Years in business</p>
-      </div>
-    </div>
+<div class="stat-counters" data-stats>
+
+  <div class="stat-row">
+    <p class="stat-row__figure"><span data-count-to="50" data-suffix="K+">0</span></p>
+    <p class="stat-row__label">End users supported</p>
+    <span class="stat-row__underline"></span>
+  </div>
+
+  <div class="stat-row">
+    <p class="stat-row__figure"><span data-count-to="10" data-suffix="K+">0</span></p>
+    <p class="stat-row__label">Businesses served</p>
+    <span class="stat-row__underline"></span>
+  </div>
+
+  <div class="stat-row">
+    <p class="stat-row__figure"><span data-count-to="22" data-suffix="+">0</span></p>
+    <p class="stat-row__label">Years in business</p>
+    <span class="stat-row__underline"></span>
+  </div>
+
+</div>
   </div>
 </section>
 
@@ -304,41 +311,38 @@ Importantly, we build and deliver solutions that help businesses to control cost
 <script src="/js/main.js" defer></script>
 <script>
 (function () {
-  var counters = document.querySelectorAll('[data-count-to]');
-  if (!counters.length) return;
+  var statsBlock = document.querySelector('[data-stats]');
+  if (!statsBlock) return;
+
+  var counters = statsBlock.querySelectorAll('[data-count-to]');
 
   function animateCounter(el) {
     var target = parseInt(el.getAttribute('data-count-to'), 10);
-    var duration = 1200;
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1300;
     var start = null;
-
     function step(timestamp) {
       if (!start) start = timestamp;
       var progress = Math.min((timestamp - start) / duration, 1);
       var eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.floor(eased * target).toLocaleString();
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        el.textContent = target.toLocaleString();
-      }
+      el.textContent = Math.floor(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target + suffix;
     }
     requestAnimationFrame(step);
   }
-
-  var statsBlock = document.querySelector('[data-stats]');
-  if (!statsBlock) return;
 
   var hasAnimated = false;
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting && !hasAnimated) {
         hasAnimated = true;
+        statsBlock.classList.add('is-visible');
         counters.forEach(animateCounter);
         observer.disconnect();
       }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.3 });
 
   observer.observe(statsBlock);
 })();

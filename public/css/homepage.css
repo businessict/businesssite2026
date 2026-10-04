@@ -3,6 +3,8 @@
    Loaded in addition to /css/base.css
    ========================================================= */
 
+ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap');
+
 .hero {
   position: relative;
   padding-block: clamp(3rem, 9vw, 6rem) clamp(3.5rem, 8vw, 5rem);
@@ -57,26 +59,26 @@
 .stat-counters.is-visible .stat-row:nth-child(3) { transition-delay: 0.28s; }
 
 .stat-row__figure {
-  font-family: var(--font-head); font-weight: 700;
-  font-size: clamp(2.8rem, 5vw, 4.2rem); line-height: 1;
-  margin-bottom: 0.15em;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 100 !important;
+  font-size: 30px !important;
+  line-height: 1 !important;
+  margin-bottom: 0.15em !important;
 }
+
 .stat-row:nth-child(1) .stat-row__figure { color: var(--ict-blue); }
 .stat-row:nth-child(2) .stat-row__figure { color: var(--ict-blue-700); }
 .stat-row:nth-child(3) .stat-row__figure { color: var(--dark-grey); }
 
-.stat-row__label { font-size: 0.9rem; color: var(--ict-grey); margin-bottom: 0.6em; }
+.stat-row__label { font-size: 0.9rem; color: var(--ict-grey); margin-bottom: 0.15em; }
 
-.stat-row__underline {
-  display: block; width: 28px; height: 3px;
-  background: var(--ict-blue);
-  border-radius: var(--radius-pill);
-}
-.stat-row:nth-child(2) .stat-row__underline { background: var(--ict-blue-700); }
-.stat-row:nth-child(3) .stat-row__underline { background: var(--dark-grey); }
 
 @media (max-width: 700px) {
-  .stat-counters { flex-direction: column; gap: 1.6rem; }
+  .stat-counters { flex-wrap: nowrap; gap: 1rem; }
+  
+  .stat-row__figure { font-size: 28px !important; }
+  .stat-row__label { font-size: 0.72rem; }
+  
 }
 
 .hero__art { position: relative; aspect-ratio: 16 / 9; }

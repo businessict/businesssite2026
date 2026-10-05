@@ -17,6 +17,10 @@
   max-width: none;
 }
 
+.section-head__copy p:not(:last-child) {
+  margin-bottom: 0.8em;
+}
+
 /* ---------------------------------------------------------
    Legend / track key (sits above the timeline)
    --------------------------------------------------------- */

@@ -22,6 +22,16 @@
   transform: translateX(0);
 }
 
+.split-row__copy {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 1.1s ease, transform 1.7s ease;
+}
+.split-row__copy.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 /* ---- 2x2 device grid variant (hardware page) ---- */
 .split-row__media--grid {
   display: grid;

@@ -22,6 +22,30 @@
 }
 
 /* ---------------------------------------------------------
+   Intro + timeline slide-in, staggered
+   --------------------------------------------------------- */
+.section-head {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 1.1s ease, transform 1.7s ease;
+}
+.section-head.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.1s ease, transform 1.5s ease;
+  transition-delay: 0.3s;
+}
+.timeline.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------------------------------------------------
    Legend / track key (sits above the timeline)
    --------------------------------------------------------- */
 .timeline-key {
@@ -49,17 +73,17 @@
 .timeline-key__swatch--business { background: var(--ict-blue); }
 
 /* ---------------------------------------------------------
-   Timeline shell
+   Timeline shell — single column, left-aligned spine
    --------------------------------------------------------- */
 .timeline {
   position: relative;
 }
 
-/* Centre spine */
+/* Left spine */
 .timeline::before {
   content: '';
   position: absolute;
-  top: 0; bottom: 0; left: 50%;
+  top: 0; bottom: 0; left: 9px;
   width: 2px;
   background: linear-gradient(
     to bottom,
@@ -68,68 +92,45 @@
     var(--ict-blue-tint) 96%,
     transparent 100%
   );
-  transform: translateX(-1px);
 }
 
 .timeline__row {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 72px 1fr;
-  align-items: start;
-  gap: 0;
+  grid-template-columns: 20px 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.2rem;
 }
+.timeline__row:last-child { margin-bottom: 0; }
 
 /* ---------------------------------------------------------
    Node — the year + dot sitting on the spine
    --------------------------------------------------------- */
 .timeline__node {
-  grid-column: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   padding-top: 0.3rem;
 }
 .timeline__dot {
   width: 18px; height: 18px;
   border-radius: 50%;
   background: var(--white);
-  border: 3px solid var(--dark-grey);
+  border: 3px solid var(--ict-blue);
   box-shadow: 0 0 0 6px var(--white);
   z-index: 1;
 }
-.timeline__row--business .timeline__dot { border-color: var(--ict-blue); }
-.timeline__row--dual .timeline__dot { border-color: var(--dark-grey); }
-
 .timeline__year {
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--dark-grey);
   letter-spacing: 0.03em;
   white-space: nowrap;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
 }
-
-/* ---------------------------------------------------------
-   Sides
-   --------------------------------------------------------- */
-.timeline__side {
-  padding-block: 0.2rem 2.6rem;
-}
-.timeline__side--left {
-  grid-column: 1;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: clamp(1.5rem, 4vw, 3rem);
-}
-.timeline__side--right {
-  grid-column: 3;
-  display: flex;
-  justify-content: flex-start;
-  padding-left: clamp(1.5rem, 4vw, 3rem);
-}
-/* keep an empty side from collapsing the grid oddly */
-.timeline__side:empty { visibility: hidden; }
 
 /* ---------------------------------------------------------
    Event cards
@@ -147,16 +148,10 @@
   transform: translateY(-4px);
   box-shadow: var(--shadow-lift);
 }
-
-.timeline-card--industry {
-  border-left: 4px solid var(--dark-grey);
-  background: var(--ict-blue-tint);
-}
 .timeline-card--business {
   border-left: 4px solid var(--ict-blue);
   background: var(--white);
 }
-
 .timeline-card__eyebrow {
   display: block;
   font-family: var(--font-head);
@@ -167,9 +162,6 @@
   margin-bottom: 0.4em;
   color: var(--ict-blue);
 }
-.timeline-card--industry .timeline-card__eyebrow { color: var(--dark-grey); }
-.timeline-card--business .timeline-card__eyebrow { color: var(--ict-blue); }
-
 .timeline-card h3 {
   font-size: 1.05rem;
   margin-bottom: 0.35em;
@@ -178,17 +170,6 @@
   font-size: 0.9rem;
   margin-bottom: 0;
   max-width: none;
-}
-
-/* Placeholder cards — clearly marked as "to be filled in", not styled as fact */
-.timeline-card--placeholder {
-  border-left-style: dashed;
-  background: var(--ict-blue-tint);
-  opacity: 0.85;
-}
-.timeline-card--placeholder p {
-  font-style: italic;
-  color: var(--grey);
 }
 
 /* ---------------------------------------------------------

@@ -163,7 +163,7 @@ section { padding-block: clamp(2.5rem, 5vw, 4rem); }
   color: var(--ict-grey); letter-spacing: 0.01em;
 }
 .brand__logo {
-  height: 40px;
+  height: 52px;
   width: auto;
   max-width: 100%;
   display: block;
@@ -218,7 +218,7 @@ section { padding-block: clamp(2.5rem, 5vw, 4rem); }
 .mobile-nav { display: none; }
 
 @media (max-width: 600px) {
-  .brand__logo { height: 32px; }
+  .brand__logo { height: 38px; }
 }
 
 @media (max-width: 900px) {
@@ -412,7 +412,7 @@ section { padding-block: clamp(2.5rem, 5vw, 4rem); }
 .footer-col--brand .brand__business,
 .footer-col--brand .brand__ict,
 .footer-col--brand .brand__australia { color: var(--white); }
-.footer-logo { height: 32px; width: auto; }
+.footer-logo { height: 39px; width: auto; }
 .footer-email { color: var(--white); font-size: 0.92rem; display: inline-block; margin-bottom: 0.8em; }
 .footer-tagline { font-size: 0.88rem; max-width: 30ch; color: var(--white); }
 .footer-social { display: flex; gap: 0.7rem; }
@@ -444,10 +444,12 @@ section { padding-block: clamp(2.5rem, 5vw, 4rem); }
    ========================================================= */
 .page-hero {
   padding-block: clamp(2.5rem, 6vw, 4rem) clamp(1rem, 3vw, 2rem);
-  background: var(--ict-blue-tint);
+  background: var(--ict-blue);
   text-align: center;
 }
-.page-hero p { margin-inline: auto; }
+.page-hero .eyebrow,
+.page-hero h1 { color: var(--white); }
+.page-hero p { margin-inline: auto; color: rgba(255,255,255,0.85); }
 
 /* ---- Contact & About page pieces — TODO: move to their
    own contact.css / about.css when those pages get split ---- */

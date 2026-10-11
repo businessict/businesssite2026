@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/css/homepage.css?v=4">
+<link rel="stylesheet" href="/css/homepage.css?v=6">
 <link rel="icon" href="/images/favicon.ico">
 </head>
 
@@ -27,7 +27,7 @@
         <span class="eyebrow">Enterprise Solutions</span>
         <h1>We make ICT easy for growing enterprises</h1>
         <h2>Mobility, unified comms, managed IT, print and hardware, all from one Australian partner.</h2>
-        <p>Business ICT Australia delivers enterprise-grade connectivity, security and support to small and medium business, so your team stays productive and your data stays protected.</p>
+        <p>Business ICT Australia delivers enterprise-grade connectivity, security and support to Australian businesses, so your team stays productive and your data stays protected.</p>
         <div class="hero__ctas">
           <a href="/contact" class="btn btn--primary">Book A Consultation</a>
           <a href="/#services" class="btn btn--outline">Explore Our Services</a>
@@ -41,20 +41,20 @@
 <div class="stat-counters" data-stats>
 
   <div class="stat-row">
-    <p class="stat-row__figure"><span data-count-to="50" data-suffix="K+">0</span></p>
-    <p class="stat-row__label">End users supported</p>
+    <p class="stat-row__figure"><span data-count-to="12" data-suffix="K+">0</span></p>
+    <p class="stat-row__label">EU’s supported </p>
     
   </div>
 
   <div class="stat-row">
-    <p class="stat-row__figure"><span data-count-to="10" data-suffix="K+">0</span></p>
-    <p class="stat-row__label">Businesses served</p>
+    <p class="stat-row__figure"><span data-count-to="1.2" data-decimals="1" data-suffix="K+">0</span></p>
+    <p class="stat-row__label">Businesses serviced</p>
     
   </div>
 
   <div class="stat-row">
     <p class="stat-row__figure"><span data-count-to="22" data-suffix="+">0</span></p>
-    <p class="stat-row__label">Years in business</p>
+    <p class="stat-row__label">Years in business (est. 2004)</p>
     
   </div>
 
@@ -65,7 +65,7 @@
 <!-- ============ LOGO MARQUEE ============ -->
 <div class="marquee">
   <div class="wrap">
-    <span class="eyebrow">Our Long Term partners</span>
+    <span class="eyebrow">Trusted by Leading Brands</span>
   </div>
   <div class="marquee__track-wrap">
     <div class="marquee__track">
@@ -91,7 +91,7 @@
 <!-- ============ NETWORK PARTNERS MARQUEE ============ -->
 <div class="marquee marquee--reverse marquee--grey">
   <div class="wrap">
-    <span class="eyebrow">Our trusted network</span>
+    <span class="eyebrow">Powered by Industry Leaders</span>
   </div>
   <div class="marquee__track-wrap">
     <div class="marquee__track">
@@ -128,7 +128,7 @@
       <div class="section-head__copy">
         <span class="eyebrow">Products &amp; Services</span>
         <h1>Everything your business needs, all in one place</h1>
-        <p>At Business ICT Australia we deliver business grade data, voice and cloud solutions, designed for Australian Enterprises.
+        <p>At Business ICT Australia we deliver business grade data, voice and cloud solutions, designed for Australian enterprises.
 
 Importantly, we build and deliver solutions that help businesses to control costs, stay connected and keep information secure.</p>
       </div>
@@ -225,40 +225,15 @@ Importantly, we build and deliver solutions that help businesses to control cost
   </div>
 </section>
 
-<!-- ============ SECTION 3: DID YOU KNOW ============ -->
+
+    <!-- ============ RESOURCES ============ -->
 <section>
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__copy">
-        <span class="eyebrow">Did you know?</span>
-        <h1>The risk is real for Australian business</h1>
-        <p>Cyber threats and shifting work patterns are reshaping what "secure and connected" means for small and medium business. Here's what the latest data says.</p>
-      </div>
-    </div>
 
-    <div class="stat-grid">
-      <div class="stat-card">
-        <p class="stat-card__figure">$56,600</p>
-        <p>Average self-reported cost of a single cybercrime incident to an Australian small business — up 14% on the year before.</p>
-        <p class="stat-card__source">Source: Australian Signals Directorate, Annual Cyber Threat Report 2024–25</p>
-      </div>
-      <div class="stat-card">
-        <p class="stat-card__figure">Every 6 min</p>
-        <p>A cybercrime is reported in Australia, with small businesses increasingly in scope alongside larger enterprise targets.</p>
-        <p class="stat-card__source">Source: Australian Signals Directorate / National Cyber Security Centre</p>
-      </div>
-      <div class="stat-card">
-        <p class="stat-card__figure">36%</p>
-        <p>Of employed Australians usually work from home, making secure remote access and unified comms essential, not optional.</p>
-        <p class="stat-card__source">Source: Australian Bureau of Statistics, Working Arrangements, August 2025</p>
-      </div>
-    </div>
-
-    <!-- ---- Resources / articles ---- -->
     <div class="subsection-head">
       <div>
         <span class="eyebrow">Resources</span>
-        <h3>Guides worth a read</h3>
+        <h3>Free Industry Guides & Media Features</h3>
       </div>
     </div>
 
@@ -306,6 +281,15 @@ Importantly, we build and deliver solutions that help businesses to control cost
 </section>
 
 
+<!-- ============ MISSION STATEMENT ============ -->
+<section class="mission">
+  <div class="wrap">
+    <span class="eyebrow">Our Mission</span>
+    <p class="mission__text">We help Australian enterprises &lsquo;elevate&rsquo;, through powerful communication, connection, and security tools. We go beyond the ordinary when you need us, we&rsquo;re trusted allies, always on, always there to help propel your mission through technology, service &amp; expertise.</p>
+  </div>
+</section>
+
+
 <%- include('partials/footer') %>
 
 <script src="/js/main.js" defer></script>
@@ -317,20 +301,21 @@ Importantly, we build and deliver solutions that help businesses to control cost
   var counters = statsBlock.querySelectorAll('[data-count-to]');
 
   function animateCounter(el) {
-    var target = parseInt(el.getAttribute('data-count-to'), 10);
-    var suffix = el.getAttribute('data-suffix') || '';
-    var duration = 1300;
-    var start = null;
-    function step(timestamp) {
-      if (!start) start = timestamp;
-      var progress = Math.min((timestamp - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.floor(eased * target) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target + suffix;
-    }
-    requestAnimationFrame(step);
+  var target = parseFloat(el.getAttribute('data-count-to'));
+  var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+  var suffix = el.getAttribute('data-suffix') || '';
+  var duration = 1300;
+  var start = null;
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    var progress = Math.min((timestamp - start) / duration, 1);
+    var eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = (eased * target).toFixed(decimals) + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target.toFixed(decimals) + suffix;
   }
+  requestAnimationFrame(step);
+}
 
   var hasAnimated = false;
   var observer = new IntersectionObserver(function (entries) {

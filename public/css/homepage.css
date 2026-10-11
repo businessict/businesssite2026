@@ -7,7 +7,7 @@
 
 .hero {
   position: relative;
-  padding-block: clamp(3rem, 9vw, 6rem) clamp(3.5rem, 8vw, 5rem);
+  padding-block: clamp(3rem, 9vw, 6rem) clamp(1rem, 2vw, 1.5rem);
   overflow: hidden;
 }
 .hero::before {
@@ -90,7 +90,7 @@
 }
 
 /* ---- Logo marquee ---- */
-.marquee { padding-block: clamp(2rem, 4vw, 3rem); }
+.marquee { padding-block: clamp(1rem, 2vw, 1.5rem) clamp(2rem, 4vw, 3rem); }
 .marquee .eyebrow { margin-bottom: 2.5rem; }
 .marquee__track-wrap { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .marquee__track { display: flex; align-items: center; gap: clamp(2.5rem, 6vw, 4.5rem); width: max-content; animation: marquee-scroll 130s linear infinite; }
@@ -147,14 +147,9 @@ a.service-tile:focus-visible .service-tile__title svg { transform: translateX(4p
   .myaccount__media { order: -1; }
 }
 
-/* ---- Stat cards ---- */
-.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.4rem; }
-.stat-card { background: var(--white); border-radius: var(--radius-md); border: 1px solid var(--ict-blue-tint); box-shadow: var(--shadow-soft); padding: 1.9rem 1.7rem; }
-.stat-card__figure { font-family: var(--font-head); font-weight: 700; color: var(--ict-blue); font-size: clamp(2.4rem, 4vw, 3rem); line-height: 1; margin-bottom: 0.35em; }
-.stat-card p { font-size: 0.95rem; margin-bottom: 0.6em; }
-.stat-card__source { font-size: 0.76rem; color: var(--light-grey); }
 
 /* ---- Resource cards ---- */
+section .wrap > .subsection-head:first-child { margin-top: 0; }
 .resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.6rem; }
 .resource-card {
   position: relative;
@@ -175,3 +170,23 @@ a.service-tile:focus-visible .service-tile__title svg { transform: translateX(4p
   position: absolute;
   inset: 0;
 }
+
+/* ---- Mission statement ---- */
+.mission { background: var(--ict-blue-tint); }
+.mission__text {
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  line-height: 1.35;
+  color: var(--dark-grey);
+  max-width: 40em;
+  margin-bottom: 0;
+}
+
+/* ---- Consistent section spacing (homepage only) ---- */
+section { padding-block: clamp(1.75rem, 3.5vw, 2.5rem); }
+.marquee + section { padding-top: 0; }
+.mission { padding-block: clamp(2.5rem, 5vw, 3.5rem); }
+
+/* ---- Extra breathing room above Products & Services ---- */
+#services { padding-top: clamp(2.5rem, 5vw, 2.8rem); }

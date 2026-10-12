@@ -147,3 +147,102 @@
   opacity: 1;
   transform: translateX(0);
 }
+
+/* ── Coverflow Carousel ── */
+.coverflow-carousel {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 2rem 0 3rem;
+}
+
+.coverflow-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cf-card {
+  position: absolute;
+  width: 220px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+  transition: transform 0.5s cubic-bezier(.4,0,.2,1), opacity 0.5s, z-index 0s;
+  top: 50%;
+  left: 50%;
+  cursor: pointer;
+  will-change: transform, opacity;
+}
+
+.cf-card__media {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  background: #f5f7fa;
+}
+
+.cf-card__media img {
+  max-width: 90%;
+  max-height: 160px;
+  object-fit: contain;
+}
+
+.cf-card__body {
+  padding: 14px 16px 18px;
+  text-align: left;
+}
+
+.cf-card__body .device-card__tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ict-blue, #0062cc);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.cf-card__body .device-card__name {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: #111;
+}
+
+.cf-card__body .device-card__note {
+  font-size: 0.82rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Arrow buttons */
+.cf-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid #dde3ed;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s;
+}
+
+.cf-arrow:hover { background: #fff; }
+.cf-arrow--prev { left: 12px; }
+.cf-arrow--next { right: 12px; }

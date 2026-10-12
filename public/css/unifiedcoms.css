@@ -48,8 +48,6 @@
   transform: translateX(0);
 }
 
-.comms-integration ~ .marquee__track-wrap { margin-top: clamp(2rem, 4vw, 3rem); }
-
 .comms-plans-row__media {
   position: relative;
   width: 100%;
@@ -271,4 +269,9 @@
 .marquee__track img { height: 34px; width: auto; }
 @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; overflow-x: auto; } }
+
+/* ---- CRM marquee sits close under the hero ---- */
+.comms-hero { padding-bottom: clamp(1rem, 2vw, 1.5rem); }
+.comms-crm { padding-top: clamp(1.5rem, 3vw, 2.5rem); }
+.comms-crm .marquee__track-wrap { margin-bottom: clamp(2rem, 4vw, 3rem); }
 

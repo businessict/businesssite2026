@@ -165,3 +165,63 @@
   }
 })();
 
+// ── Coverflow Carousel ──
+(function () {
+  const track = document.getElementById('coverflowTrack');
+  if (!track) return;
+
+  const cards = Array.from(track.querySelectorAll('.cf-card'));
+  const total = cards.length;
+  let current = 0;
+  let autoTimer;
+
+  // Position offsets for up to 5 visible slots: -2, -1, 0, +1, +2
+  const slots = [
+    { x: -440, scale: 0.62, opacity: 0.35, z: 1 },
+    { x: -230, scale: 0.78, opacity: 0.60, z: 2 },
+    { x: 0,    scale: 1.00, opacity: 1.00, z: 5 },
+    { x: 230,  scale: 0.78, opacity: 0.60, z: 2 },
+    { x: 440,  scale: 0.62, opacity: 0.35, z: 1 },
+  ];
+
+  function render() {
+    cards.forEach((card, i) => {
+      // distance from current, wrapped
+      let offset = i - current;
+      if (offset > total / 2)  offset -= total;
+      if (offset < -total / 2) offset += total;
+
+      const slotIndex = offset + 2; // map -2..+2 → 0..4
+
+      if (slotIndex < 0 || slotIndex > 4) {
+        card.style.opacity = '0';
+        card.style.pointerEvents = 'none';
+        card.style.zIndex = '0';
+        return;
+      }
+
+      const s = slots[slotIndex];
+      card.style.opacity = s.opacity;
+      card.style.zIndex  = s.z;
+      card.style.pointerEvents = slotIndex === 2 ? 'auto' : 'none';
+      card.style.transform = `translate(-50%, -50%) translateX(${s.x}px) scale(${s.scale})`;
+    });
+  }
+
+  function next() { current = (current + 1) % total; render(); }
+  function prev() { current = (current - 1 + total) % total; render(); }
+
+  function startAuto() { autoTimer = setInterval(next, 3200); }
+  function stopAuto()  { clearInterval(autoTimer); }
+
+  document.getElementById('cfNext').addEventListener('click', () => { stopAuto(); next(); startAuto(); });
+  document.getElementById('cfPrev').addEventListener('click', () => { stopAuto(); prev(); startAuto(); });
+
+  // Pause on hover
+  track.closest('.coverflow-carousel').addEventListener('mouseenter', stopAuto);
+  track.closest('.coverflow-carousel').addEventListener('mouseleave', startAuto);
+
+  render();
+  startAuto();
+})();
+

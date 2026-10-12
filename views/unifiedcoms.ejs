@@ -16,7 +16,7 @@
 <%- include('partials/header') %>
 
 
-<section>
+<section class="comms-hero">
   <div class="wrap">
     <div class="comms-plans-row">
       <div class="comms-plans-row__copy" data-reveal>
@@ -36,26 +36,9 @@
 </section>
 
 <!-- ===== CRM integration ===== -->
-<section>
-  <div class="wrap comms-integration">
-    <div class="comms-integration__copy">
-      <span class="eyebrow">Integrates with your CRM</span>
-      <h1>Connect Your Collaboration Tools</h1>
-      <p>Connect your voice and collaboration tools directly into your CRM to streamline workflows, improve customer experience, and give your team instant access to the information they need, right when they need it.</p>
-      <p class="comms-integration__subhead">Native, maintained integration for the following platforms:</p>
-    </div>
+<section class="comms-crm">
 
-    <ul class="comms-integration__list">
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Fully Managed UCaaS (Unified Communications)</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> AI Agent</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> SIP</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> CRM Integration – Salesforce, HubSpot, Pipedrive, Zoho, Zendesk</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Professional messages on hold</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Live Answer — a human answers your calls out of hours and passes through your message, for a professional and personal touch with your clients, every time.</li>
-    </ul>
-  </div>
-
-  <div class="marquee__track-wrap">
+ <div class="marquee__track-wrap">
     <div class="marquee__track">
       <% var crms = [
         { file: 'bit', name: 'Bitrix24' },
@@ -76,6 +59,26 @@
       <% }) %>
     </div>
   </div>
+
+  <div class="wrap comms-integration">
+    <div class="comms-integration__copy">
+      <span class="eyebrow">Integrates with your CRM</span>
+      <h1>Connect Your Collaboration Tools</h1>
+      <p>Connect your voice and collaboration tools directly into your CRM to streamline workflows, improve customer experience, and give your team instant access to the information they need, right when they need it.</p>
+      <p class="comms-integration__subhead">Native, maintained integration for the following platforms:</p>
+    </div>
+
+    <ul class="comms-integration__list">
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Fully Managed UCaaS (Unified Communications)</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> AI Agent</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> SIP</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> CRM Integration – Salesforce, HubSpot, Pipedrive, Zoho, Zendesk</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Professional messages on hold</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Live Answer — a human answers your calls out of hours and passes through your message, for a professional and personal touch with your clients, every time.</li>
+    </ul>
+  </div>
+
+ 
 </section>
 
 <section>

@@ -82,8 +82,6 @@
   z-index: 2;
 }
 
-
-
 @media (max-width: 860px) {
   .comms-plans-row {
     grid-template-columns: 1fr;
@@ -163,8 +161,6 @@
   align-items: start;
 }
 
-.comms-integration__list { align-self: end; }
-
 .comms-integration__copy .eyebrow {
   display: block;
   margin-bottom: 0.6rem;
@@ -175,6 +171,35 @@
   margin-top: 1.4rem;
   margin-bottom: 0;
 }
+
+/* Right column: marquee on top, list below */
+.comms-integration__list-col {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Spacer so the absolute marquee doesn't collapse the layout */
+.comms-integration__list-col::before {
+  content: '';
+  display: block;
+  height: 60px;
+}
+
+/* ---- Dial this width to control how far the marquee stretches ---- */
+.comms-integration__list-col .marquee__track-wrap {
+  position: absolute;
+  top: 0;
+  left: -50%;
+width: 150%;
+  height: 60px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 100%);
+}
+
 .comms-integration__list {
   list-style: none;
   margin: 0;
@@ -265,13 +290,10 @@
 .marquee .eyebrow { margin-bottom: 2rem; }
 .marquee__track-wrap { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .marquee__track { display: flex; align-items: center; gap: clamp(2.5rem, 6vw, 4.5rem); width: max-content; animation: marquee-scroll 60s linear infinite; }
-.marquee:hover .marquee__track { animation-play-state: paused; }
 .marquee__track img { height: 34px; width: auto; }
 @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; overflow-x: auto; } }
 
-/* ---- CRM marquee sits close under the hero ---- */
+/* ---- Hero spacing ---- */
 .comms-hero { padding-bottom: clamp(1rem, 2vw, 1.5rem); }
 .comms-crm { padding-top: clamp(1.5rem, 3vw, 2.5rem); }
-.comms-crm .marquee__track-wrap { margin-bottom: clamp(2rem, 4vw, 3rem); }
-

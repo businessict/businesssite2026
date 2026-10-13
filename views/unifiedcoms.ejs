@@ -23,9 +23,9 @@
         <span class="eyebrow">UNIFIED COMS</span>
         <h1>Plans that scale with your team</h1>
         <p>Modern businesses need communication that's seamless, flexible, and built for the way teams actually work.</p>
-<p>We deliver integrated voice and collaboration solutions that keep your people connected in the office, on the road, or working remotely.</p>
-<p>Start with cloud calling and add video, analytics or a full contact centre as you grow — no re-platforming required.</p>
-      <a href="/contact" class="btn btn--primary">Schedule an obligation-free chat</a>
+        <p>We deliver integrated voice and collaboration solutions that keep your people connected in the office, on the road, or working remotely.</p>
+        <p>Start with cloud calling and add video, analytics or a full contact centre as you grow — no re-platforming required.</p>
+        <a href="/contact" class="btn btn--primary">Schedule an obligation-free chat</a>
       </div>
       <div class="comms-plans-row__media" data-reveal>
         <img src="/images/3cx-phone.webp" alt="3CX softphone app" class="comms-plans-row__img comms-plans-row__img--front" loading="lazy">
@@ -35,51 +35,56 @@
   </div>
 </section>
 
+
 <!-- ===== CRM integration ===== -->
 <section class="comms-crm">
-
- <div class="marquee__track-wrap">
-    <div class="marquee__track">
-      <% var crms = [
-        { file: 'bit', name: 'Bitrix24' },
-        { file: 'fresh', name: 'Freshsales' },
-        { file: 'hub', name: 'HubSpot' },
-        { file: 'micro', name: 'Microsoft Dynamics' },
-        { file: 'sales', name: 'Salesforce' },
-        { file: 'zen', name: 'Zendesk' },
-        { file: 'zoho', name: 'Zoho' }
-      ]; %>
-      <% [0, 1, 2].forEach(function(copy){ %>
-        <% crms.forEach(function(c){ %>
-          <img src="/images/<%= c.file %>.webp"
-               alt="<%= copy === 0 ? c.name : '' %>"
-               <%- copy > 0 ? 'aria-hidden="true"' : '' %>
-               height="34" loading="lazy" decoding="async">
-        <% }) %>
-      <% }) %>
-    </div>
-  </div>
-
   <div class="wrap comms-integration">
+
     <div class="comms-integration__copy">
-      <span class="eyebrow">Integrates with your CRM</span>
+      <span class="eyebrow">Natively integrated CRM's</span>
       <h1>Connect Your Collaboration Tools</h1>
-      <p>Connect your voice and collaboration tools directly into your CRM to streamline workflows, improve customer experience, and give your team instant access to the information they need, right when they need it.</p>
-      <p class="comms-integration__subhead">Native, maintained integration for the following platforms:</p>
+<p>Connecting your voice communication and team collaboration platforms directly into your Customer Relationship Management (CRM) system transforms how customer-facing teams operate.</p>
+<p>Instead of working across isolated silos, your team operates within a single, unified ecosystem.</p>
+      
     </div>
 
-    <ul class="comms-integration__list">
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Fully Managed UCaaS (Unified Communications)</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> AI Agent</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> SIP</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> CRM Integration – Salesforce, HubSpot, Pipedrive, Zoho, Zendesk</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Professional messages on hold</li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Live Answer — a human answers your calls out of hours and passes through your message, for a professional and personal touch with your clients, every time.</li>
-    </ul>
-  </div>
+    <div class="comms-integration__list-col">
 
- 
+      <div class="marquee__track-wrap">
+        <div class="marquee__track">
+          <% var crms = [
+            { file: 'bit',   name: 'Bitrix24' },
+            { file: 'fresh', name: 'Freshsales' },
+            { file: 'hub',   name: 'HubSpot' },
+            { file: 'micro', name: 'Microsoft Dynamics' },
+            { file: 'sales', name: 'Salesforce' },
+            { file: 'zen',   name: 'Zendesk' },
+            { file: 'zoho',  name: 'Zoho' }
+          ]; %>
+          <% [0, 1, 2].forEach(function(copy){ %>
+            <% crms.forEach(function(c){ %>
+              <img src="/images/<%= c.file %>.webp"
+                   alt="<%= copy === 0 ? c.name : '' %>"
+                   <%- copy > 0 ? 'aria-hidden="true"' : '' %>
+                   height="34" loading="lazy" decoding="async">
+            <% }) %>
+          <% }) %>
+        </div>
+      </div>
+
+      <ul class="comms-integration__list">
+        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Fully Managed UCaaS (Unified Communications)</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> AI Agent</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> SIP</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> CRM Integration – Salesforce, HubSpot, Pipedrive, Zoho, Zendesk</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Professional messages on hold</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Live Answer — a human answers your calls out of hours and passes through your message, for a professional and personal touch with your clients, every time.</li>
+      </ul>
+
+    </div><!-- /.comms-integration__list-col -->
+  </div><!-- /.wrap.comms-integration -->
 </section>
+
 
 <section>
   <div class="wrap">
@@ -268,7 +273,6 @@
     </div>
   </div>
 </section>
-
 
 
 <!-- ===== Microsoft 365 with Teams ===== -->

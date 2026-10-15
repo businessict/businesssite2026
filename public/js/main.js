@@ -221,7 +221,27 @@
   track.closest('.coverflow-carousel').addEventListener('mouseenter', stopAuto);
   track.closest('.coverflow-carousel').addEventListener('mouseleave', startAuto);
 
-  render();
+    render();
   startAuto();
+
+})();
+
+// ── MyAccount video: play on scroll ──
+(function () {
+  var accountVideo = document.getElementById('myaccount-video');
+  if (!accountVideo) return;
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          accountVideo.play().catch(function () {});
+        } else {
+          accountVideo.pause();
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(accountVideo);
+  }
 })();
 

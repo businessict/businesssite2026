@@ -145,3 +145,33 @@
   opacity: 1;
   transform: translateX(0);
 }
+
+.nbn-panel__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+.nbn-panel__img {
+  width: 100%;
+  height: auto;
+}
+.nbn-panel__copy p:last-child { margin-bottom: 0; }
+
+@media (max-width: 860px) {
+  .nbn-panel__grid { grid-template-columns: 1fr; }
+  .nbn-panel__img { order: -1; }
+}
+
+.cert-logos {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.cert-logos img {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+}

@@ -80,9 +80,15 @@
 /* ---- Section head with image alongside ---- */
 .section-head--split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
   align-items: center;
   gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* Let the copy fill its wider column (base.css may cap it) */
+.section-head--split .section-head__copy,
+.section-head--split .section-head__copy p {
+  max-width: 100%;
 }
 
 .section-head--split .btn { margin-top: 1.5rem; }

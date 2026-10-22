@@ -78,9 +78,9 @@
 
 /* ---- "What's Included" checklist grid ---- */
 .checklist-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.9rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
 }
 .checklist-grid li {
   display: flex;
@@ -198,4 +198,30 @@
 
 .split-row__media--grid img.img-meraki {
   object-position: left center;   /* or adjust to 15% center / -10px center etc. */
+}
+
+.checklist-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.checklist-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7em;
+  font-size: 0.98rem;
+  color: var(--ict-grey);
+}
+.checklist-list svg {
+  flex: none;
+  margin-top: 0.2em;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ict-blue-tint);
+  color: var(--ict-blue);
+  padding: 4px;
 }

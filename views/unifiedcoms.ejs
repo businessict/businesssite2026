@@ -36,51 +36,56 @@
 
 
 <!-- ===== CRM integration ===== -->
-<section class="comms-crm">
-  <div class="wrap comms-integration">
 
+<section class="comms-crm">
+
+  <div class="wrap comms-integration__head">
+    <span class="eyebrow">Natively integrated CRM's</span>
+    <div class="marquee__track-wrap">
+      <div class="marquee__track">
+        <% var crms = [
+          { file: 'bit',   name: 'Bitrix24' },
+          { file: 'fresh', name: 'Freshsales' },
+          { file: 'hub',   name: 'HubSpot' },
+          { file: 'micro', name: 'Microsoft Dynamics' },
+          { file: 'sales', name: 'Salesforce' },
+          { file: 'zen',   name: 'Zendesk' },
+          { file: 'zoho',  name: 'Zoho' }
+        ]; %>
+        <% [0, 1, 2].forEach(function(copy){ %>
+          <% crms.forEach(function(c){ %>
+            <img src="/images/<%= c.file %>.webp"
+                 alt="<%= copy === 0 ? c.name : '' %>"
+                 <%- copy > 0 ? 'aria-hidden="true"' : '' %>
+                 height="34" loading="lazy" decoding="async">
+          <% }) %>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <h1>Connect your calls to your CRM, then put AI to work</h1>
+  </div>
+
+  <div class="wrap comms-integration">
     <div class="comms-integration__copy">
-      <span class="eyebrow">Natively integrated CRM's</span>
-      <h1>Connect your calls to your CRM, then put AI to work</h1>
       <p>When your phone system and CRM work together, every customer conversation is captured and your whole team sees the full picture. Calls are logged automatically, customer history is on screen when the phone rings, and your people spend less time on admin and more time with clients.</p>
       <p>We look after it from start to finish. We begin with a consultation to understand how your teams work and what you need from your CRM, then design, build and test the integration, and train your people so it gets used. Ongoing support keeps it working as your business grows.</p>
     </div>
 
     <div class="comms-integration__list-col">
-
-      <div class="marquee__track-wrap">
-        <div class="marquee__track">
-          <% var crms = [
-            { file: 'bit',   name: 'Bitrix24' },
-            { file: 'fresh', name: 'Freshsales' },
-            { file: 'hub',   name: 'HubSpot' },
-            { file: 'micro', name: 'Microsoft Dynamics' },
-            { file: 'sales', name: 'Salesforce' },
-            { file: 'zen',   name: 'Zendesk' },
-            { file: 'zoho',  name: 'Zoho' }
-          ]; %>
-          <% [0, 1, 2].forEach(function(copy){ %>
-            <% crms.forEach(function(c){ %>
-              <img src="/images/<%= c.file %>.webp"
-                   alt="<%= copy === 0 ? c.name : '' %>"
-                   <%- copy > 0 ? 'aria-hidden="true"' : '' %>
-                   height="34" loading="lazy" decoding="async">
-            <% }) %>
-          <% }) %>
-        </div>
-      </div>
-
       <ul class="comms-integration__list">
-        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> AI Receptionist </li>
-        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> AI call screening </li>
-        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Call transcripts, summaries and sentiment </li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> AI Receptionist</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> AI call screening</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Call transcripts, summaries and sentiment</li>
         <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> AI generated call summaries straight into your CRM</li>
-        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Privacy-conscious transcription </li>
-        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Call reports sent by email </li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Privacy-conscious transcription</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Call reports sent by email</li>
       </ul>
+    </div>
+  </div>
 
-    </div><!-- /.comms-integration__list-col -->
-  </div><!-- /.wrap.comms-integration -->
 </section>
 
 
@@ -198,5 +203,6 @@
 <script src="/js/main.js" defer></script>
 </body>
 </html>
+
 
 

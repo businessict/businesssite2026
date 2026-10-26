@@ -22,6 +22,13 @@
   </div>
 </section>
 
+<% if (success) { %>
+  <p style="color: green; margin-bottom: 1rem;">Thanks! We'll be in touch shortly.</p>
+<% } %>
+<% if (error) { %>
+  <p style="color: red; margin-bottom: 1rem;">Something went wrong. Please try again or call us directly.</p>
+<% } %>
+
 <section>
   <div class="wrap contact-grid">
     <form class="contact-form" action="/contact" method="POST" novalidate>

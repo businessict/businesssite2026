@@ -2,6 +2,10 @@
 // Run with: npm install   then   npm start
 // (see README.md for full Windows command-prompt setup)
 
+require('dotenv').config();
+const { Resend } = require('resend');
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 const express = require('express');
 const compression = require('compression');
 const path = require('path');
@@ -12,12 +16,15 @@ const PORT = process.env.PORT || 3000;
 // Gzip everything for faster loads
 app.use(compression());
 
+// Parse form submissions
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 // View engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Static assets (images/video/css/js) with long-lived caching.
-// While you're actively swapping placeholder images, drop maxAge to 0.
 app.use(express.static(path.join(__dirname, 'public'), {
   maxAge: '0',
   etag: true
@@ -92,8 +99,37 @@ app.get('/contact', (req, res) => {
   res.render('contactus', {
     pageTitle: 'Contact Us | Business ICT Australia',
     metaDescription: 'Get in touch with Business ICT Australia. Request a call back or send us a message.',
-    currentPath: '/contact'
+    currentPath: '/contact',
+    success: req.query.success || false,
+    error: req.query.error || false
   });
+});
+
+// ---- Contact form POST ----
+app.post('/contact', async (req, res) => {
+  const { name, company, email, phone, interest, message } = req.body;
+
+  try {
+    await resend.emails.send({
+      from: 'Business ICT Website <onboarding@resend.dev>',
+      to: 'michael.patane@businessict.com.au',
+      subject: `New enquiry from ${name} — ${interest}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Business:</strong> ${company}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Interested in:</strong> ${interest}</p>
+        <p><strong>Message:</strong><br>${message}</p>
+      `
+    });
+
+    res.redirect('/contact?success=true');
+  } catch (error) {
+    console.error('Resend error:', error);
+    res.redirect('/contact?error=true');
+  }
 });
 
 // 404

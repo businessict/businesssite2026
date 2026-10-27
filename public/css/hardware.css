@@ -165,3 +165,33 @@
   opacity: 1;
   transform: translateX(0);
 }
+
+.checklist-list {
+  list-style: none;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.checklist-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7em;
+  font-size: 0.98rem;
+  color: var(--ict-grey);
+}
+.checklist-list svg {
+  flex: none;
+  margin-top: 0.2em;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ict-blue-tint);
+  color: var(--ict-blue);
+  padding: 4px;
+}
+
+.checklist-list strong {
+  margin-right: -0.4em;
+}

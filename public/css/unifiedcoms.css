@@ -13,7 +13,7 @@
   transition: opacity 1.1s ease, transform 1.7s ease;
 }
 .page-hero .eyebrow { transition-delay: 0s; }
-.page-hero h1      { transition-delay: 0.08s; }
+.page-hero h1       { transition-delay: 0.08s; }
 .page-hero p        { transition-delay: 0.16s; }
 .page-hero .btn     { transition-delay: 0.24s; }
 
@@ -25,17 +25,53 @@
   transform: translateX(0);
 }
 
-.section-head--full .section-head__copy {
-  max-width: 100%;
-}
-
+.section-head--full .section-head__copy,
 .section-head--full .section-head__copy p {
   max-width: 100%;
 }
 
-.comms-plans-row__copy .btn { margin-top: 1.5rem; }
+/* ---- Section spacing: ONE place to control it all ----
+   Change --section-pad to tighten or loosen every section's top and bottom
+   padding at once. Two numbers: smallest (mobile), then largest (desktop). */
+:root {
+  /* Default used by any control below that you leave on "var(--section-pad)" */
+  --section-pad: clamp(1.75rem, 3.5vw, 2.75rem);
 
-/* ---- Plans row: heading/copy left, phone images right ---- */
+  /* Per-section controls: change any single value to adjust just that edge */
+  --hero-pad-top: clamp(2.5rem, 5vw, 4rem);
+  --hero-pad-bottom:     var(--section-pad);
+
+  --marquee-space-top:    1.2rem;   /* extra space above the marquee (on top of hero's bottom padding) */
+  --marquee-space-bottom: 0.7rem;   /* extra space below the marquee (on top of CRM's top padding) */
+
+  --crm-pad-top:         var(--section-pad);
+  --crm-pad-bottom:      var(--section-pad);
+
+  --plans-pad-top: 0.1rem;
+  --plans-pad-bottom:    var(--section-pad);
+
+  --features-pad-top: 0.1rem;
+  --features-pad-bottom: var(--section-pad);
+}
+
+section.comms-hero {
+  padding-top: var(--hero-pad-top);
+  padding-bottom: var(--hero-pad-bottom);
+}
+section.comms-crm {
+  padding-top: var(--crm-pad-top);
+  padding-bottom: var(--crm-pad-bottom);
+}
+section.comms-plans {
+  padding-top: var(--plans-pad-top);
+  padding-bottom: var(--plans-pad-bottom);
+}
+section.comms-features {
+  padding-top: var(--features-pad-top);
+  padding-bottom: var(--features-pad-bottom);
+}
+
+/* ---- Hero row: copy left, image right ---- */
 .comms-plans-row {
   display: grid !important;
   grid-template-columns: 1fr 1.2fr;
@@ -45,6 +81,7 @@
 
 .comms-plans-row__copy p { margin-bottom: 0.9em; }
 .comms-plans-row__copy p:last-of-type { margin-bottom: 0; }
+.comms-plans-row__copy .btn { margin-top: 1.5rem; }
 
 .comms-plans-row__copy {
   opacity: 0;
@@ -66,7 +103,6 @@
   transform: translateX(40px);
   transition: opacity 1.1s ease, transform 1.7s ease;
 }
-
 .comms-plans-row__media.is-visible {
   opacity: 1;
   transform: translateX(0);
@@ -89,6 +125,117 @@
   z-index: 2;
 }
 
+@media (max-width: 860px) {
+  .comms-plans-row {
+    grid-template-columns: 1fr;
+  }
+  .comms-plans-row__media {
+    order: -1;
+    justify-self: center;
+    margin-inline: auto;
+    max-width: 320px;
+  }
+  .comms-plans-row__img--front {
+    left: 2%;
+  }
+}
+
+/* ---- CRM logo marquee: full-width divider under the hero ---- */
+.marquee {
+  --marquee-gap: clamp(2.5rem, 6vw, 4.5rem);
+  --marquee-fade: 10%;          /* ← how much of each edge fades in/out */
+  width: 100%;                  /* fills the .wrap container */
+  max-width: 100%;              /* ← set a smaller value (e.g. 900px) to narrow it */
+  margin-inline: auto;
+  overflow: hidden;
+  padding-top: var(--marquee-space-top);
+  padding-bottom: var(--marquee-space-bottom);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--marquee-fade), #000 calc(100% - var(--marquee-fade)), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 var(--marquee-fade), #000 calc(100% - var(--marquee-fade)), transparent);
+}
+
+.marquee__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee-scroll 60s linear infinite;
+}
+
+/* Margin (not gap) so every logo carries its own spacing and the loop is seamless */
+.marquee__track img {
+  display: block;
+  flex: none;
+  height: 34px;
+  width: auto;
+  margin-right: var(--marquee-gap);
+}
+
+/* Track holds 4 identical copies, so -50% lands exactly on the start of copy 3 */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (max-width: 600px) {
+  .marquee__track img { height: 28px; }
+  .marquee__track { animation-duration: 45s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    -webkit-mask-image: none;
+    mask-image: none;
+    overflow-x: auto;
+  }
+  .marquee__track { animation: none; }
+}
+
+/* ---- CRM integration: heading, then copy + list side by side ---- */
+.comms-crm__head {
+  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+}
+.comms-crm__head .eyebrow {
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.comms-crm__head h1 {
+  margin: 0;
+}
+
+.comms-integration {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.comms-integration__copy p { margin-bottom: 0.9em; }
+.comms-integration__copy p:last-child { margin-bottom: 0; }
+
+.comms-integration__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.comms-integration__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7em;
+  font-size: 0.95rem;
+  color: var(--ict-grey, #445);
+}
+.comms-integration__list svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--ict-blue, #1d99d5);
+}
+
+@media (max-width: 860px) {
+  .comms-integration { grid-template-columns: 1fr; }
+}
 
 /* ---- Plan card logo area ---- */
 .plan-card__logo {
@@ -108,43 +255,48 @@
 }
 
 /* ---- Individual logo sizes ---- */
-.plan-card__logo img.logo-3cx {
-  width: auto;
-  height: 72px;
+.plan-card__logo img.logo-3cx      { width: auto; height: 72px; }
+.plan-card__logo img.logo-teams    { width: auto; height: 48px; }
+.plan-card__logo img.logo-cloudpbx { width: auto; height: 40px; }
+.plan-card__logo img.logo-custom   { width: auto; height: 44px; }
+
+/* ---- Carousel (plans) ---- */
+.carousel { position: relative; }
+.carousel__viewport {
+  display: flex; gap: 1.4rem; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding-block: 0.5rem 1.5rem; padding-inline: 0.25rem; scrollbar-width: none;
 }
+.carousel__viewport::-webkit-scrollbar { display: none; }
+.carousel__viewport > * { scroll-snap-align: start; flex: 0 0 auto; }
+.carousel__controls { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 0.5rem; }
+.carousel__progress { flex: 1; height: 5px; background: var(--ict-blue-tint); border-radius: var(--radius-pill); overflow: hidden; }
+.carousel__progress-bar { height: 100%; width: 30%; background: var(--ict-blue); border-radius: var(--radius-pill); transition: width 0.15s ease, transform 0.15s ease; transform-origin: left; }
+.carousel__dots { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem; }
+.carousel__dots button { width: 9px; height: 9px; border-radius: 50%; background: var(--ict-blue-tint); border: none; padding: 0; transition: background-color .15s ease, transform .15s ease; }
+.carousel__dots button.is-active { background: var(--ict-blue); transform: scale(1.25); }
+.carousel__arrows { display: flex; gap: 0.6rem; }
 
-.plan-card__logo img.logo-teams {
-  width: auto;
-  height: 48px;
+.scroll-hint { display: flex; align-items: center; gap: 0.5em; font-family: var(--font-head); font-size: 0.85rem; color: var(--grey); justify-content: center; margin-top: 0.6rem; }
+.scroll-hint svg { animation: nudge-right 1.6s ease-in-out infinite; }
+@keyframes nudge-right { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+
+/* ---- Plan cards ---- */
+.plan-card {
+  width: 270px; background: var(--white); border: 1px solid var(--ict-blue-tint);
+  border-radius: var(--radius-md); padding: 1.6rem 1.5rem; box-shadow: var(--shadow-soft);
+  display: flex; flex-direction: column; transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
+.plan-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+.plan-card__name { font-family: var(--font-head); font-weight: 700; color: var(--ict-grey); font-size: 1rem; margin-bottom: 0.3em; }
+.plan-card__data { font-family: var(--font-head); font-weight: 700; color: var(--ict-blue); font-size: 2.4rem; line-height: 1; margin-bottom: 0.1em; }
+.plan-card__data span { font-size: 1rem; color: var(--ict-grey); font-weight: 500; margin-left: 0.15em; }
+.plan-card__sub { font-size: 0.85rem; color: var(--light-grey); margin-bottom: 1.1em; }
+.plan-card__list { display: flex; flex-direction: column; gap: 0.55em; margin-bottom: 1.4em; }
+.plan-card__list li { display: flex; align-items: flex-start; gap: 0.55em; font-size: 0.92rem; color: var(--ict-grey); list-style: none; }
+.plan-card__list svg { flex: none; margin-top: 0.2em; color: var(--ict-blue); }
+.plan-card .btn { margin-top: auto; justify-content: center; }
 
-.plan-card__logo img.logo-cloudpbx {
-  width: auto;
-  height: 40px;
-}
-
-.plan-card__logo img.logo-custom {
-  width: auto;
-  height: 44px;
-}
-
-
-@media (max-width: 860px) {
-  .comms-plans-row {
-    grid-template-columns: 1fr;
-  }
-  .comms-plans-row__media {
-    order: -1;
-    justify-self: center;
-    margin-inline: auto;
-    max-width: 320px;
-  }
-  .comms-plans-row__img--front {
-    left: 2%;
-  }
-}
-
-/* ---- Feature strip: centered heading + subhead, 3 icon cards ---- */
+/* ---- Feature strip: centered heading + subhead, icon cards ---- */
 .feature-strip__head {
   text-align: center;
   max-width: 640px;
@@ -200,80 +352,6 @@
   .feature-strip__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ---- CRM integration section ---- */
-.comms-integration {
-  display: grid;
-  grid-template-columns: 1.4fr 0.9fr;
-  gap: 2.5rem;
-  align-items: start;
-}
-
-.comms-integration__copy .eyebrow {
-  display: block;
-  margin-top: 1rem;
-  margin-bottom: 0.6rem;
-}
-
-.comms-integration__copy h1 {
-  margin-top: 1rem;   /* adjust this value */
-  
-}
-
-.comms-integration__subhead {
-  font-weight: 600;
-  color: var(--ict-grey, #445);
-  margin-top: 1.4rem;
-  margin-bottom: 0;
-}
-
-/* Right column: marquee on top, list below */
-.comms-integration__list-col {
-  position: relative;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-
-
-/* ---- Dial this width to control how far the marquee stretches ---- */
-.comms-integration__list-col .marquee__track-wrap {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 200%;
-  height: 60px;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 100%);
-  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 100%);
-}
-
-.comms-integration__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.comms-integration__list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.7em;
-  font-size: 0.95rem;
-  color: var(--ict-grey, #445);
-}
-.comms-integration__list svg {
-  flex: none;
-  margin-top: 3px;
-  color: var(--ict-blue, #1d99d5);
-}
-
-@media (max-width: 860px) {
-  .comms-integration { grid-template-columns: 1fr; }
-}
-
 /* ---- 2-column variant for the feature strip ---- */
 .feature-strip__grid--2col {
   grid-template-columns: repeat(2, 1fr);
@@ -296,84 +374,4 @@
 
 @media (max-width: 860px) {
   .feature-strip__grid--2col { grid-template-columns: 1fr; }
-}
-
-/* ---- Carousel (3CX plans) ---- */
-.carousel { position: relative; }
-.carousel__viewport {
-  display: flex; gap: 1.4rem; overflow-x: auto; scroll-snap-type: x mandatory;
-  padding-block: 0.5rem 1.5rem; padding-inline: 0.25rem; scrollbar-width: none;
-}
-.carousel__viewport::-webkit-scrollbar { display: none; }
-.carousel__viewport > * { scroll-snap-align: start; flex: 0 0 auto; }
-.carousel__controls { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 0.5rem; }
-.carousel__progress { flex: 1; height: 5px; background: var(--ict-blue-tint); border-radius: var(--radius-pill); overflow: hidden; }
-.carousel__progress-bar { height: 100%; width: 30%; background: var(--ict-blue); border-radius: var(--radius-pill); transition: width 0.15s ease, transform 0.15s ease; transform-origin: left; }
-.carousel__dots { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem; }
-.carousel__dots button { width: 9px; height: 9px; border-radius: 50%; background: var(--ict-blue-tint); border: none; padding: 0; transition: background-color .15s ease, transform .15s ease; }
-.carousel__dots button.is-active { background: var(--ict-blue); transform: scale(1.25); }
-.carousel__arrows { display: flex; gap: 0.6rem; }
-
-.scroll-hint { display: flex; align-items: center; gap: 0.5em; font-family: var(--font-head); font-size: 0.85rem; color: var(--grey); justify-content: center; margin-top: 0.6rem; }
-.scroll-hint svg { animation: nudge-right 1.6s ease-in-out infinite; }
-@keyframes nudge-right { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
-
-/* ---- Plan cards ---- */
-.plan-card {
-  width: 270px; background: var(--white); border: 1px solid var(--ict-blue-tint);
-  border-radius: var(--radius-md); padding: 1.6rem 1.5rem; box-shadow: var(--shadow-soft);
-  display: flex; flex-direction: column; transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-.plan-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
-.plan-card__name { font-family: var(--font-head); font-weight: 700; color: var(--ict-grey); font-size: 1rem; margin-bottom: 0.3em; }
-.plan-card__data { font-family: var(--font-head); font-weight: 700; color: var(--ict-blue); font-size: 2.4rem; line-height: 1; margin-bottom: 0.1em; }
-.plan-card__data span { font-size: 1rem; color: var(--ict-grey); font-weight: 500; margin-left: 0.15em; }
-.plan-card__sub { font-size: 0.85rem; color: var(--light-grey); margin-bottom: 1.1em; }
-.plan-card__list { display: flex; flex-direction: column; gap: 0.55em; margin-bottom: 1.4em; }
-.plan-card__list li { display: flex; align-items: flex-start; gap: 0.55em; font-size: 0.92rem; color: var(--ict-grey); list-style: none; }
-.plan-card__list svg { flex: none; margin-top: 0.2em; color: var(--ict-blue); }
-.plan-card .btn { margin-top: auto; justify-content: center; }
-
-/* ---- CRM integrations marquee ---- */
-.marquee { padding-block: clamp(1rem, 2vw, 1.5rem) clamp(2rem, 4vw, 3rem); }
-.marquee .eyebrow { margin-bottom: 2rem; }
-.marquee__track-wrap { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 100%); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 100%); }
-.marquee__track { display: flex; align-items: center; gap: clamp(2.5rem, 6vw, 4.5rem); width: max-content; animation: marquee-scroll 60s linear infinite; }
-.marquee__track img { height: 34px; width: auto; }
-@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; overflow-x: auto; } }
-
-/* ---- Section spacing ---- */
-section.comms-hero {
-  padding-bottom: clamp(2rem, 4vw, 3rem);
-}
-section.comms-crm {
-  padding-top: clamp(1.5rem, 3vw, 2.5rem);
-  padding-bottom: clamp(1rem, 2vw, 1.5rem);
-}
-section.comms-plans {
-  padding-top: clamp(2rem, 4vw, 3rem);
-  padding-bottom: clamp(1rem, 2vw, 1.5rem);
-}
-section.comms-features {
-  padding-top: clamp(2rem, 4vw, 3rem);
-}
-
-.comms-integration__head {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.comms-integration__head .marquee__track-wrap {
-  width: 860px; /* ← dial this to control how far left it spans */
-  flex-shrink: 0;
-  margin-left: auto;
-  padding-bottom: 1.5rem;
-}
-
-.comms-integration__head .eyebrow {
-  align-self: flex-end;   /* or try flex-start / center */
-  /* optional fine-tuning */
-  margin-bottom: 0.2rem;  /* dial this if you need a bit more space */
 }

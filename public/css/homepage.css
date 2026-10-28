@@ -109,7 +109,7 @@
 .marquee { padding-block: clamp(1rem, 2vw, 1.5rem) clamp(2rem, 4vw, 3rem); }
 .marquee .eyebrow { margin-bottom: 2.5rem; }
 .marquee__track-wrap { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.marquee__track { display: flex; align-items: center; gap: clamp(2.5rem, 6vw, 4.5rem); width: max-content; animation: marquee-scroll 130s linear infinite; }
+.marquee__track { display: flex; align-items: center; gap: clamp(2.5rem, 6vw, 4.5rem); width: max-content; animation: marquee-scroll 183s linear infinite; }
 .marquee:hover .marquee__track { animation-play-state: paused; }
 .marquee__track img { height: 34px; width: auto; }
 .marquee + .marquee { padding-top: 0; }
@@ -117,7 +117,7 @@
 @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; overflow-x: auto; } }
 
 /* ---- Network partners marquee ---- */
-.marquee--reverse .marquee__track { animation-direction: reverse; animation-duration: 145s; }
+.marquee--reverse .marquee__track { animation-direction: reverse; animation-duration: 250s; }
 .marquee--grey .marquee__track img { filter: grayscale(1); opacity: 0.5; }
 
 /* ---- Service tiles ---- */

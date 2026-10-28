@@ -47,7 +47,7 @@
 
   <div class="stat-row">
     <p class="stat-row__figure"><span data-count-to="22" data-suffix=" yrs">0</span></p>
-    <p class="stat-row__label">Of trusted business</p>
+    <p class="stat-row__label">Of trusted service</p>
   </div>
 
   <div class="stat-row">
@@ -67,11 +67,13 @@
   <div class="marquee__track-wrap">
     <div class="marquee__track">
       <% var logos = [
-        'Aim','Bata','bing','BlacknDecker','Blundstone','Bosistos','bowens','bowls',
-        'Braun','britex','Chemist','cool','de','EUKY','Exxim','GJK',
-        'Greenbynature','Jellis','Livelife','McColls','oapl','Oped','Paragon','RainHorne',
-        'ray','seaworld','SecureCorp','Smaart','vicks','Woodards','Yellow','professionals'
-      ]; %>
+  'Aim','Bata','bing','BlacknDecker','Blundstone','Bosistos','bowens','bowls',
+  'Braun','britex','Chemist','cool','de','EUKY','Exxim','GJK',
+  'Greenbynature','Jellis','Livelife','McColls','oapl','Oped','Paragon','RainHorne',
+  'ray','seaworld','SecureCorp','Smaart','vicks','Woodards','Yellow','professionals',
+  'DG','glenn','hunts','Kane','Ladele','lovisa','millenimum','mrc',
+  'nationwide','Ruyton','twinnings','victoria-racing','Versace'
+]; %>
       <% [0, 1].forEach(function(copy){ %>
         <% logos.forEach(function(name){ %>
           <img src="/images/<%= name %>.webp"
@@ -93,18 +95,26 @@
   <div class="marquee__track-wrap">
     <div class="marquee__track">
       <% var network = [
-        { file: '3cx', name: '3CX' },
-        { file: 'cisco', name: 'Cisco' },
-        { file: 'crowd', name: 'CrowdStrike' },
-        { file: 'kyo', name: 'Kyocera' },
-        { file: 'Microsoft', name: 'Microsoft' },
-        { file: 'Lenovo', name: 'Lenovo' },
-        { file: 'nbnlogo', name: 'nbn' },
-        { file: 'samsung', name: 'Samsung' },
-        { file: 'telstra', name: 'Telstra' },
-        { file: 'yealink', name: 'Yealink' },
-        { file: 'apple', name: 'Apple' }
-      ]; %>
+  { file: '3cx', name: '3CX' },
+  { file: 'cisco', name: 'Cisco' },
+  { file: 'crowd', name: 'CrowdStrike' },
+  { file: 'kyo', name: 'Kyocera' },
+  { file: 'Microsoft', name: 'Microsoft' },
+  { file: 'Lenovo', name: 'Lenovo' },
+  { file: 'nbnlogo', name: 'nbn' },
+  { file: 'samsung', name: 'Samsung' },
+  { file: 'telstra', name: 'Telstra' },
+  { file: 'yealink', name: 'Yealink' },
+  { file: 'apple', name: 'Apple' },
+  { file: 'aws', name: 'AWS' },
+  { file: 'fortinet', name: 'Fortinet' },
+  { file: 'googlecloud', name: 'Google Cloud' },
+  { file: 'hpent', name: 'HPE' },
+  { file: 'uifylgo', name: 'Unify' },
+  { file: 'openai', name: 'OpenAI' },
+  { file: 'veeam', name: 'Veeam' },
+  { file: 'vmware', name: 'VMware' }
+]; %>
       <% [0, 1, 2, 3].forEach(function(copy){ %>
         <% network.forEach(function(p){ %>
           <img src="/images/<%= p.file %>.webp"

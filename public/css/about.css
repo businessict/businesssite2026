@@ -1,227 +1,528 @@
 /* =========================================================
-   BUSINESS ICT AUSTRALIA — About page timeline
-   Extends style.css. Load AFTER style.css:
-   <link rel="stylesheet" href="/css/style.css">
+   BUSINESS ICT AUSTRALIA — About page
+   Load AFTER base.css:
+   <link rel="stylesheet" href="/css/base.css">
    <link rel="stylesheet" href="/css/about.css">
    Uses the existing brand tokens (--ict-blue, --dark-grey, etc.)
-   defined in :root in style.css — no new colours introduced.
    ========================================================= */
 
 /* ---------------------------------------------------------
-   Journey intro — full width (this page only)
+   SPACING CONTROLS — change these to tighten or loosen the page
    --------------------------------------------------------- */
-.section-head__copy {
-  max-width: none;
-}
-.section-head__copy p {
-  max-width: none;
+:root {
+  --about-pad: clamp(2.5rem, 5vw, 4rem);       /* top + bottom padding of every About section */
+  --about-accent: #b8bf6e;                      /* the olive rule under headings */
+  --about-dash: #c3c7cc;                        /* dashed placeholder outlines */
 }
 
-.section-head__copy p:not(:last-child) {
-  margin-bottom: 0.8em;
+section.about-section {
+  padding-top: var(--about-pad);
+  padding-bottom: var(--about-pad);
+}
+
+/* Tinted full-width bands */
+.about-band {
+  background: var(--ict-blue-tint);
 }
 
 /* ---------------------------------------------------------
-   Intro + timeline slide-in, staggered
+   Reveal (same slide-in as the rest of the site)
    --------------------------------------------------------- */
+.about-reveal {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 1.1s ease, transform 1.7s ease;
+}
+.about-reveal.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---------------------------------------------------------
+   Shared headings, rule and copy
+   --------------------------------------------------------- */
+.about-title {
+  font-family: var(--font-head);
+  font-weight: 500;
+  color: var(--ict-blue);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  line-height: 1.12;
+  max-width: 18em;
+  margin: 0 0 0.6em;
+}
+
+.about-lead {
+  font-size: 1.1rem;
+  color: var(--ict-grey);
+  max-width: 36em;
+  margin-bottom: 2rem;
+}
+
+.about-note {
+  font-size: 0.78rem;
+  color: var(--ict-grey);
+  margin-top: 0.7rem;
+  margin-bottom: 2.2rem;
+}
+
+/* ---------------------------------------------------------
+   1. Hero
+   --------------------------------------------------------- */
+.about-hero__title {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1.05;
+  max-width: 14em;
+  margin-bottom: 0.5em;
+}
+.about-hero__lead {
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  color: var(--ict-grey);
+  max-width: 34em;
+  margin-bottom: 2rem;
+}
+.about-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ---------------------------------------------------------
+   2. Stats
+   --------------------------------------------------------- */
+.about-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+.about-stat__figure {
+  font-family: var(--font-head);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1;
+  color: var(--ict-blue);
+  margin-bottom: 0.2em;
+}
+.about-stat__label {
+  font-size: 0.95rem;
+  color: var(--ict-grey);
+  max-width: 14em;
+  margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------
+   Logo / photo placeholders (swap the text for an <img> later)
+   --------------------------------------------------------- */
+.about-logo-slot {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  min-height: 64px;
+  padding: 0.6rem 0.8rem;
+  border: 2px dashed var(--about-dash);
+  border-radius: var(--radius-md);
+  font-size: 0.78rem;
+  color: var(--ict-grey);
+}
+.about-logo-slot img {
+  display: block;
+  max-width: 100%;
+  max-height: 44px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ---------------------------------------------------------
+   3. Scale and trust: logo row
+   --------------------------------------------------------- */
+.about-logos {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+/* ---------------------------------------------------------
+   Cards (trust points + partnership cards)
+   --------------------------------------------------------- */
+.about-cards {
+  display: grid;
+  gap: 1.4rem;
+}
+.about-cards--4 { grid-template-columns: repeat(4, 1fr); }
+.about-cards--3 { grid-template-columns: repeat(3, 1fr); margin-top: 2rem; }
+
+.about-card {
+  background: var(--white);
+  border: 1px solid var(--ict-blue-tint);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: 1.6rem 1.5rem;
+}
+.about-card h3 {
+  font-family: var(--font-head);
+  font-weight: 500;
+  color: var(--ict-blue);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+.about-card p {
+  font-size: 0.92rem;
+  color: var(--ict-grey);
+  margin-bottom: 0;
+}
+
+.about-card--partner .about-logo-slot {
+  margin-bottom: 1.2rem;
+  min-height: 56px;
+}
+
+/* ---------------------------------------------------------
+   6. The people
+   --------------------------------------------------------- */
+.about-team {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+  margin-top: 2rem;
+}
+.about-person__photo {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  color: var(--ict-grey);
+  margin-bottom: 1.4rem;   /* ← space between photo and name */
+  overflow: hidden;
+}
+.about-person__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.about-person h3 {
+  font-family: var(--font-head);
+  font-weight: 500;
+  color: var(--ict-blue);
+  font-size: 1.1rem;
+  margin: 0 0 0.15em;
+}
+.about-person p {
+  font-size: 0.85rem;
+  color: var(--ict-grey);
+  margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------
+   7. How a partnership works
+   --------------------------------------------------------- */
+.about-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+  margin-top: 2rem;
+}
+.about-step {
+  border-top: 3px solid var(--about-accent);
+  padding-top: 1rem;
+}
+.about-step__num {
+  font-family: var(--font-head);
+  font-weight: 300;
+  font-size: 2.2rem;
+  line-height: 1;
+  color: var(--ict-blue);
+  margin-bottom: 0.2em;
+}
+.about-step h3 {
+  font-family: var(--font-head);
+  font-weight: 500;
+  color: var(--ict-blue);
+  font-size: 1.2rem;
+  margin-bottom: 0.4em;
+}
+.about-step p:last-child {
+  font-size: 0.9rem;
+  color: var(--ict-grey);
+  margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------
+   8. Technology partners
+   --------------------------------------------------------- */
+.about-tech {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem clamp(1.5rem, 4vw, 2.5rem);
+}
+.about-tech li {
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--ict-grey);
+}
+
+/* ---------------------------------------------------------
+   9. Call to action
+   --------------------------------------------------------- */
+section.about-cta {
+  background: var(--ict-blue);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.about-cta h2 {
+  font-family: var(--font-head);
+  font-weight: 500;
+  color: var(--white);
+  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+  line-height: 1.1;
+  margin: 0 0 1.5rem;
+}
+.about-cta .about-cta__btn {
+  background: var(--white);
+  border-color: var(--white);
+  color: var(--ict-blue-700, #0b6a9c);
+}
+.about-cta .about-cta__btn:hover,
+.about-cta .about-cta__btn:focus-visible {
+  background: var(--ict-blue-tint);
+  border-color: var(--ict-blue-tint);
+}
+
+/* ---------------------------------------------------------
+   Responsive (new sections)
+   --------------------------------------------------------- */
+@media (max-width: 1000px) {
+  .about-logos { grid-template-columns: repeat(3, 1fr); }
+  .about-cards--4,
+  .about-team,
+  .about-steps { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .about-stats__grid { grid-template-columns: repeat(2, 1fr); }
+  .about-cards--3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .about-logos { grid-template-columns: repeat(2, 1fr); }
+  .about-cards--4,
+  .about-steps { grid-template-columns: 1fr; }
+  .about-team { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .about-hero__ctas .btn { flex: 1 1 auto; text-align: center; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+
+/* =========================================================
+   OUR STORY: intro + stacked card timeline
+   ========================================================= */
+
+/* Intro: full width, slide-in */
+.section-head__copy,
+.section-head__copy p {
+  max-width: none;
+}
 .section-head {
   opacity: 0;
   transform: translateX(-40px);
   transition: opacity 1.1s ease, transform 1.7s ease;
+  margin-bottom: 2rem;
 }
 .section-head.is-visible {
   opacity: 1;
   transform: translateX(0);
 }
 
-.timeline {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1.1s ease, transform 1.5s ease;
-  transition-delay: 0.3s;
+/* ---- Deck ----
+   The script sets --step, --card-w and --shrink so the stack always
+   fills the container. Tune the look with the constants at the top of
+   the script (CARD_MAX, SHRINK, FADE is below). */
+.story-deck {
+  --step: 130px;
+  --card-w: 520px;
+  --shrink: 0.04;
+  --fade: 0.08;                  /* ← how much lighter each card gets per step back */
+  outline: none;
 }
-.timeline.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.story-deck:focus-visible { outline: 3px solid var(--ict-blue); outline-offset: 6px; border-radius: var(--radius-md); }
 
-/* ---------------------------------------------------------
-   Legend / track key (sits above the timeline)
-   --------------------------------------------------------- */
-.timeline-key {
-  display: flex;
-  justify-content: center;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  flex-wrap: wrap;
-  margin-bottom: clamp(2rem, 5vw, 3rem);
-}
-.timeline-key__item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
-  font-family: var(--font-head);
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--ict-grey);
-}
-.timeline-key__swatch {
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  flex: none;
-}
-.timeline-key__swatch--industry { background: var(--dark-grey); }
-.timeline-key__swatch--business { background: var(--ict-blue); }
-
-/* ---------------------------------------------------------
-   Timeline shell — single column, left-aligned spine
-   --------------------------------------------------------- */
-.timeline {
+.story-deck__stage {
   position: relative;
-}
-
-/* Left spine */
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0; left: 9px;
-  width: 2px;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    var(--ict-blue-tint) 4%,
-    var(--ict-blue-tint) 96%,
-    transparent 100%
-  );
-}
-
-.timeline__row {
-  position: relative;
-  display: grid;
-  grid-template-columns: 20px 1fr;
-  gap: 1.5rem;
+  height: 300px;                 /* script sets the real height from the tallest card */
   margin-bottom: 2.2rem;
-}
-.timeline__row:last-child { margin-bottom: 0; }
-
-/* ---------------------------------------------------------
-   Node — the year + dot sitting on the spine
-   --------------------------------------------------------- */
-.timeline__node {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-  padding-top: 0.3rem;
-}
-.timeline__dot {
-  width: 18px; height: 18px;
-  border-radius: 50%;
-  background: var(--white);
-  border: 3px solid var(--ict-blue);
-  box-shadow: 0 0 0 6px var(--white);
-  z-index: 1;
-}
-.timeline__year {
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: 0.8rem;
-  color: var(--dark-grey);
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
+  touch-action: pan-y;
 }
 
-/* ---------------------------------------------------------
-   Event cards
-   --------------------------------------------------------- */
-.timeline-card {
-  width: 100%;
+.story-card {
+  --pos: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--card-w);
   background: var(--white);
   border: 1px solid var(--ict-blue-tint);
+  border-left: 4px solid var(--ict-blue);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-soft);
-  padding: 1.3rem 1.5rem;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  padding: 1.8rem 1.9rem;
+  overflow: hidden;
+  transform-origin: left center;
+  transform: translateX(calc(var(--pos) * var(--step))) scale(calc(1 - var(--pos) * var(--shrink)));
+  z-index: calc(10 - var(--pos));
+  transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.3s ease;
+  cursor: pointer;
 }
-.timeline-card:hover {
-  transform: translateY(-4px);
+.story-card[data-pos="0"] {
   box-shadow: var(--shadow-lift);
+  cursor: default;
 }
-.timeline-card--business {
-  border-left: 4px solid var(--ict-blue);
+.story-card[data-pos="past"] {
+  transform: translateX(-60px) scale(1);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.4s ease;
+}
+
+/* Depth fade: a white tint that gets stronger the further back the card sits */
+.story-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: var(--white);
+  border-radius: inherit;
+  opacity: calc(var(--pos) * var(--fade));
+  pointer-events: none;
+  transition: opacity 0.4s ease;
 }
-.timeline-card__eyebrow {
-  display: block;
+
+/* Cards behind: hide the text, show only the year in the visible strip */
+.story-card > *:not(.story-card__tag) { transition: opacity 0.3s ease; }
+.story-card:not([data-pos="0"]) > *:not(.story-card__tag) { opacity: 0; }
+
+.story-card__tag {
+  position: absolute;
+  top: 1.3rem;
+  right: 1rem;
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  margin-bottom: 0.4em;
   color: var(--ict-blue);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
-.timeline-card h3 {
-  font-size: 1.05rem;
-  margin-bottom: 0.35em;
-}
-.timeline-card p {
-  font-size: 0.9rem;
-  margin-bottom: 0;
-  max-width: none;
-}
+.story-deck.has-tags .story-card:not([data-pos="0"]):not([data-pos="past"]) .story-card__tag { opacity: 1; }
 
-/* ---------------------------------------------------------
-   "Today" end cap
-   --------------------------------------------------------- */
-.timeline__end {
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: center;
-  margin-top: 0.5rem;
-}
-.timeline__end-badge {
+/* Text: event is the hero, year is the small label */
+.story-card__year {
   font-family: var(--font-head);
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--white);
-  background: var(--ict-blue);
-  padding: 0.6em 1.6em;
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-lift);
+  font-weight: 400;
+  font-size: 1.2rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--ict-blue);
+  margin-bottom: 0.6em;
+}
+.story-card h3 {
+  font-family: var(--font-head);
+  font-weight: 500;
+  color: var(--dark-grey);
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  line-height: 1.15;
+  margin: 0 0 0.55em;
+}
+.story-card p:last-child {
+  font-size: 0.98rem;
+  color: var(--ict-grey);
+  margin-bottom: 0;
 }
 
-/* ---------------------------------------------------------
-   Mobile — single column, spine moves to the left
-   --------------------------------------------------------- */
-@media (max-width: 760px) {
-  .timeline::before {
-    left: 20px;
-    transform: none;
-  }
-  .timeline__row {
-    grid-template-columns: 40px 1fr;
-  }
-  .timeline__node {
-    grid-column: 1;
-    padding-top: 0.3rem;
-  }
-  .timeline__year {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-  }
-  .timeline__side--left,
-  .timeline__side--right {
-    grid-column: 2;
-    justify-content: flex-start;
-    padding-left: 1.25rem;
-    padding-right: 0;
-  }
-  .timeline-card { max-width: none; }
-  /* On mobile every row needs its own left/right pair stacked,
-     so business + industry cards in the same row stack vertically */
-  .timeline__row--dual .timeline__side--right {
-    margin-top: 1rem;
-  }
+/* ---- Rail ---- */
+.story-nav {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.story-rail {
+  position: relative;
+  display: flex;
+}
+.story-rail::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--ict-blue-tint);
+}
+.story-rail__item {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-head);
+  color: var(--ict-grey);
+}
+.story-rail__dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--ict-blue-tint);
+  box-shadow: 0 0 0 5px var(--white);
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.story-rail__label {
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.story-rail__item:hover .story-rail__dot { border-color: var(--ict-blue); }
+.story-rail__item:focus-visible { outline: 3px solid var(--ict-blue); outline-offset: 4px; border-radius: 4px; }
+.story-rail__item.is-done .story-rail__dot { border-color: var(--ict-blue); }
+.story-rail__item.is-active .story-rail__dot {
+  background: var(--ict-blue);
+  border-color: var(--ict-blue);
+  transform: scale(1.2);
+}
+.story-rail__item.is-active .story-rail__label {
+  color: var(--dark-grey);
+  font-weight: 700;
+}
+
+.story-nav__btn:disabled { opacity: 0.35; cursor: default; }
+
+/* ---- Mobile ---- */
+@media (max-width: 700px) {
+  .story-card { padding: 1.4rem 1.3rem; }
+  .story-rail__label { font-size: 0.72rem; }
+}
+@media (max-width: 560px) {
+  .story-nav { grid-template-columns: 1fr; }
+  .story-nav__btn { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-card { transition: none; }
 }

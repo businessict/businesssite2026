@@ -15,77 +15,294 @@
 
 <%- include('partials/header') %>
 
-<section>
+
+<!-- ============ 1. HERO ============ -->
+<section class="about-section about-hero">
+  <div class="wrap">
+    <div class="about-reveal" data-reveal>
+      <span class="eyebrow">About us</span>
+      <h1 class="about-hero__title">Twenty-two years. <br>Still the people you call.</h1>
+      <p class="about-hero__lead">Since 2004, Business ICT Australia has been the long-term technology partner behind Australian businesses, from growing mid-market enterprises to ASX-listed organisations. <br>We make ICT easy, and we stay for the long run.</p>
+      <div class="about-hero__ctas">
+        <a href="/contact" class="btn btn--primary">Chat to our team</a>
+        <a href="#people" class="btn btn--outline">Meet the team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 2. STATS BAND ============ -->
+<section class="about-section about-band about-stats">
+  <div class="wrap">
+    <div class="about-stats__grid about-reveal" data-reveal>
+      <div class="about-stat">
+        <p class="about-stat__figure">12K+</p>
+        <p class="about-stat__label">End users supported</p>
+      </div>
+      <div class="about-stat">
+        <p class="about-stat__figure">1.2K+</p>
+        <p class="about-stat__label">Businesses served</p>
+      </div>
+      <div class="about-stat">
+        <p class="about-stat__figure">22+</p>
+        <p class="about-stat__label">Years keeping businesses connected</p>
+      </div>
+      <div class="about-stat">
+        <p class="about-stat__figure">[__]</p>
+        <p class="about-stat__label">[Average client relationship, in years]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 3. SCALE AND TRUST ============ -->
+<section class="about-section">
+  <div class="wrap">
+    <div class="about-reveal" data-reveal>
+      <span class="eyebrow">Scale and trust</span>
+      <h2 class="about-title">Built for businesses that can’t afford downtime.</h2>
+      <p class="about-lead">From large mid-market enterprises to ASX-listed organisations, we run the connectivity, communications and security that keep them operating.</p>
+
+      <div class="about-logos">
+        <div class="about-logo-slot">[Client logo]</div>
+        <div class="about-logo-slot">[Client logo]</div>
+        <div class="about-logo-slot">[Client logo]</div>
+        <div class="about-logo-slot">[ASX-listed client logo]</div>
+        <div class="about-logo-slot">[ASX-listed client logo]</div>
+        <div class="about-logo-slot">[Client logo]</div>
+      </div>
+      <p class="about-note">Client logos shown with permission.</p>
+
+      <div class="about-cards about-cards--4">
+        <article class="about-card">
+          <h3>A named account lead</h3>
+          <p>One person who knows your business, your sites and your plans.</p>
+        </article>
+        <article class="about-card">
+          <h3>Regular business reviews</h3>
+          <p>Planned check-ins on performance, cost and what’s coming next.</p>
+        </article>
+        <article class="about-card">
+          <h3>Resilient by design</h3>
+          <p>Carrier-diverse paths with 5G backup, so one outage never takes you offline.</p>
+        </article>
+        <article class="about-card">
+          <h3>Visibility and reporting</h3>
+          <p>MyAccount gives your IT and finance teams daily usage and cost-centre reporting.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 4. LONG-TERM PARTNERSHIPS ============ -->
+<section class="about-section about-band">
+  <div class="wrap">
+    <div class="about-reveal" data-reveal>
+      <span class="eyebrow">Long-term partnerships</span>
+      <h2 class="about-title">Partnerships that grow with you.</h2>
+
+      <div class="about-cards about-cards--3">
+        <article class="about-card about-card--partner">
+          <div class="about-logo-slot">[Client logo]</div>
+          <h3>With us since [YEAR]</h3>
+          <p>[One line on how the relationship grew, from first service to the full partnership today.]</p>
+        </article>
+        <article class="about-card about-card--partner">
+          <div class="about-logo-slot">[Client logo]</div>
+          <h3>With us since [YEAR]</h3>
+          <p>[One line on how the relationship grew, from first service to the full partnership today.]</p>
+        </article>
+        <article class="about-card about-card--partner">
+          <div class="about-logo-slot">[Client logo]</div>
+          <h3>With us since [YEAR]</h3>
+          <p>[One line on how the relationship grew, from first service to the full partnership today.]</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 5. OUR STORY ============ -->
+<section class="about-section">
   <div class="wrap">
     <div class="section-head" data-reveal>
       <div class="section-head__copy">
-        <span class="eyebrow">Our Journey</span>
-        <h1>Two decades of change — one steady partner</h1>
-        <p>Business ICT Australia is an Information &amp; Communications Technology company focused on providing best-in-class unified communications, managed networks, mobility, and IT services for Australian enterprises.</p>
-        <p>We're a local team helping Australian businesses stay connected, protected, and productive.</p>
-        <p>Australian telecommunications has moved fast since 2004 — from copper and 3G to fibre, 5G and cloud. Here's how that industry shifted, alongside how Business ICT grew to meet it.</p>
+        <span class="eyebrow">Our Story</span>
+        <h1>Moments that shaped us</h1>
+        <p>Australian telecommunications has moved fast since 2004. From copper and 3G to fibre, 5G and cloud. Here's how that industry shifted, alongside how Business ICT grew to meet it.</p>
       </div>
     </div>
 
-    <div class="timeline" data-reveal>
+    <div class="about-reveal" data-reveal>
+      <div class="story-deck" data-story tabindex="0" aria-roledescription="carousel" aria-label="Our story timeline">
 
-  <div class="timeline__row">
-    <div class="timeline__node">
-      <span class="timeline__dot"></span>
-      <span class="timeline__year">2004</span>
-    </div>
-    <div class="timeline__side">
-      <div class="timeline-card timeline-card--business">
-        <span class="timeline-card__eyebrow">Business ICT</span>
-        <h3>The telco dealership begins</h3>
-        <p>Our roots start here, in a telco dealership — the foundation everything else was built on.</p>
+        <div class="story-deck__stage">
+          <article class="story-card">
+            <p class="story-card__year">2004</p>
+            <h3>Founded</h3>
+            <p>A business telecommunications dealership, founded in Melbourne.</p>
+          </article>
+
+          <article class="story-card">
+            <p class="story-card__year">2010 to 2013</p>
+            <h3>Ownership and expansion</h3>
+            <p>A management buyout, then new offices in Melbourne’s north, Sydney and Geelong, with agents in key markets, bringing local knowledge and service to more clients.</p>
+          </article>
+
+          <article class="story-card">
+            <p class="story-card__year">2014</p>
+            <h3>Business ICT Australia</h3>
+            <p>A new brand and a broader offer of cloud services, dedicated fibre, security and mobile device management, giving clients more from one technology partner.</p>
+          </article>
+
+          <article class="story-card">
+            <p class="story-card__year">2021</p>
+            <h3>Our own platform</h3>
+            <p>Investment in our own mobile Carrier Service Provider model, launched alongside the MyAccount portal, giving clients better service and clear visibility of services, daily usage and cost-centre control.</p>
+          </article>
+
+          <article class="story-card">
+            <p class="story-card__year">2022</p>
+            <h3>Managed IT</h3>
+            <p>A dedicated managed IT practice, with SD-WAN front and centre as the industry evolves, giving clients cost-effective, proactive support and security across every site.</p>
+          </article>
+
+          <article class="story-card">
+            <p class="story-card__year">2025 to 2026</p>
+            <h3>Intelligent integration</h3>
+            <p>CRM integration and AI agents now complement our unified communications platforms, improving efficiency and continuity in every conversation.</p>
+          </article>
+        </div>
+
+        <div class="story-nav">
+          <button type="button" class="round-btn story-nav__btn" data-story-prev aria-label="Previous moment">
+            <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 2L4 8l6 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <div class="story-rail">
+            <button type="button" class="story-rail__item" aria-label="Go to 2004, Founded"><span class="story-rail__dot"></span><span class="story-rail__label">2004</span></button>
+            <button type="button" class="story-rail__item" aria-label="Go to 2010 to 2013, Ownership and expansion"><span class="story-rail__dot"></span><span class="story-rail__label">2010 to 2013</span></button>
+            <button type="button" class="story-rail__item" aria-label="Go to 2014, Business ICT Australia"><span class="story-rail__dot"></span><span class="story-rail__label">2014</span></button>
+            <button type="button" class="story-rail__item" aria-label="Go to 2021, Our own platform"><span class="story-rail__dot"></span><span class="story-rail__label">2021</span></button>
+            <button type="button" class="story-rail__item" aria-label="Go to 2022, Managed IT"><span class="story-rail__dot"></span><span class="story-rail__label">2022</span></button>
+            <button type="button" class="story-rail__item" aria-label="Go to 2025 to 2026, Intelligent integration"><span class="story-rail__dot"></span><span class="story-rail__label">2025 to 2026</span></button>
+          </div>
+
+          <button type="button" class="round-btn story-nav__btn" data-story-next aria-label="Next moment">
+            <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 2l6 6-6 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
       </div>
     </div>
   </div>
+</section>
 
-  <div class="timeline__row">
-    <div class="timeline__node">
-      <span class="timeline__dot"></span>
-      <span class="timeline__year">2015</span>
-    </div>
-    <div class="timeline__side">
-      <div class="timeline-card timeline-card--business">
-        <span class="timeline-card__eyebrow">Business ICT</span>
-        <h3>Business ICT is born</h3>
-        <p>The dealership evolves into Business ICT Australia — a dedicated ICT solutions provider for Melbourne SMBs.</p>
+
+<!-- ============ 6. THE PEOPLE ============ -->
+<section class="about-section about-band" id="people">
+  <div class="wrap">
+    <div class="about-reveal" data-reveal>
+      <span class="eyebrow">The people</span>
+      <h2 class="about-title">Our Senior Leadership Team.</h2>
+
+      <div class="about-team">
+        <div class="about-person">
+          <div class="about-person__photo"><img src="/images/andrew-kennedy.webp" alt="Andrew Kennedy, Founder &amp; CEO" loading="lazy"></div>
+          <h3>Andrew Kennedy</h3>
+          <p>Founder &amp; CEO <br>22+ years</p>
+        </div>
+        <div class="about-person">
+          <div class="about-person__photo"><img src="/images/nick-kennedy.webp" alt="Nick Kennedy, Director of Technology &amp; Operations" loading="lazy"></div>
+          <h3>Nick Kennedy</h3>
+          <p>Director of Technology &amp; Operations <br>13+ years with us</p>
+        </div>
+        <div class="about-person">
+          <div class="about-person__photo"><img src="/images/iwan-surjadi.webp" alt="Iwan Surjadi, Head of Finance &amp; Administration" loading="lazy"></div>
+          <h3>Iwan Surjadi</h3>
+          <p>Head of Finance &amp; Administration <br>18+ years with us</p>
+        </div>
+        <div class="about-person">
+          <div class="about-person__photo"><img src="/images/eltino-yermias.webp" alt="Eltino Yermias, Enterprise Account Director" loading="lazy"></div>
+          <h3>Eltino Yermias</h3>
+          <p>Enterprise Account Director <br>17+ years with us</p>
+        </div>
+        <div class="about-person">
+          <div class="about-person__photo"><img src="/images/halle-zohab.webp" alt="Halle Zohab, Project Delivery Manager" loading="lazy"></div>
+          <h3>Halle Zohab</h3>
+          <p>Project Delivery Manager <br>15+ years with us</p>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="timeline__row">
-    <div class="timeline__node">
-      <span class="timeline__dot"></span>
-      <span class="timeline__year">2021</span>
-    </div>
-    <div class="timeline__side">
-      <div class="timeline-card timeline-card--business">
-        <span class="timeline-card__eyebrow">Business ICT</span>
-        <h3>A new home in Mount Waverley</h3>
-        <p>Business ICT moves into its Mount Waverley office.</p>
+
+<!-- ============ 7. HOW A PARTNERSHIP WORKS ============ -->
+<section class="about-section">
+  <div class="wrap">
+    <div class="about-reveal" data-reveal>
+      <span class="eyebrow">How a partnership works</span>
+      <h2 class="about-title">Connect. Protect. Optimise. Grow.</h2>
+
+      <div class="about-steps">
+        <div class="about-step">
+          <p class="about-step__num">01</p>
+          <h3>Connect</h3>
+          <p>The right network, carrier and communications for every site.</p>
+        </div>
+        <div class="about-step">
+          <p class="about-step__num">02</p>
+          <h3>Protect</h3>
+          <p>Layered security and a rapid-response support team.</p>
+        </div>
+        <div class="about-step">
+          <p class="about-step__num">03</p>
+          <h3>Optimise</h3>
+          <p>Daily visibility of usage and cost in MyAccount.</p>
+        </div>
+        <div class="about-step">
+          <p class="about-step__num">04</p>
+          <h3>Grow</h3>
+          <p>New sites, services and AI tools added as you scale, with no re-platforming.</p>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="timeline__row">
-    <div class="timeline__node">
-      <span class="timeline__dot"></span>
-      <span class="timeline__year">Today</span>
-    </div>
-    <div class="timeline__side">
-      <div class="timeline-card timeline-card--business">
-        <span class="timeline-card__eyebrow">Business ICT</span>
-        <h3>A full-stack Melbourne MSP</h3>
-        <p>Telstra Wholesale mobiles, Cisco Meraki networking, Kyocera print, Yealink voice, and NBN &amp; fibre connectivity — one accountable local partner.</p>
-      </div>
+
+<!-- ============ 8. TECHNOLOGY PARTNERS ============ -->
+<section class="about-section about-band">
+  <div class="wrap">
+    <div class="about-reveal" data-reveal>
+      <span class="eyebrow">Technology partners</span>
+      <h2 class="about-title">Best-of-breed technology, chosen for you.</h2>
+
+      <ul class="about-tech">
+        <li>Telstra Wholesale</li>
+        <li>Cisco Meraki</li>
+        <li>Fortinet</li>
+        <li>Ubiquiti</li>
+        <li>3CX</li>
+      </ul>
     </div>
   </div>
+</section>
 
-</div>
+
+<!-- ============ 9. CALL TO ACTION ============ -->
+<section class="about-cta">
+  <div class="wrap">
+    <div class="about-reveal" data-reveal>
+      <h2>Let’s talk about your next five years.</h2>
+      <a href="/contact" class="btn about-cta__btn">Chat to our team</a>
+    </div>
   </div>
 </section>
 
@@ -93,6 +310,105 @@
 <%- include('partials/footer') %>
 
 <script src="/js/main.js" defer></script>
+<script>
+(function () {
+  var deck = document.querySelector('[data-story]');
+  if (!deck) return;
+
+  // ---- Tuning ----
+  var CARD_MAX = 560;   // widest the front card gets (px)
+  var SHRINK   = 0.04;  // how much smaller each card gets per step back
+  var MIN_STEP = 26;    // narrowest strip each back card shows (px), used on small screens
+  var TAG_MIN  = 96;    // only show the year in a strip if it is at least this wide
+
+  var stage = deck.querySelector('.story-deck__stage');
+  var cards = [].slice.call(deck.querySelectorAll('.story-card'));
+  var items = [].slice.call(deck.querySelectorAll('.story-rail__item'));
+  var prev  = deck.querySelector('[data-story-prev]');
+  var next  = deck.querySelector('[data-story-next]');
+  var active = 0;
+  var maxPos = cards.length - 1;
+
+  // Add a year tag to each card (shown in the strip when the card sits behind)
+  cards.forEach(function (card) {
+    var yearEl = card.querySelector('.story-card__year');
+    var tag = document.createElement('span');
+    tag.className = 'story-card__tag';
+    tag.setAttribute('aria-hidden', 'true');
+    tag.textContent = yearEl ? yearEl.textContent : '';
+    card.insertBefore(tag, card.firstChild);
+  });
+
+  function render() {
+    cards.forEach(function (card, i) {
+      var pos = i - active;
+      card.style.setProperty('--pos', Math.max(pos, 0));
+      card.setAttribute('data-pos', pos < 0 ? 'past' : String(pos));
+      card.setAttribute('aria-hidden', pos === 0 ? 'false' : 'true');
+    });
+    items.forEach(function (btn, i) {
+      btn.classList.toggle('is-active', i === active);
+      btn.classList.toggle('is-done', i < active);
+      btn.setAttribute('aria-current', i === active ? 'true' : 'false');
+    });
+    if (prev) prev.disabled = active === 0;
+    if (next) next.disabled = active === cards.length - 1;
+  }
+
+  function go(i) {
+    active = Math.min(Math.max(i, 0), cards.length - 1);
+    render();
+  }
+
+  // Size the stack to fill the container, then match all card heights
+  function layout() {
+    var stageW = stage.clientWidth;
+    var cardW = Math.min(CARD_MAX, (stageW - maxPos * MIN_STEP) / (1 - maxPos * SHRINK));
+    var step = maxPos ? (stageW - cardW * (1 - maxPos * SHRINK)) / maxPos : 0;
+
+    deck.style.setProperty('--card-w', cardW + 'px');
+    deck.style.setProperty('--step', step + 'px');
+    deck.style.setProperty('--shrink', SHRINK);
+    deck.classList.toggle('has-tags', step >= TAG_MIN);
+
+    var tallest = 0;
+    cards.forEach(function (c) { c.style.height = 'auto'; });
+    cards.forEach(function (c) { tallest = Math.max(tallest, c.offsetHeight); });
+    cards.forEach(function (c) { c.style.height = tallest + 'px'; });
+    stage.style.height = tallest + 'px';
+  }
+
+  cards.forEach(function (card, i) {
+    card.addEventListener('click', function () { if (i > active) go(i); });
+  });
+  items.forEach(function (btn, i) {
+    btn.addEventListener('click', function () { go(i); });
+  });
+  if (prev) prev.addEventListener('click', function () { go(active - 1); });
+  if (next) next.addEventListener('click', function () { go(active + 1); });
+
+  deck.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { go(active + 1); e.preventDefault(); }
+    if (e.key === 'ArrowLeft')  { go(active - 1); e.preventDefault(); }
+  });
+
+  // Swipe
+  var startX = null;
+  stage.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', function (e) {
+    if (startX === null) return;
+    var dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) go(active + (dx < 0 ? 1 : -1));
+    startX = null;
+  }, { passive: true });
+
+  window.addEventListener('resize', layout);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+  layout();
+  render();
+})();
+</script>
 </body>
 </html>
+
 

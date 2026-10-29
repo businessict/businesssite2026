@@ -28,52 +28,36 @@
         <a href="#people" class="btn btn--outline">Meet the team</a>
       </div>
     </div>
-  </div>
-</section>
 
+    <div class="stat-counters" data-stats>
 
-<!-- ============ 2. STATS BAND ============ -->
-<section class="about-section about-band about-stats">
-  <div class="wrap">
-    <div class="about-stats__grid about-reveal" data-reveal>
-      <div class="about-stat">
-        <p class="about-stat__figure">12K+</p>
-        <p class="about-stat__label">End users supported</p>
+      <div class="stat-row">
+        <p class="stat-row__figure"><span data-count-to="2004" data-suffix="">0</span></p>
+        <p class="stat-row__label">Founded</p>
       </div>
-      <div class="about-stat">
-        <p class="about-stat__figure">1.2K+</p>
-        <p class="about-stat__label">Businesses served</p>
+
+      <div class="stat-row">
+        <p class="stat-row__figure"><span data-count-to="22" data-suffix=" yrs">0</span></p>
+        <p class="stat-row__label">Of trusted service</p>
       </div>
-      <div class="about-stat">
-        <p class="about-stat__figure">22+</p>
-        <p class="about-stat__label">Years keeping businesses connected</p>
+
+      <div class="stat-row">
+        <p class="stat-row__figure"><span data-count-to="12" data-suffix="K+">0</span></p>
+        <p class="stat-row__label">End users supported</p>
       </div>
-      <div class="about-stat">
-        <p class="about-stat__figure">[__]</p>
-        <p class="about-stat__label">[Average client relationship, in years]</p>
-      </div>
+
     </div>
   </div>
 </section>
 
 
 <!-- ============ 3. SCALE AND TRUST ============ -->
-<section class="about-section">
+<section class="about-section" style="padding-top: 1rem;">
   <div class="wrap">
     <div class="about-reveal" data-reveal>
       <span class="eyebrow">Scale and trust</span>
       <h2 class="about-title">Built for businesses that can’t afford downtime.</h2>
       <p class="about-lead">From large mid-market enterprises to ASX-listed organisations, we run the connectivity, communications and security that keep them operating.</p>
-
-      <div class="about-logos">
-        <div class="about-logo-slot">[Client logo]</div>
-        <div class="about-logo-slot">[Client logo]</div>
-        <div class="about-logo-slot">[Client logo]</div>
-        <div class="about-logo-slot">[ASX-listed client logo]</div>
-        <div class="about-logo-slot">[ASX-listed client logo]</div>
-        <div class="about-logo-slot">[Client logo]</div>
-      </div>
-      <p class="about-note">Client logos shown with permission.</p>
 
       <div class="about-cards about-cards--4">
         <article class="about-card">
@@ -107,17 +91,17 @@
 
       <div class="about-cards about-cards--3">
         <article class="about-card about-card--partner">
-          <div class="about-logo-slot">[Client logo]</div>
+          <div class="about-logo-slot"><img src="/images/bowens.webp" alt="Bowens"></div>
           <h3>With us since [YEAR]</h3>
           <p>[One line on how the relationship grew, from first service to the full partnership today.]</p>
         </article>
         <article class="about-card about-card--partner">
-          <div class="about-logo-slot">[Client logo]</div>
+          <div class="about-logo-slot"><img src="/images/oapl.webp" alt="OAPL"></div>
           <h3>With us since [YEAR]</h3>
           <p>[One line on how the relationship grew, from first service to the full partnership today.]</p>
         </article>
         <article class="about-card about-card--partner">
-          <div class="about-logo-slot">[Client logo]</div>
+          <div class="about-logo-slot"><img src="/images/vicksnew.webp" alt="Vicks"></div>
           <h3>With us since [YEAR]</h3>
           <p>[One line on how the relationship grew, from first service to the full partnership today.]</p>
         </article>
@@ -277,31 +261,12 @@
 </section>
 
 
-<!-- ============ 8. TECHNOLOGY PARTNERS ============ -->
+<!-- ============ 9. CALL TO ACTION ============ -->
 <section class="about-section about-band">
   <div class="wrap">
     <div class="about-reveal" data-reveal>
-      <span class="eyebrow">Technology partners</span>
-      <h2 class="about-title">Best-of-breed technology, chosen for you.</h2>
-
-      <ul class="about-tech">
-        <li>Telstra Wholesale</li>
-        <li>Cisco Meraki</li>
-        <li>Fortinet</li>
-        <li>Ubiquiti</li>
-        <li>3CX</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============ 9. CALL TO ACTION ============ -->
-<section class="about-cta">
-  <div class="wrap">
-    <div class="about-reveal" data-reveal>
       <h2>Let’s talk about your next five years.</h2>
-      <a href="/contact" class="btn about-cta__btn">Chat to our team</a>
+      <a href="/contact" class="btn btn--primary">Chat to our team</a>
     </div>
   </div>
 </section>
@@ -310,6 +275,49 @@
 <%- include('partials/footer') %>
 
 <script src="/js/main.js" defer></script>
+
+<!-- Stats counter -->
+<script>
+(function () {
+  var statsBlock = document.querySelector('[data-stats]');
+  if (!statsBlock) return;
+
+  var counters = statsBlock.querySelectorAll('[data-count-to]');
+
+  function animateCounter(el) {
+    var target = parseFloat(el.getAttribute('data-count-to'));
+    var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1300;
+    var start = null;
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      var progress = Math.min((timestamp - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = (eased * target).toFixed(decimals) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target.toFixed(decimals) + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+
+  var hasAnimated = false;
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting && !hasAnimated) {
+        hasAnimated = true;
+        statsBlock.classList.add('is-visible');
+        counters.forEach(animateCounter);
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(statsBlock);
+})();
+</script>
+
+<!-- Story timeline -->
 <script>
 (function () {
   var deck = document.querySelector('[data-story]');

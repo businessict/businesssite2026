@@ -334,6 +334,20 @@ section.comms-features {
   color: var(--ict-blue, #1d99d5);
   margin-bottom: 1.2rem;
 }
+
+.feature-card__icon--img {
+  width: 64px;
+  height: 64px;
+  border: 0;
+  border-radius: 0;
+}
+.feature-card__icon--img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .feature-card h3 {
   font-family: var(--font-head);
   font-size: 1.05rem;

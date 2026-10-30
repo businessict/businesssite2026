@@ -191,9 +191,10 @@ section.about-section {
    --------------------------------------------------------- */
 .about-team {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);   /* was 4 (or 5) */
   gap: 1.4rem;
   margin-top: 2rem;
+  max-width: 900px;
 }
 .about-person__photo {
   display: grid;

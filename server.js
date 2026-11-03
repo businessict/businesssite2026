@@ -30,6 +30,42 @@ app.use(express.static(path.join(__dirname, 'public'), {
   etag: true
 }));
 
+// ---- Helpers ----
+// Escape anything a visitor typed before putting it in the email HTML
+function esc(value) {
+  return String(value == null ? '' : value).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+  });
+}
+
+// Remove line breaks so a visitor can't tamper with the email subject
+function oneLine(value) {
+  return String(value == null ? '' : value).replace(/[\r\n]+/g, ' ').trim();
+}
+
+// Ask Cloudflare whether the captcha was genuinely passed
+async function verifyTurnstile(token) {
+  if (!process.env.TURNSTILE_SECRET_KEY) {
+    console.error('TURNSTILE_SECRET_KEY is not set - rejecting form submission.');
+    return false;
+  }
+  try {
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        secret: process.env.TURNSTILE_SECRET_KEY,
+        response: token || ''
+      })
+    });
+    const result = await response.json();
+    return result.success === true;
+  } catch (err) {
+    console.error('Turnstile verification error:', err);
+    return false;
+  }
+}
+
 // ---- Routes ----
 app.get('/', (req, res) => {
   res.render('homepage', {
@@ -101,31 +137,62 @@ app.get('/contact', (req, res) => {
     metaDescription: 'Get in touch with Business ICT Australia. Request a call back or send us a message.',
     currentPath: '/contact',
     success: req.query.success || false,
-    error: req.query.error || false
+    error: req.query.error || false,
+    turnstileSiteKey: process.env.TURNSTILE_SITE_KEY || ''
+  });
+});
+
+// ---- Thank-you page (after a successful form submission) ----
+app.get('/thank-you', (req, res) => {
+  res.render('thankyou', {
+    pageTitle: 'Thank You | Business ICT Australia',
+    metaDescription: 'Thanks for getting in touch with Business ICT Australia.',
+    currentPath: '/thank-you'
   });
 });
 
 // ---- Contact form POST ----
 app.post('/contact', async (req, res) => {
-  const { name, company, email, phone, interest, message } = req.body;
+  const { name, company, email, phone, interest, message, website } = req.body;
+
+  // Honeypot: real visitors never see this field, bots fill it in.
+  // Pretend it worked so the bot moves on, but send nothing.
+  if (website) {
+    return res.redirect('/thank-you');
+  }
+
+  // Every field except the message is mandatory
+  const requiredFields = [name, company, email, phone, interest];
+  const allFilled = requiredFields.every(function (v) {
+    return typeof v === 'string' && v.trim() !== '';
+  });
+  if (!allFilled) {
+    return res.redirect('/contact?error=true');
+  }
+
+  // Captcha must have been passed
+  const captchaOk = await verifyTurnstile(req.body['cf-turnstile-response']);
+  if (!captchaOk) {
+    return res.redirect('/contact?error=true');
+  }
 
   try {
     await resend.emails.send({
       from: 'Business ICT Website <onboarding@resend.dev>',
       to: 'michael.patane@businessict.com.au',
-      subject: `New enquiry from ${name} — ${interest}`,
+      subject: `New enquiry from ${oneLine(name)} — ${oneLine(interest)}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Business:</strong> ${company}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Interested in:</strong> ${interest}</p>
-        <p><strong>Message:</strong><br>${message}</p>
+        <p><strong>Name:</strong> ${esc(name)}</p>
+        <p><strong>Business:</strong> ${esc(company)}</p>
+        <p><strong>Email:</strong> ${esc(email)}</p>
+        <p><strong>Phone:</strong> ${esc(phone)}</p>
+        <p><strong>Interested in:</strong> ${esc(interest)}</p>
+        <p><strong>Message:</strong><br>${esc(message || '(none)').replace(/\r?\n/g, '<br>')}</p>
       `
     });
 
-    res.redirect('/contact?success=true');
+    res.redirect('/thank-you');
   } catch (error) {
     console.error('Resend error:', error);
     res.redirect('/contact?error=true');
@@ -140,4 +207,3 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`Business ICT Australia site running: http://localhost:${PORT}`);
 });
-

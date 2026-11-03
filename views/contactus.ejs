@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="/css/base.css">
 <link rel="icon" href="/images/favicon.ico">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -22,50 +23,62 @@
   </div>
 </section>
 
-<% if (success) { %>
-  <p style="color: green; margin-bottom: 1rem;">Thanks! We'll be in touch shortly.</p>
-<% } %>
-<% if (error) { %>
-  <p style="color: red; margin-bottom: 1rem;">Something went wrong. Please try again or call us directly.</p>
+<% if (locals.error) { %>
+  <p style="color: red; margin-bottom: 1rem;">Something went wrong. Please check the form and try again, or call us directly.</p>
 <% } %>
 
 <section>
   <div class="wrap contact-grid">
-    <form class="contact-form" action="/contact" method="POST" novalidate>
+    <form class="contact-form" action="/contact" method="POST">
       <div>
-        <label for="name">Full name</label>
+        <label for="name">Full name *</label>
         <input type="text" id="name" name="name" autocomplete="name" required>
       </div>
       <div>
-        <label for="company">Business name</label>
-        <input type="text" id="company" name="company" autocomplete="organization">
+        <label for="company">Business name *</label>
+        <input type="text" id="company" name="company" autocomplete="organization" required>
       </div>
       <div>
-        <label for="email">Email</label>
+        <label for="email">Email *</label>
         <input type="email" id="email" name="email" autocomplete="email" required>
       </div>
       <div>
-        <label for="phone">Phone</label>
-        <input type="tel" id="phone" name="phone" autocomplete="tel">
+        <label for="phone">Phone *</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" required>
       </div>
       <div>
-        <label for="interest">I'm interested in</label>
-        <select id="interest" name="interest">
-          <option value="mobility">High Speed Internet</option>
+        <label for="interest">I'm interested in *</label>
+        <select id="interest" name="interest" required>
+          <option value="" disabled selected>Please select</option>
+          <option value="high-speed-internet">High Speed Internet</option>
           <option value="mobility">Mobility</option>
           <option value="unified-comms">Unified Comms</option>
           <option value="managed-it">Managed IT Services</option>
           <option value="managed-print">Managed Print</option>
           <option value="hardware">Hardware Procurement</option>
-          <option value="hardware">MyAccount Demo</option>
+          <option value="myaccount-demo">MyAccount Demo</option>
           <option value="other">Something else</option>
         </select>
       </div>
       <div>
-        <label for="message">Message</label>
+        <label for="message">Message (optional)</label>
         <textarea id="message" name="message" rows="4"></textarea>
       </div>
-      <button type="submit" class="btn btn--primary" style="width: auto; display: inline-flex; align-self: flex-start; justify-self: start;">Talk to our Team</button>
+
+      <!-- Spam trap: hidden from people, bots fill it in -->
+      <div style="position:absolute; left:-9999px;" aria-hidden="true">
+        <label for="website">Leave this field empty</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <!-- Captcha -->
+      <div class="cf-turnstile"
+           data-sitekey="<%= locals.turnstileSiteKey || '' %>"
+           data-callback="onCaptchaDone"
+           data-expired-callback="onCaptchaExpired"
+           data-error-callback="onCaptchaExpired"></div>
+
+      <button type="submit" id="contact-submit" class="btn btn--primary" style="width: auto; display: inline-flex; align-self: flex-start; justify-self: start;" disabled>Submit</button>
     </form>
 
     <div class="contact-info-card">
@@ -99,5 +112,15 @@
 <%- include('partials/footer') %>
 
 <script src="/js/main.js" defer></script>
+<script>
+  // The Submit button stays disabled until the captcha has been passed
+  function onCaptchaDone() {
+    document.getElementById('contact-submit').disabled = false;
+  }
+  function onCaptchaExpired() {
+    document.getElementById('contact-submit').disabled = true;
+  }
+</script>
 </body>
 </html>
+

@@ -94,9 +94,7 @@
   line-height: 1 !important;
   margin-bottom: 0.15em !important;
 }
-.stat-row:nth-child(1) .stat-row__figure { color: var(--ict-blue); }
-.stat-row:nth-child(2) .stat-row__figure { color: var(--ict-blue-700); }
-.stat-row:nth-child(3) .stat-row__figure { color: var(--dark-grey); }
+.stat-row__figure { color: var(--ict-blue); }
 .stat-row__label { font-size: 0.9rem; color: var(--ict-grey); margin-bottom: 0.15em; }
 
 @media (max-width: 700px) {

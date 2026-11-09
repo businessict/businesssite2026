@@ -236,7 +236,7 @@ section.about-section {
   margin-top: 2rem;
 }
 .about-step {
-  border-top: 3px solid var(--about-accent);
+  border-top: 3px solid var(--ict-blue);
   padding-top: 1rem;
 }
 .about-step__num {
@@ -558,10 +558,10 @@ section.about-cta {
   line-height: 1 !important;
   margin-bottom: 0.15em !important;
 }
-.stat-row:nth-child(1) .stat-row__figure { color: var(--ict-blue); }
-.stat-row:nth-child(2) .stat-row__figure { color: var(--ict-blue-700); }
-.stat-row:nth-child(3) .stat-row__figure { color: var(--dark-grey); }
+.stat-row__figure { color: var(--ict-blue); }
 .stat-row__label { font-size: 0.9rem; color: var(--ict-grey); margin-bottom: 0.15em; }
+.about-hero .stat-row__label { font-size: 1.05rem;  }
+
 
 @media (max-width: 700px) {
   .stat-counters { flex-wrap: nowrap; gap: 1rem; }

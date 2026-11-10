@@ -2,13 +2,16 @@
 # Format: <from> <to> <status>. First match wins.
 
 # --- Footer links -------------------------------------------------------------
-# 302 so a new document version only needs this file changed.
-/terms                    /docs/our-customer-terms-business-v1.17.pdf                    302
-/hardship-policy          /docs/BusinessICTAustralia-Payment-Assistance-Policy_v1.1.pdf  302
+# public/docs holds each policy twice: a stable name (always the current
+# version, which these links use) and a versioned name (kept as an archive).
+# To publish a new version: add the versioned file, then overwrite the stable one.
+/terms                    /docs/customer-terms.pdf                                       301
+/hardship-policy          /docs/financial-hardship-policy.pdf                            301
 /support/screen-connect   https://businessict.screenconnect.com/                         302
 /myaccount                https://myaccount.businessict.com.au/                          301
 
 # --- Old WordPress document links (may be quoted in contracts and emails) -----
+# These name a specific version, so they go to that version's archived copy.
 /wp-content/uploads/2026/03/our-customer-terms-business-v1.17.pdf               /docs/our-customer-terms-business-v1.17.pdf                    301
 /wp-content/uploads/2026/06/BusinessICTAustralia-Payment-Assistance-Policy_v1.1.pdf  /docs/BusinessICTAustralia-Payment-Assistance-Policy_v1.1.pdf  301
 

@@ -110,6 +110,9 @@ async function handleContact(request, env, url) {
       body: JSON.stringify({
         from: env.CONTACT_FROM,
         to: env.CONTACT_TO,
+        // "Reply" goes to the visitor. Left out if the address looks invalid,
+        // since Resend rejects the whole email over a bad reply_to.
+        reply_to: /^[^\s@<>,;"]+@[^\s@<>,;"]+\.[^\s@<>,;"]+$/.test(email.trim()) ? email.trim() : undefined,
         subject: `New enquiry from ${oneLine(name)} — ${oneLine(interest)}`,
         html: `
         <h2>New Contact Form Submission</h2>

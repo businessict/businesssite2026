@@ -1,0 +1,40 @@
+# Redirects for Cloudflare Workers static assets (copied into dist/ by build.js).
+# Format: <from> <to> <status>. First match wins.
+
+# --- Footer links -------------------------------------------------------------
+# 302 so a new document version only needs this file changed.
+/terms                    /docs/our-customer-terms-business-v1.17.pdf                    302
+/hardship-policy          /docs/BusinessICTAustralia-Payment-Assistance-Policy_v1.1.pdf  302
+/support/screen-connect   https://businessict.screenconnect.com/                         302
+/myaccount                https://myaccount.businessict.com.au/                          301
+
+# --- Old WordPress document links (may be quoted in contracts and emails) -----
+/wp-content/uploads/2026/03/our-customer-terms-business-v1.17.pdf               /docs/our-customer-terms-business-v1.17.pdf                    301
+/wp-content/uploads/2026/06/BusinessICTAustralia-Payment-Assistance-Policy_v1.1.pdf  /docs/BusinessICTAustralia-Payment-Assistance-Policy_v1.1.pdf  301
+
+# --- Old WordPress pages -> closest new page -----------------------------------
+/about/                        /about            301
+/contact/                      /contact          301
+/hardware/                     /hardware         301
+/mobile/                       /mobility         301
+/mobility-and-it-procurement/  /mobility         301
+/network/                      /connectivity     301
+/internet/                     /connectivity     301
+/network-and-security/         /connectivity     301
+/firewall/                     /connectivity     301
+/security/                     /connectivity     301
+/managed-services/             /managed-it       301
+/print/                        /managed-print    301
+/voice-and-collaboration/      /unified-comms    301
+/hosted/                       /unified-comms    301
+/services/                     /#services        301
+/myaccount/                    https://myaccount.businessict.com.au/  301
+/our-customer-terms/           /terms            301
+/financial-hardship-policy/    /hardship-policy  301
+/faq/                          /                 301
+/careers-partnerships/         /                 301
+/control-costs/                /                 301
+/real-time-insights/           /                 301
+/hello-world/                  /                 301
+/category/uncategorized/       /                 301
+/feed/                         /                 301

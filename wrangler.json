@@ -14,8 +14,8 @@
   },
   "vars": {
     "TURNSTILE_SITE_KEY": "0x4AAAAAAF6pDpUXnvN7So8C",
-    "CONTACT_FROM": "Business ICT Website <onboarding@resend.dev>",
-    "CONTACT_TO": "michael.patane@businessict.com.au"
+    "CONTACT_FROM": "Business ICT Website <website@businessict.com.au>",
+    "CONTACT_TO": "info@businessict.com.au"
   },
   "observability": {
     "enabled": true

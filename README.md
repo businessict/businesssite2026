@@ -140,3 +140,19 @@ Everything is wired to accept real assets without any code restructuring:
 
 Logos and final photography/video were not supplied yet — every spot they'll
 go is marked with an inline HTML comment in the `.ejs` files.
+
+## 7. Deploying to Cloudflare
+
+The live site runs on Cloudflare Workers. `npm start` still runs the Express server for local editing, but Cloudflare does not run `server.js`:
+
+- `pages.js` — the list of pages, used by both `server.js` and the Cloudflare build. **Add new pages here** (plus the `.ejs` view), not as a separate `app.get(...)`.
+- `build.js` — renders every page to plain HTML in `dist/` and copies `public/` in with it (`npm run build`).
+- `worker.js` — handles the contact form on Cloudflare (Turnstile check + Resend email). If you change the form handling in `server.js`, make the same change here.
+- `wrangler.json` — Cloudflare settings, including who the contact form emails.
+
+```
+npm run preview    local test of the Cloudflare version (http://localhost:8787)
+npm run deploy     build and publish
+```
+
+For `npm run preview`, the two secrets (`RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`) go in a `.dev.vars` file — same format as `.env`.

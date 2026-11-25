@@ -169,6 +169,10 @@
   .nbn-panel__img { order: -1; }
 }
 
+@media (max-width: 600px) {
+  .nbn-panel__img { order: 1; }  /* copy stays at order 0, so the video drops below it */
+}
+
 .cert-logos {
   display: flex;
   align-items: center;

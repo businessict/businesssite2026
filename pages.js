@@ -62,5 +62,11 @@ module.exports = [
     view: 'thankyou',
     pageTitle: 'Thank You | Business ICT Australia',
     metaDescription: 'Thanks for getting in touch with Business ICT Australia.'
-  }
+  },
+  {
+  path: '/articles/crm-ai-customer-experience',
+  view: 'articles/crm-ai-customer-experience',
+  pageTitle: 'How CRM and AI Can Improve Customer Experience | Business ICT',
+  metaDescription: 'Discover how connecting your business phone system, CRM and AI can reduce administration, improve customer experiences and help your team work smarter.'
+}
 ];

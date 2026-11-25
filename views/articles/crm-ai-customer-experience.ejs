@@ -1,0 +1,708 @@
+<%
+/* =========================================================
+   BUSINESS ICT AUSTRALIA: ARTICLE TEMPLATE
+   File: views/articles/crm-ai-customer-experience.ejs
+   Styles: /css/base.css (existing) + /css/article.css (new)
+
+   HOW THIS FILE WORKS
+   1. Edit the `meta` object for title, SEO and dates.
+   2. The `sections` array drives the contents list, the sidebar
+      and the floating bar. Each id must match a section id below.
+   3. Footnotes are automatic. Call the fn() helper with a source key
+      (see the body text for examples) wherever a claim needs a source.
+      Numbers are assigned in order of first use and the Sources list
+      at the end builds itself.
+   4. The two include() lines (header and footer) assume your site
+      uses partials. Change the paths to match your project, or paste
+      your header and footer markup in their place.
+   ========================================================= */
+
+const meta = {
+  title: 'Your customer called. Does your business remember what happened next?',
+  standfirst: 'Connecting your phone system, CRM and AI can cut administration and give customers a more consistent experience. Here is how it works, which Australian rules apply and where to start.',
+  seoTitle: 'How CRM and AI Can Improve Customer Experience | Business ICT',
+  description: 'Discover how connecting your business phone system, CRM and AI can reduce administration, improve customer experiences and help your team work smarter.',
+  slug: 'crm-ai-customer-experience',
+  baseUrl: 'https://www.businessict.com.au',
+  issue: 'November 2026',
+  published: '16 November 2026',
+  publishedISO: '2026-11-16',
+  readingTime: '10 min read',
+  pillar: 'Voice & Collaboration',
+  pillarSecondary: 'ICT Strategy',
+  keywords: 'CRM and AI integration, business communications, CRM integration, AI in business, customer experience, business phone systems',
+  ogImage: '/images/articles/crm-ai-customer-experience.webp'
+};
+
+const sections = [
+  { id: 'third-call',      title: 'The third call' },
+  { id: 'disconnected',    title: 'Information is not the problem' },
+  { id: 'phone-crm',       title: 'When your phone system and CRM work together' },
+  { id: 'ai',              title: 'Where AI fits in' },
+  { id: 'in-practice',     title: 'What this looks like in practice' },
+  { id: 'time-back',       title: 'The real opportunity is time' },
+  { id: 'australian-rules',title: 'The Australian rules to know first' },
+  { id: 'foundations',     title: 'Getting the foundations right' },
+  { id: 'wrap-up',         title: 'Technology should work together' },
+  { id: 'sources',         title: 'Sources and notes' }
+];
+
+const sources = {
+  tia: {
+    title: 'Telecommunications (Interception and Access) Act 1979 (Cth)',
+    publisher: 'Federal Register of Legislation',
+    url: 'https://www.legislation.gov.au/Details/C2023C00005',
+    type: 'Government',
+    note: 'Check the Register for the latest compilation.'
+  },
+  sprintCalls: {
+    title: 'Business call recording laws',
+    publisher: 'Sprintlaw',
+    url: 'https://www.sprintlaw.com.au/articles/business-call-recording-laws',
+    type: 'Legal commentary'
+  },
+  sprintRecording: {
+    title: 'Recording laws in Australia: compliance for businesses',
+    publisher: 'Sprintlaw',
+    url: 'https://sprintlaw.com.au/articles/recording-laws-in-australia-compliance-for-businesses/',
+    type: 'Legal commentary'
+  },
+  pickle: {
+    title: 'Call recording laws in Australia',
+    publisher: 'Pickle',
+    url: 'https://thinkpickle.com.au/blog/call-recording-laws-australia',
+    type: 'Industry commentary'
+  },
+  oaicSmall: {
+    title: 'Opting in to the Privacy Act',
+    publisher: 'Office of the Australian Information Commissioner (OAIC)',
+    url: 'https://www.oaic.gov.au/privacy/privacy-guidance-for-organisations-and-government-agencies/organisations/opting-in-to-the-privacy-act',
+    type: 'Government'
+  },
+  oaicNdb: {
+    title: 'Part 4: Notifiable Data Breaches (NDB) scheme',
+    publisher: 'Office of the Australian Information Commissioner (OAIC)',
+    url: 'https://www.oaic.gov.au/privacy/notifiable-data-breaches/preventing-preparing-for-and-responding-to-data-breaches/data-breach-preparation-and-response/part-4-notifiable-data-breach-ndb-scheme',
+    type: 'Government'
+  },
+  oaicAI: {
+    title: 'Guidance on privacy and the use of commercially available AI products',
+    publisher: 'Office of the Australian Information Commissioner (OAIC)',
+    date: 'October 2024',
+    url: 'https://www.oaic.gov.au/privacy/privacy-guidance-for-organisations-and-government-agencies/guidance-on-privacy-and-the-use-of-commercially-available-ai-products',
+    type: 'Government'
+  },
+  maddocks: {
+    title: 'OAIC releases guidance on new automated decision-making transparency obligations',
+    publisher: 'Maddocks',
+    date: '7 October 2026',
+    url: 'https://www.maddocks.com.au/insights/oaic-releases-guidance-on-new-automated-decision-making-transparency-obligations',
+    type: 'Legal commentary'
+  },
+  piper: {
+    title: 'When the machine decides: is your privacy policy compliant with new automated decision-making transparency requirements?',
+    publisher: 'Piper Alderman',
+    date: '20 October 2026',
+    url: 'https://piperalderman.com.au/insight/when-the-machine-decides-is-your-privacy-policy-compliant-with-new-automated-decision-making-transparency-requirements/',
+    type: 'Legal commentary'
+  },
+  naic: {
+    title: 'Guidance for AI Adoption',
+    publisher: 'Department of Industry, Science and Resources, National AI Centre',
+    date: '21 October 2025',
+    url: 'https://industry.gov.au/publications/guidance-for-ai-adoption',
+    type: 'Government'
+  },
+  naicFoundations: {
+    title: 'Guidance for AI Adoption: Foundations',
+    publisher: 'Department of Industry, Science and Resources, National AI Centre',
+    url: 'https://www.industry.gov.au/publications/guidance-for-ai-adoption/guidance-ai-adoption-foundations',
+    type: 'Government'
+  }
+};
+
+/* Footnote engine: numbers follow order of first appearance */
+const cited = [];
+const counts = {};
+const fn = (key) => {
+  if (!sources[key]) { return '<sup class="fn-ref fn-ref--missing">?</sup>'; }
+  let idx = cited.indexOf(key);
+  if (idx === -1) { cited.push(key); idx = cited.length - 1; counts[key] = 0; }
+  counts[key] += 1;
+  const n = idx + 1;
+  const label = 'Footnote ' + n + ': ' + sources[key].publisher;
+  const tip = (sources[key].publisher + ': ' + sources[key].title).replace(/"/g, '&quot;');
+  return '<sup class="fn-ref"><a href="#fn-' + n + '" id="fnref-' + n + '-' + counts[key] + '" aria-label="' + label + '" data-tip="' + tip + '">' + n + '</a></sup>';
+};
+
+const canonical = meta.baseUrl + '/articles/' + meta.slug;
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: meta.title,
+  description: meta.description,
+  datePublished: meta.publishedISO,
+  dateModified: meta.publishedISO,
+  mainEntityOfPage: canonical,
+  image: meta.baseUrl + meta.ogImage,
+  author: { '@type': 'Organization', name: 'Business ICT Australia' },
+  publisher: { '@type': 'Organization', name: 'Business ICT Australia' },
+  keywords: meta.keywords
+};
+%><!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= meta.seoTitle %></title>
+  <meta name="description" content="<%= meta.description %>">
+  <meta name="keywords" content="<%= meta.keywords %>">
+  <link rel="canonical" href="<%= canonical %>">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="<%= meta.seoTitle %>">
+  <meta property="og:description" content="<%= meta.description %>">
+  <meta property="og:url" content="<%= canonical %>">
+  <meta property="og:image" content="<%= meta.baseUrl + meta.ogImage %>">
+  <meta property="article:published_time" content="<%= meta.publishedISO %>">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/article.css">
+  <script type="application/ld+json"><%- JSON.stringify(ld) %></script>
+</head>
+<body class="article-page">
+
+  <a class="art-skip" href="#artBody">Skip to article</a>
+  <div class="art-progress" aria-hidden="true"><div class="art-progress__bar" id="artProgressBar"></div></div>
+
+  <%# CHANGE THIS PATH to match your site header partial %>
+  <%- include('../partials/header') %>
+
+  <main id="main">
+
+    <!-- ================= ARTICLE HEADER ================= -->
+    <div class="art-hero">
+      <div class="wrap art-hero__grid">
+        <div class="art-hero__copy">
+          <nav class="art-crumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span aria-hidden="true">/</span>
+            <a href="/articles">Articles</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page"><%= meta.issue %> issue</span>
+          </nav>
+
+          <div class="art-tags">
+            <span class="art-tag"><%= meta.pillar %></span>
+            <span class="art-tag art-tag--quiet"><%= meta.pillarSecondary %></span>
+          </div>
+
+          <h1 class="art-title"><%= meta.title %></h1>
+          <p class="art-standfirst"><%= meta.standfirst %></p>
+
+          <dl class="art-meta">
+            <div><dt>Issue</dt><dd><%= meta.issue %></dd></div>
+            <div><dt>Published</dt><dd><time datetime="<%= meta.publishedISO %>"><%= meta.published %></time></dd></div>
+            <div><dt>Reading time</dt><dd><%= meta.readingTime %></dd></div>
+            <div><dt>From</dt><dd>Business ICT Australia</dd></div>
+          </dl>
+        </div>
+
+        <div class="art-hero__art" aria-hidden="true">
+          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <g fill="none" stroke="#fff" stroke-opacity="0.16">
+              <circle cx="200" cy="200" r="190"/>
+              <circle cx="200" cy="200" r="132"/>
+              <circle cx="200" cy="200" r="74"/>
+            </g>
+            <g stroke="#fff" stroke-opacity="0.7" stroke-width="1.5" fill="none">
+              <line x1="112" y1="118" x2="292" y2="168"/>
+              <line x1="292" y1="168" x2="172" y2="300"/>
+              <line x1="172" y1="300" x2="112" y2="118"/>
+            </g>
+            <g fill="#B7BB6B">
+              <circle cx="202" cy="143" r="5"/>
+              <circle cx="232" cy="234" r="5"/>
+              <circle cx="142" cy="209" r="5"/>
+            </g>
+            <g fill="#fff" fill-opacity="0.35">
+              <circle cx="60" cy="250" r="4"/><circle cx="340" cy="90" r="4"/>
+              <circle cx="330" cy="310" r="3"/><circle cx="70" cy="70" r="3"/>
+              <circle cx="250" cy="36" r="3"/>
+            </g>
+            <circle cx="112" cy="118" r="38" fill="#fff"/>
+            <circle cx="292" cy="168" r="38" fill="#1D99D5"/>
+            <circle cx="172" cy="300" r="38" fill="#B7BB6B"/>
+            <g font-family="'Ubuntu Condensed', Ubuntu, sans-serif" font-size="20" font-weight="500" text-anchor="middle">
+              <text x="112" y="125" fill="#0C3C57">Calls</text>
+              <text x="292" y="175" fill="#fff">CRM</text>
+              <text x="172" y="307" fill="#0C3C57">AI</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= LAYOUT: CONTENTS + ARTICLE ================= -->
+    <div class="wrap">
+      <div class="art-layout">
+
+        <aside class="art-toc" aria-label="Article contents">
+          <p class="art-toc__title">In this article</p>
+          <ol class="art-toc__list">
+            <% sections.forEach(function (s) { %>
+            <li><a href="#<%= s.id %>" data-toc-link="<%= s.id %>"><%= s.title %></a></li>
+            <% }) %>
+          </ol>
+          <div class="art-toc__progress">
+            <div class="art-toc__track"><div class="art-toc__fill" id="artTocFill"></div></div>
+            <span id="artTocPct">0% read</span>
+          </div>
+        </aside>
+
+        <article class="art-body" id="artBody" tabindex="-1">
+
+          <!-- At a glance -->
+          <div class="art-glance">
+            <h2 class="art-glance__title">At a glance</h2>
+            <ul>
+              <li>Most businesses already hold the customer information they need. It just sits in separate places.</li>
+              <li>A phone system linked to a CRM can show who is calling, record the conversation and track follow-ups.</li>
+              <li>AI can summarise calls and flag actions, but a person should always review the result.</li>
+              <li>Australian rules apply to call recording, privacy and, from 10 December 2026, automated decision-making.</li>
+              <li>Get the foundations right first: integration, clean data, clear ownership and trained people.</li>
+            </ul>
+          </div>
+
+          <!-- 1 -->
+          <section class="art-section" id="third-call" aria-labelledby="h-third-call">
+            <h2 id="h-third-call">The third call</h2>
+            <p class="art-lead">Imagine a customer calls your business for the third time.</p>
+            <p>They spoke to someone in sales last week, contacted your accounts team yesterday and are now speaking to reception. Each time, they explain who they are, what they need and what has already happened.</p>
+            <p>Nobody has done anything particularly wrong. Your people are busy, information is spread across different systems and everyone is working with what they can see. But from the customer’s side, something is missing. They do not feel recognised and they do not feel that anyone has the full picture. Meanwhile, your team spends valuable time piecing together information that should already be at hand.</p>
+
+            <blockquote class="art-pullquote">
+              <p>The problem is rarely a lack of information. It is that the information does not connect.</p>
+            </blockquote>
+
+            <p>This is where connected communications, customer relationship management (CRM) and artificial intelligence (AI) can make a meaningful difference. Not because they are fashionable technologies, but because they help a business do something simple: remember its customers, understand what they need and respond well.</p>
+          </section>
+
+          <!-- 2 -->
+          <section class="art-section" id="disconnected" aria-labelledby="h-disconnected">
+            <h2 id="h-disconnected">Information is not the problem</h2>
+            <p>Most established businesses already hold plenty of customer information: names, phone numbers, email addresses, previous enquiries, sales opportunities, service requests and account histories.</p>
+            <p>The trouble is where it lives. A phone system handles calls. A CRM stores customer records. Emails hold important conversations. Staff keep spreadsheets, take notes or rely on memory. Each tool may work perfectly well on its own, but when they do not talk to each other, your employees end up doing the connecting by hand.</p>
+            <p>Consider a simple example. A customer calls about an existing service. Your employee answers, asks for a name, searches for the account, opens the CRM and hunts for the last conversation. A few minutes pass before the real conversation has even begun.</p>
+            <p>Now imagine the phone system and CRM working together. When the customer calls, their details appear on the employee’s screen. Account history and previous interactions are visible. Your employee starts the conversation with context instead of questions. That is a better experience for everyone.</p>
+          </section>
+
+          <!-- 3 -->
+          <section class="art-section" id="phone-crm" aria-labelledby="h-phone-crm">
+            <h2 id="h-phone-crm">When your phone system and CRM work together</h2>
+            <p>A CRM is, in essence, a central record of your relationships with customers. It helps you track who they are, what they have bought, what they have asked about and what needs to happen next. Connected to a business phone system, it becomes considerably more useful.</p>
+            <p>Depending on the platforms and how they are integrated, a business can introduce four practical capabilities.</p>
+
+            <div class="art-features">
+              <div class="art-feature">
+                <h3>Recognising who is calling</h3>
+                <p>When an existing customer calls, their record can appear automatically on screen, so nobody has to ask them to repeat their account details.</p>
+              </div>
+              <div class="art-feature">
+                <h3>Keeping a record of conversations</h3>
+                <p>Call activity can be logged against the right customer record, including call times, employee details, notes and links to recordings. Colleagues can pick up where someone else left off.</p>
+              </div>
+              <div class="art-feature">
+                <h3>Reducing manual administration</h3>
+                <p>Some integrations log calls automatically and match them to the correct customer, so staff switch between applications less often.</p>
+              </div>
+              <div class="art-feature">
+                <h3>Improving follow-up</h3>
+                <p>A call can lead to a sales opportunity, a service request or a promise to ring back. Connected systems can turn those into trackable tasks and reminders.</p>
+              </div>
+            </div>
+
+            <p>The result is not simply a more sophisticated phone system. It is a business that responds to customers with greater consistency.</p>
+
+            <aside class="art-callout art-callout--note">
+              <p class="art-callout__label">Worth knowing</p>
+              <p>What is possible depends on your phone platform, your CRM and how the two are connected. Not every combination supports every feature, so confirm this before you plan around it.</p>
+            </aside>
+          </section>
+
+          <!-- 4 -->
+          <section class="art-section" id="ai" aria-labelledby="h-ai">
+            <h2 id="h-ai">Where AI fits in</h2>
+            <p>Think about how much useful information passes through your business every day: sales enquiries, complaints, service requests, appointment changes, product questions and supplier conversations. Historically, much of it has been captured in handwritten notes, manually updated records or an employee’s memory.</p>
+            <p>AI-enabled communications tools can automate some of that work.</p>
+
+            <div class="art-features">
+              <div class="art-feature">
+                <h3>Call summaries</h3>
+                <p>Instead of spending several minutes writing up a call, an employee can review an AI-generated summary, correct it and save what matters.</p>
+              </div>
+              <div class="art-feature">
+                <h3>Identifying actions</h3>
+                <p>AI can pick out commitments made on a call, such as sending a quote or escalating a service issue, ready for a person to confirm and add to the workflow.</p>
+              </div>
+              <div class="art-feature">
+                <h3>Understanding conversations</h3>
+                <p>With the right systems and permissions, you can spot recurring questions and complaints, and see what customers are actually experiencing rather than relying on anecdote.</p>
+              </div>
+              <div class="art-feature">
+                <h3>Supporting service teams</h3>
+                <p>AI tools can help staff find information and recap earlier interactions faster, which matters most for teams handling high volumes of enquiries.</p>
+              </div>
+            </div>
+
+            <aside class="art-callout art-callout--caution">
+              <p class="art-callout__label">Keep a person in charge</p>
+              <p>AI should assist your employees, not replace their judgement. Summaries and suggested actions need checking, particularly when they involve financial, contractual or sensitive customer information. This mirrors the Australian Government’s own guidance, which lists maintaining human control as one of six essential practices for adopting AI.<%- fn('naic') %></p>
+            </aside>
+          </section>
+
+          <!-- 5 -->
+          <section class="art-section" id="in-practice" aria-labelledby="h-in-practice">
+            <h2 id="h-in-practice">What this looks like in practice</h2>
+            <p>Take an illustrative scenario: a business with 25 employees and a customer service team handling hundreds of calls each week. A customer rings about an outstanding service issue. This is a hypothetical example, not a customer case study.</p>
+
+            <div class="art-compare">
+              <div class="art-compare__col art-compare__col--before">
+                <h3>Without connected systems</h3>
+                <ol>
+                  <li>The employee asks for the customer’s details.</li>
+                  <li>They search the CRM to find the account.</li>
+                  <li>They try to locate the previous service request.</li>
+                  <li>They contact a colleague to find out what happened.</li>
+                  <li>They take notes during the call.</li>
+                  <li>They update the CRM manually afterwards.</li>
+                  <li>Someone needs to remember to follow up.</li>
+                </ol>
+              </div>
+              <div class="art-compare__col art-compare__col--after">
+                <h3>With connected communications and AI</h3>
+                <ol>
+                  <li>The customer’s details appear as the call comes in.</li>
+                  <li>Account information and previous interactions are visible.</li>
+                  <li>An AI-generated summary documents the conversation.</li>
+                  <li>Follow-up actions are identified.</li>
+                  <li>The employee reviews and confirms the information.</li>
+                  <li>The record is updated and the next action is assigned.</li>
+                </ol>
+              </div>
+            </div>
+
+            <p>The customer does not have to start from scratch, and the employee spends less time on administration. Multiply that across hundreds of interactions and the operational benefit becomes much easier to see.</p>
+          </section>
+
+          <!-- 6 -->
+          <section class="art-section" id="time-back" aria-labelledby="h-time-back">
+            <h2 id="h-time-back">The real opportunity is time</h2>
+            <p>It is tempting to judge technology by how many features it offers. A better question is what it lets your people do that they could not do before.</p>
+            <ul class="art-list">
+              <li>If an employee spends less time searching for information, they have more time to help customers.</li>
+              <li>If a manager can see recurring complaints, they can fix the underlying problem instead of handling each incident separately.</li>
+              <li>If sales staff can see outstanding follow-ups, fewer opportunities sit idle.</li>
+              <li>If customers do not have to repeat themselves, the whole experience improves.</li>
+            </ul>
+            <p>None of this is revolutionary. These are practical improvements to everyday operations, and they are the ones that tend to stick.</p>
+          </section>
+
+          <!-- 7 -->
+          <section class="art-section" id="australian-rules" aria-labelledby="h-australian-rules">
+            <h2 id="h-australian-rules">The Australian rules to know first</h2>
+            <p>The technology is the easier part. Before you record, transcribe or analyse customer calls, it pays to understand the rules that apply in Australia. One of them changes in a matter of weeks.</p>
+
+            <aside class="art-callout art-callout--timely">
+              <p class="art-callout__label">Timely: 10 December 2026</p>
+              <p>New transparency rules for automated decision-making start on this date. If your business is covered by the Privacy Act and uses software to make, or help make, significant decisions about people, your privacy policy may need updating. Details are in the fourth subsection below.</p>
+            </aside>
+
+            <h3>Recording calls</h3>
+            <p>Australia has no single national rule for recording calls. The federal Telecommunications (Interception and Access) Act 1979 governs interception of calls,<%- fn('tia') %> and state and territory surveillance laws can apply as well.<%- fn('sprintRecording') %> Some jurisdictions, including Western Australia and South Australia, are generally regarded as stricter.<%- fn('pickle') %></p>
+            <p>Because customers can ring from anywhere, legal commentators commonly recommend a consistent, conservative approach: tell every caller at the start that the call may be recorded and why, and give them a genuine choice to continue or opt out.<%- fn('sprintCalls') %> This is general information, not legal advice, so confirm your approach with a lawyer.</p>
+
+            <h3>Recordings and transcripts hold personal information</h3>
+            <p>Where the Privacy Act applies, recordings that contain personal information are subject to the Privacy Act 1988 and the Australian Privacy Principles.<%- fn('pickle') %> The Act generally covers businesses with annual turnover above $3 million, and some smaller businesses in specific situations, such as health service providers or those that trade in personal information.<%- fn('oaicSmall') %> If you are covered, the Notifiable Data Breaches scheme also applies to you.<%- fn('oaicNdb') %> That makes storage, access and retention of call recordings and transcripts a real governance question, not an afterthought.</p>
+
+            <h3>Using AI tools with customer data</h3>
+            <p>The Office of the Australian Information Commissioner (OAIC) has published guidance for businesses using commercially available AI products. Its main points are practical: privacy obligations apply to personal information you enter into an AI tool and to content it generates; you should check that a product suits its intended use; and you should consider a privacy impact assessment before adopting it. The OAIC also recommends that organisations avoid entering personal information, especially sensitive information, into publicly available generative AI tools.<%- fn('oaicAI') %></p>
+
+            <h3>New from 10 December 2026: automated decision-making</h3>
+            <p>Amendments to the Privacy Act, introduced by the Privacy and Other Legislation Amendment Act 2024, add new Australian Privacy Principles 1.7 to 1.9. From 10 December 2026, covered businesses that use computer programs to make, or help make, significant decisions about individuals using their personal information must explain this in their privacy policy.<%- fn('piper') %> The OAIC released guidance on the obligation on 30 September 2026, and commentators note that such decisions can be embedded in routine processes across areas such as customer service, finance and marketing.<%- fn('maddocks') %></p>
+            <p>A call summary that an employee reviews is unlikely, on its own, to amount to a significant decision. A tool that automatically prioritises, routes or declines customer requests deserves a closer look. If you are unsure, ask your privacy adviser to review how your systems are used.</p>
+
+            <h3>Government guidance on responsible AI</h3>
+            <p>The National AI Centre’s Guidance for AI Adoption, published in October 2025, sets out six essential practices: decide who is accountable, understand impacts and plan accordingly, measure and manage risks, share essential information, test and monitor, and maintain human control.<%- fn('naicFoundations') %> It is voluntary, designed to scale with your organisation, and a useful checklist even for a business taking its first steps.</p>
+          </section>
+
+          <!-- 8 -->
+          <section class="art-section" id="foundations" aria-labelledby="h-foundations">
+            <h2 id="h-foundations">Getting the foundations right</h2>
+            <p>Introducing AI is not simply a matter of switching on a new feature. The systems underneath need to work together, and AI is only as useful as the information and processes that support it. Adding technology to disconnected systems and inconsistent processes just creates more complexity.</p>
+            <p>Use this list to test where you stand. Tick each item you could confidently answer today.</p>
+
+            <fieldset class="art-checklist" id="artChecklist">
+              <legend>Readiness check</legend>
+              <label class="art-check">
+                <input type="checkbox">
+                <span class="art-check__box" aria-hidden="true"></span>
+                <span class="art-check__text"><strong>Your phone system.</strong> Does it support integration with your CRM or other business applications?</span>
+              </label>
+              <label class="art-check">
+                <input type="checkbox">
+                <span class="art-check__box" aria-hidden="true"></span>
+                <span class="art-check__text"><strong>Your CRM.</strong> Is customer information accurate, accessible and consistently maintained?</span>
+              </label>
+              <label class="art-check">
+                <input type="checkbox">
+                <span class="art-check__box" aria-hidden="true"></span>
+                <span class="art-check__text"><strong>Your workflows.</strong> What happens after a customer calls, and who owns the next action?</span>
+              </label>
+              <label class="art-check">
+                <input type="checkbox">
+                <span class="art-check__box" aria-hidden="true"></span>
+                <span class="art-check__text"><strong>Your people.</strong> Will employees actually use the systems, and have they been trained properly?</span>
+              </label>
+              <label class="art-check">
+                <input type="checkbox">
+                <span class="art-check__box" aria-hidden="true"></span>
+                <span class="art-check__text"><strong>Your information security.</strong> How are recordings, transcripts and customer information stored, accessed and protected?</span>
+              </label>
+              <label class="art-check">
+                <input type="checkbox">
+                <span class="art-check__box" aria-hidden="true"></span>
+                <span class="art-check__text"><strong>Privacy and consent.</strong> Do your call recording, transcription and AI practices meet your legal obligations and your customers’ expectations?</span>
+              </label>
+              <p class="art-checklist__count" id="artCheckCount" aria-live="polite">0 of 6 in place</p>
+            </fieldset>
+
+            <p>The objective should always be to make the business easier to operate, not harder.</p>
+          </section>
+
+          <!-- 9 -->
+          <section class="art-section" id="wrap-up" aria-labelledby="h-wrap-up">
+            <h2 id="h-wrap-up">Technology should work together, just like your business does</h2>
+            <p>Your customers do not think in terms of departments, software platforms or telecommunications infrastructure. They expect someone to answer, understand their situation and help.</p>
+            <p>Connecting your communications, customer information and business processes can help your team work more efficiently, improve the customer experience and give management a clearer view of what is happening across the business. AI opens up genuine opportunities to automate routine tasks, but the biggest benefit usually comes from getting the fundamentals right first.</p>
+            <p>The best technology is not the one with the most features. It is the one that makes a noticeable difference to how your business works.</p>
+
+            <div class="art-cta">
+              <h3>Is your business getting the most from its technology?</h3>
+              <p>At Business ICT, we help Australian businesses simplify and connect their technology environments through managed IT, voice and collaboration, connectivity and security solutions. Whether you are reviewing your phone system, looking to improve how your teams communicate or exploring ways to better connect your business systems, the first step is understanding what you need your technology to achieve.</p>
+              <a class="btn btn--outline" href="/contact">Speak with Business ICT</a>
+            </div>
+          </section>
+
+          <!-- 10 -->
+          <section class="art-section art-sources" id="sources" aria-labelledby="h-sources">
+            <h2 id="h-sources">Sources and notes</h2>
+            <p class="art-sources__intro">Sources are listed in the order they appear in the article. Government sources are primary. Legal and industry commentary is included for plain-language explanation and should not replace advice from a qualified professional.</p>
+
+            <ol class="art-sources__list">
+              <% cited.forEach(function (key, i) {
+                   const n = i + 1; const s = sources[key]; %>
+              <li id="fn-<%= n %>">
+                <span class="art-src__badge art-src__badge--<%= s.type.toLowerCase().split(' ')[0] %>"><%= s.type %></span>
+                <p class="art-src__cite">
+                  <%= s.publisher %>, <a href="<%= s.url %>" target="_blank" rel="noopener"><%= s.title %></a><% if (s.date) { %> (<%= s.date %>)<% } %>.<% if (s.note) { %> <%= s.note %><% } %>
+                </p>
+                <p class="art-src__back">
+                  Back to text:
+                  <% for (let k = 1; k <= counts[key]; k++) { %>
+                    <a href="#fnref-<%= n %>-<%= k %>" aria-label="Back to reference <%= n %>, mention <%= k %>"><%= counts[key] > 1 ? k : 'return' %></a>
+                  <% } %>
+                </p>
+              </li>
+              <% }) %>
+            </ol>
+
+            <p class="art-disclaimer">This article is general information only and is not legal, financial or technical advice. Laws and guidance are described as at <%= meta.published %> and may change. Business ICT does not develop CRM software. Features described depend on the platforms and integrations in use.</p>
+
+            <p class="art-end"><a class="btn btn--ghost btn--sm" href="/articles">Back to all articles</a></p>
+          </section>
+
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FLOATING NAVIGATION BAR ================= -->
+  <div class="art-float" id="artFloat" role="region" aria-label="Article navigation" data-visible="false">
+    <button type="button" class="art-float__btn" id="artPrev" aria-label="Previous section">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button type="button" class="art-float__now" id="artContentsBtn" aria-haspopup="dialog" aria-controls="artSheet" aria-expanded="false">
+      <span class="art-float__now-label" id="artFloatLabel">Contents</span>
+      <span class="art-float__now-pct" id="artFloatPct">0%</span>
+    </button>
+    <button type="button" class="art-float__btn" id="artNext" aria-label="Next section">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <button type="button" class="art-float__btn art-float__btn--top" id="artTop" aria-label="Back to top">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+  </div>
+
+  <!-- Contents sheet (opens from the floating bar) -->
+  <div class="art-sheet" id="artSheet" role="dialog" aria-modal="true" aria-label="Article contents" hidden>
+    <div class="art-sheet__backdrop" data-sheet-close></div>
+    <div class="art-sheet__panel">
+      <div class="art-sheet__head">
+        <p class="art-sheet__title">In this article</p>
+        <button type="button" class="round-btn" id="artSheetClose" aria-label="Close contents">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+      </div>
+      <ol class="art-sheet__list">
+        <% sections.forEach(function (s) { %>
+        <li><a href="#<%= s.id %>" data-toc-link="<%= s.id %>" data-sheet-close><%= s.title %></a></li>
+        <% }) %>
+      </ol>
+    </div>
+  </div>
+
+  <%# CHANGE THIS PATH to match your site footer partial %>
+  <%- include('../partials/footer') %>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var sections = Array.prototype.slice.call(document.querySelectorAll('.art-section[id]'));
+    var tocLinks = Array.prototype.slice.call(document.querySelectorAll('[data-toc-link]'));
+    var body = document.getElementById('artBody');
+    var float = document.getElementById('artFloat');
+    var label = document.getElementById('artFloatLabel');
+    var floatPct = document.getElementById('artFloatPct');
+    var tocPct = document.getElementById('artTocPct');
+    var tocFill = document.getElementById('artTocFill');
+    var progressBar = document.getElementById('artProgressBar');
+    var header = document.querySelector('.site-header');
+    var titles = {};
+    tocLinks.forEach(function (a) { titles[a.getAttribute('data-toc-link')] = a.textContent.trim(); });
+
+    var current = -1;
+    var ticking = false;
+
+    /* Keep sticky offsets in step with the real header height */
+    function setHeaderHeight() {
+      var h = header ? header.offsetHeight : 80;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+
+    function setActive(idx) {
+      if (idx === current) { return; }
+      current = idx;
+      var id = idx >= 0 ? sections[idx].id : null;
+      tocLinks.forEach(function (a) {
+        var on = a.getAttribute('data-toc-link') === id;
+        a.classList.toggle('is-active', on);
+        if (on) { a.setAttribute('aria-current', 'location'); } else { a.removeAttribute('aria-current'); }
+      });
+      label.textContent = id ? titles[id] : 'Contents';
+      /* keep the active item visible inside the sticky sidebar */
+      var active = document.querySelector('.art-toc a.is-active');
+      if (active && active.scrollIntoView && active.offsetParent) {
+        var box = active.closest('.art-toc');
+        if (box && box.scrollHeight > box.clientHeight) {
+          box.scrollTop = active.offsetTop - box.clientHeight / 2;
+        }
+      }
+    }
+
+    function update() {
+      ticking = false;
+      var y = window.scrollY || window.pageYOffset;
+      var headerH = header ? header.offsetHeight : 80;
+      var line = headerH + 140;
+
+      var idx = -1;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].getBoundingClientRect().top <= line) { idx = i; }
+      }
+      /* at the very bottom, force the final section */
+      if (window.innerHeight + y >= document.documentElement.scrollHeight - 4) { idx = sections.length - 1; }
+      setActive(idx);
+
+      var rect = body.getBoundingClientRect();
+      var total = rect.height - window.innerHeight * 0.6;
+      var done = (-rect.top + window.innerHeight * 0.2);
+      var p = Math.max(0, Math.min(1, done / Math.max(total, 1)));
+      var pct = Math.round(p * 100);
+
+      progressBar.style.transform = 'scaleX(' + p + ')';
+      tocFill.style.transform = 'scaleX(' + p + ')';
+      tocPct.textContent = pct + '% read';
+      floatPct.textContent = pct + '%';
+
+      var show = rect.top < headerH + 40 && rect.bottom > window.innerHeight * 0.3;
+      float.setAttribute('data-visible', show ? 'true' : 'false');
+    }
+
+    function onScroll() {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+    }
+
+    function go(idx) {
+      if (idx < 0) { window.scrollTo({ top: 0 }); return; }
+      if (idx >= sections.length) { idx = sections.length - 1; }
+      sections[idx].scrollIntoView();
+    }
+
+    document.getElementById('artPrev').addEventListener('click', function () {
+      var rect = sections[Math.max(current, 0)].getBoundingClientRect();
+      /* if part-way into a section, first jump to its start */
+      var offset = (header ? header.offsetHeight : 80) + 40;
+      if (current >= 0 && rect.top < -4 && rect.top < offset - 20) { go(current); } else { go(current - 1); }
+    });
+    document.getElementById('artNext').addEventListener('click', function () { go(current + 1); });
+    document.getElementById('artTop').addEventListener('click', function () { window.scrollTo({ top: 0 }); });
+
+    /* Contents sheet */
+    var sheet = document.getElementById('artSheet');
+    var openBtn = document.getElementById('artContentsBtn');
+    var closeBtn = document.getElementById('artSheetClose');
+
+    function openSheet() {
+      sheet.hidden = false;
+      openBtn.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('art-lock');
+      closeBtn.focus();
+    }
+    function closeSheet() {
+      sheet.hidden = true;
+      openBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('art-lock');
+      openBtn.focus();
+    }
+    openBtn.addEventListener('click', openSheet);
+    closeBtn.addEventListener('click', closeSheet);
+    sheet.addEventListener('click', function (e) {
+      var t = e.target;
+      if (t.closest && t.closest('[data-sheet-close]')) { sheet.hidden = true; openBtn.setAttribute('aria-expanded', 'false'); document.body.classList.remove('art-lock'); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !sheet.hidden) { closeSheet(); }
+    });
+
+    /* Readiness checklist counter */
+    var checks = Array.prototype.slice.call(document.querySelectorAll('#artChecklist input[type="checkbox"]'));
+    var count = document.getElementById('artCheckCount');
+    function updateChecks() {
+      var n = checks.filter(function (c) { return c.checked; }).length;
+      count.textContent = n + ' of ' + checks.length + ' in place';
+      count.classList.toggle('is-done', n === checks.length);
+    }
+    checks.forEach(function (c) { c.addEventListener('change', updateChecks); });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', function () { setHeaderHeight(); onScroll(); });
+    window.addEventListener('load', function () { setHeaderHeight(); update(); });
+    setHeaderHeight();
+    update();
+  })();
+  </script>
+</body>
+</html>
